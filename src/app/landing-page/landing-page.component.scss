@@ -1,0 +1,59 @@
+#landing-page-container {
+    #user-start {
+        // margin: -8px -8px 0px -8px;
+        color: white;
+        background: #2c3e50;
+        padding: 16px;
+        #logo {
+            img {
+                height: 70px;
+                width: 70px;
+            }
+            font-size: 24pt;
+            font-weight: bold;
+        }
+    
+        #side-info {
+            padding: 16px;
+            padding-left: 32px;
+            font-size: 20pt;
+            width: 60vw;
+            img {
+                height: 300px;
+                margin:auto;
+                display: block;
+            }
+            button {
+                display: block;
+                margin: auto;
+            }
+        }
+    
+        #login-container {
+            background: white;
+            border-radius: 2px;
+            widows: 40vw;
+            padding: 8px 32px;
+            margin: 8px;
+    
+            mat-tab-body.mat-tab-body-content {
+                overflow: hidden !important;
+            }
+        }
+    }
+    
+    #features-container {
+        // margin: 0 -8px;
+        padding: 32px;
+        img {
+            width: 100%;
+        }
+        .heading {
+            font-size: 18pt;
+            margin:8px;
+        }
+        .feature-text {
+            text-align: center;
+        }
+    }
+}

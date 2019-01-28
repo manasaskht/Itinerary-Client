@@ -1,0 +1,22 @@
+<div id="register-container">
+    <form fxLayout="column" [formGroup]="registerForm">
+        <div>
+            <mat-form-field>
+                <input matInput formGroupControl="email" placeholder="Email address" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput type="password" formGroupControl="password" placeholder="Password" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput type="password" formGroupControl="password" placeholder="Confirm Password" />
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-raised-button color="primary">Register</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<div id="login-container">
+    <form fxLayout="column" [formGroup]="loginForm">
+        <div>
+            <mat-form-field>
+                <input matInput formGroupControl="email" placeholder="Email address" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput formGroupControl="password" placeholder="Password" />
+            </mat-form-field>
+            <div fxLayout="row-reverse">
+                <a href="">forgot password?</a>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button color="primary">Login</button>
+        </div>
+        <div fxFlex fxGrow="1">&nbsp;</div>
+        <div>
+            <button mat-flat-button color="primary" class="full-button">Continue with Google</button>
+            <button mat-flat-button color="primary" class="full-button">Continue with Facebook</button>
+        </div>
+    </form>
+</div>

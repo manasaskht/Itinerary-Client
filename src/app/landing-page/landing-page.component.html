@@ -1,0 +1,55 @@
+<div id="landing-page-container">
+    <div id="user-start">
+        <div fxLayout="row" fxLayout="center center" fxLayoutGap="16px" id="logo">
+            <img src="assets/imgs/logo-white.png" />
+            <div fxFlexAlign="center">
+                Itinerary Planner
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div id="side-info">
+                <div>Plan your next trip effectively</div>
+                <div>
+                    <img src="assets/imgs/thinking.png" />
+                </div>
+                <div>
+                    <button mat-flat-button color="secondary">Quick Itinerary</button>
+                </div>
+            </div>
+            <div id="login-container">
+                <mat-tab-group>
+                    <mat-tab label="Login">
+                        <app-login></app-login>
+                    </mat-tab>
+                    <mat-tab label="Register">
+                        <app-register></app-register>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+    <div id="features-container">
+        <div class="heading">Make your travel stress free using features like</div>
+        <div fxLayout="row" fxLayoutGap="16px">
+            <div fxFlex="1 1 0">
+                <img src="assets/imgs/group-image.png">
+                <div class="feature-text">
+                    Video Call
+                </div>
+            </div>
+            <div fxFlex="1 1 0">
+                <img src="assets/imgs/group-image.png">
+                <div class="feature-text">
+                    Real-time map
+                </div>
+            </div>
+            <div fxFlex="1 1 0">
+                <img src="assets/imgs/group-image.png">
+                <div class="feature-text">
+                    Interactive Timeline & Suggestions
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
