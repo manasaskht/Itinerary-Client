@@ -2,25 +2,25 @@
     <form fxLayout="column" [formGroup]="registerForm">
         <div fxLayout="row" fxLayoutGap="16px">
             <mat-form-field>
-                <input matInput formGroupControl="firstName" placeholder="First Name" />
+                <input matInput formControlName="firstName" placeholder="First Name" />
             </mat-form-field>
             <mat-form-field>
-                <input matInput formGroupControl="lastName" placeholder="Last Name" />
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field>
-                <input matInput formGroupControl="email" placeholder="Email address" />
+                <input matInput formControlName="lastName" placeholder="Last Name" />
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
-                <input matInput type="password" formGroupControl="password" placeholder="Password" />
+                <input matInput formControlName="email" placeholder="Email address" />
             </mat-form-field>
         </div>
         <div>
             <mat-form-field>
-                <input matInput type="password" formGroupControl="password" placeholder="Confirm Password" />
+                <input matInput type="password" formControlName="password" placeholder="Password" />
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput type="password" formControlName="password" placeholder="Confirm Password" />
             </mat-form-field>
         </div>
         <div>
