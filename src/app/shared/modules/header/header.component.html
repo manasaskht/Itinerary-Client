@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutGap="8px" id="header-container">
+    <div>
+        <img src="assets/imgs/logo-white.png">
+    </div>
+    <div class="app-name" fxFlexAlign="center">Itinerary Planner</div>
+    <div fxFlex="1 1 0"></div>
+    <div fxFlexAlign="center">
+        <button mat-button [matMenuTriggerFor]="loginMenu">
+            <mat-icon>account_circle</mat-icon> &nbsp;
+            <span>Nikhil</span>
+            <span class="material-icons">arrow_drop_down</span>
+        </button>
+        <mat-menu #loginMenu="matMenu">
+            <button mat-menu-item>
+                <mat-icon>account_circle</mat-icon>
+                <span>Profile</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Log Out</span>
+            </button>
+        </mat-menu>
+    </div>
+</div>

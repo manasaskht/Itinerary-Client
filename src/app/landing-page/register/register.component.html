@@ -1,5 +1,13 @@
 <div id="register-container">
     <form fxLayout="column" [formGroup]="registerForm">
+        <div fxLayout="row" fxLayoutGap="16px">
+            <mat-form-field>
+                <input matInput formGroupControl="firstName" placeholder="First Name" />
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput formGroupControl="lastName" placeholder="Last Name" />
+            </mat-form-field>
+        </div>
         <div>
             <mat-form-field>
                 <input matInput formGroupControl="email" placeholder="Email address" />
