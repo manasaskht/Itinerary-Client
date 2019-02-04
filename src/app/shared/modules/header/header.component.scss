@@ -3,17 +3,24 @@
     background: #2c3e50;
     color: white;
 
-    img {
-        height: 50px;
-        margin-top: 8px;
+    .icon {
+        cursor: pointer;
+        outline: 0;
+
+        img {
+            height: 50px;
+            margin-top: 8px;
+        }
+
+        .app-name {
+            font-size: 24pt;
+            font-weight: bold;
+        }
+
     }
+    
 
     button {
         font-size: 18pt;
-    }
-
-    .app-name {
-        font-size: 24pt;
-        font-weight: bold;
     }
 }

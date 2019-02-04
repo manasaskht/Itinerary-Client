@@ -1,9 +1,17 @@
 <div fxLayout="row" fxLayoutGap="8px" id="header-container">
-    <div>
-        <img src="assets/imgs/logo-white.png">
+    <div [routerLink]="['/dashboard']" fxLayout="row" fxLayoutGap="8px" class="icon">
+        <div>
+            <img src="assets/imgs/logo-white.png">
+        </div>
+        <div class="app-name" fxFlexAlign="center">Itinerary Planner</div>
     </div>
-    <div class="app-name" fxFlexAlign="center">Itinerary Planner</div>
     <div fxFlex="1 1 0"></div>
+
+    <button mat-button fxFlexAlign="center">
+        <mat-icon>home</mat-icon>
+        Home
+    </button>
+
     <div fxFlexAlign="center">
         <button mat-button [matMenuTriggerFor]="loginMenu">
             <mat-icon>account_circle</mat-icon> &nbsp;

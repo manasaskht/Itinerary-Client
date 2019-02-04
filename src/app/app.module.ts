@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginGuard } from './shared/guards/login.guard';
 import { LogoutGuard } from './shared/guards/logout.guard';
+import { ToastrModule } from 'ngx-toastr';
+import { Utilities } from './shared/utilities/utils.helper';
 
 @NgModule({
     declarations: [
@@ -13,7 +15,8 @@ import { LogoutGuard } from './shared/guards/logout.guard';
     ],
     imports: [
         BrowserAnimationsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        ToastrModule.forRoot(Utilities.toastrConfig)
     ],
     providers: [LoginGuard, LogoutGuard],
     bootstrap: [AppComponent]

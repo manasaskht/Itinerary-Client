@@ -1,0 +1,28 @@
+#profile-container {
+    min-height: 70vh;
+    padding: 16px;
+
+    img{
+        height: 250px;
+    }
+
+    #info-container {
+        padding: 16px;
+        max-width: 30vw;
+        .name {
+            font-size: 24pt;
+        }
+
+        &>div {
+            margin: 8px 0;
+        }
+
+        .interests {
+            div {
+                background: lightgray;
+                border-radius: 8px;
+                padding: 8px;
+            }
+        }
+    }
+}

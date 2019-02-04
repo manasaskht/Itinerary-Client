@@ -1,26 +1,47 @@
 <div id="register-container">
     <form fxLayout="column" [formGroup]="registerForm">
         <div fxLayout="row" fxLayoutGap="16px">
-            <mat-form-field>
+            <mat-form-field floatLabel="never">
                 <input matInput formControlName="firstName" placeholder="First Name" />
+                <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
+                    First name is required.
+                </mat-error>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field floatLabel="never">
                 <input matInput formControlName="lastName" placeholder="Last Name" />
+                <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
+                    Last name is required.
+                </mat-error>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field>
+            <mat-form-field floatLabel="never">
                 <input matInput formControlName="email" placeholder="Email address" />
+                <mat-error *ngIf="registerForm.controls.email.hasError('required')">
+                    Email is required.
+                </mat-error>
+                <mat-error *ngIf="registerForm.controls.email.hasError('pattern')">
+                    Email is invalid.
+                </mat-error>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field>
+            <mat-form-field floatLabel="never">
                 <input matInput type="password" formControlName="password" placeholder="Password" />
+                <mat-error *ngIf="registerForm.controls.password.hasError('required')">
+                    Password is required.
+                </mat-error>
+                <mat-error *ngIf="registerForm.controls.password.hasError('pattern')">
+                    Password should contain 1 uppercase letter, 1 lowercase letter<br> 1 number.
+                </mat-error>
             </mat-form-field>
         </div>
         <div>
-            <mat-form-field>
-                <input matInput type="password" formControlName="password" placeholder="Confirm Password" />
+            <mat-form-field floatLabel="never">
+                <input matInput type="password" formControlName="confirmPwd" placeholder="Confirm Password" />
+                <mat-error *ngIf="registerForm.controls.confirmPwd.hasError('required') || registerForm.controls.confirmPwd.hasError('notEqual')">
+                    Please fill the same as your password
+                </mat-error>
             </mat-form-field>
         </div>
         <div>

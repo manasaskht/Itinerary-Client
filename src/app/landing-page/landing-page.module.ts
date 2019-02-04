@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { FooterModule } from '../shared/modules/footer/footer.module';
 
-
 @NgModule({
     declarations: [LandingPageComponent, LoginComponent, RegisterComponent],
     imports: [

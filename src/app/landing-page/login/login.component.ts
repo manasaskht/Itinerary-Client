@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { StorageHelper } from 'src/app/shared/utilities/storage.helper';
+import { Utilities } from 'src/app/shared/utilities/utils.helper';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-login',
@@ -13,12 +15,14 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
 
     constructor(
-        private router: Router
+        private router: Router,
+        private toastrService: ToastrService
     ) {
         this.loginForm = new FormGroup({
-            email: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.pattern(Utilities.emailPattern)]),
             password: new FormControl('', [Validators.required])
         });
+        this.loginForm.controls.email.hasError('required')
     }
 
     ngOnInit() {
@@ -32,6 +36,8 @@ export class LoginComponent implements OnInit {
         if (loginValues.email === 'admin@admin.com' && loginValues.password === 'admin') {
             StorageHelper.getInstance().userInfo = { token: 'abcd' };
             this.router.navigate(['/dashboard']);
+        } else {
+            this.toastrService.error('Invalid Username or Password. \nUse email as "admin@admin.com" and password as "admin"', 'Login Error');
         }
     }
 

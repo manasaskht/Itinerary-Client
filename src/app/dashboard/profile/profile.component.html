@@ -1,3 +1,41 @@
-<p>
-  profile works!
-</p>
+<div id="profile-container" fxLayout="row" fxLayoutAlign="center start">
+    <div fxLayout="column" fxLayoutGap="8px" fxFlexAlign="center">
+        <img src="assets/imgs/profile_img.png">
+        <button mat-button>Change Image</button>
+    </div>
+    <div>
+        <div id="info-container">
+            <div fxLayout="row" class="name">
+                <div fxFlex="1 1 0">Nikhil Tyagi</div>
+                <button mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+            <div>
+                nikhil.tyagi@dal.ca
+            </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+                <div>
+                    <b>Age:</b> 26
+                </div>
+                <div>
+                    <b>Sex:</b> Male
+                </div>
+            </div>
+            <div>
+                <h3>Bio:</h3>
+                <p>
+                    An avid software developer with a zeal of learning awesome tools and creating something amazing.
+                </p>
+            </div>
+            <div>
+                <h3>Interests:</h3>
+                <div class="interests" fxLayout="row" fxLayoutGap="16px">
+                    <div>Golfing</div>
+                    <div>Programming</div>
+                    <div>NHL</div>
+                    <div>Boxing</div>
+                </div>
+            </div>
+        </div>
+    </div>

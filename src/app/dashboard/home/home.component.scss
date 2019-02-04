@@ -1,3 +1,44 @@
 #home-container {
     padding: 16px;
+    min-height: 70vh;
+
+    .trip-card {
+        cursor: pointer;
+        max-width: min-content;
+        img {
+            height: 160px;
+            margin: auto;
+            display: block;
+            margin: 8px;
+        }
+        .text {
+            padding: 8px;
+            background: lightgray;
+            margin: 0 8px;
+            margin-top: -8px;
+            border-radius: 0px 0px 5px 5px;
+        }
+        .itineraryName {
+            font-size: 14pt;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        .places {
+            font-size: 12pt;
+        }
+    }
+
+    .add-new {
+        padding: 8px;
+        background: lightgray;
+        min-width: 240px;
+        border-radius: 8px;
+        button {
+            margin: auto;
+        }
+    }
+
+    .scroll {
+        overflow-x: auto;
+    }
 }

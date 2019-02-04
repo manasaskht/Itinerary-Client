@@ -1,13 +1,56 @@
 <div id="home-container">
+
     <div>
-        <h3>Current Trips</h3>
+        <div>
+            <h3>Upcoming Trips</h3>
+        </div>
+        <div>
+            <div class="scroll" fxLayout="row" fxLayoutGap="16px">
+                <div class="trip-card" *ngFor="let trip of upcomingTrips">
+                    <div>
+                        <img [src]="trip.imgUrl">
+                    </div>
+                    <div class="text">
+                        <div class="itineraryName">{{trimString(trip.itineraryName, 27)}}</div>
+                        <div class="places">Places Visited: {{getPlaces(trip.places)}}</div>
+                    </div>
+                </div>
+
+
+                <div class="add-new" fxLayout>
+                    <button mat-raised-button color="primary">
+                        <mat-icon>add_circle</mat-icon>&nbsp;
+                        <span>New Itinerary</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     <div>
         <h3>Previous Trips</h3>
+        <div class="scroll" fxLayout="row" fxLayoutGap="16px">
+            <div class="trip-card" *ngFor="let trip of previousTrips">
+                <div>
+                    <img [src]="trip.imgUrl">
+                </div>
+                <div class="text">
+                    <div class="itineraryName">{{trimString(trip.itineraryName, 27)}}</div>
+                    <div class="places">Places Visited: {{getPlaces(trip.places)}}</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div>
         <h3>Recommended Trips</h3>
+        <div class="scroll" fxLayout="row" fxLayoutGap="16px">
+            <div class="trip-card" *ngFor="let trips of recomendedTrips">
+                <div>
+                    <img [src]="trips.imgUrl">
+                </div>
+                <div class="text">Visit {{trips.place}}</div>
+            </div>
+        </div>
     </div>
 
 </div>

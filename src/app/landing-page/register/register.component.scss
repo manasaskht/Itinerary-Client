@@ -7,4 +7,13 @@
         display: block;
         margin: 8px auto;
     }
+
+    mat-form-field .mat-form-field {
+        &-underline {
+            position: static;
+        }
+        &-subscript-wrapper {
+            position: static;
+        }
+    }
 }
