@@ -1,4 +1,5 @@
 import { GlobalConfig } from 'ngx-toastr';
+// declare var google: any;
 
 export namespace Utilities {
 
@@ -7,6 +8,12 @@ export namespace Utilities {
     // Used from
     // https://www.thepolyglotdeveloper.com/2015/05/use-regex-to-test-password-strength-in-javascript/
     export const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/;
+
+    // export const startMapConfig = {
+    //     center: new google.maps.LatLng(18.5793, 73.8143),
+    //     zoom: 15,
+    //     mapTypeId: google.maps.MapTypeId.ROADMAP
+    // };
 
     export const toastrConfig: Partial<GlobalConfig> = {
         timeOut: 2000,

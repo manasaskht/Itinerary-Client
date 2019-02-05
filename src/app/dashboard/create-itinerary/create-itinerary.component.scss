@@ -1,0 +1,46 @@
+#create-itinerary-container {
+    
+    #itinerary-tools {
+        height: 70vh;
+        div {
+            border: 1px solid black;
+            margin: 2px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        mat-tab-group {
+            height: 100%;
+            
+            .map-container {
+                height: inherit;
+            }
+
+            /deep/.mat-tab-body-wrapper{
+                height: 100%;
+            }
+
+            /deep/.mat-tab-body-content {
+                overflow: hidden;
+            }
+
+        }
+
+        
+    }
+
+    #video-chats {
+        margin:2px;
+        height: 240px;
+        // border: 1px solid black;
+        img{
+            height: 200px;
+        }
+        .video {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            margin: 2px;
+        }
+    }
+}

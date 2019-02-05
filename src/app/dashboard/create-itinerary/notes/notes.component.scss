@@ -1,0 +1,18 @@
+#notes-container {
+    padding: 8px;
+    overflow: auto;
+    height: 100%;
+    .note {
+        padding: 8px;
+        border-bottom: 1px solid grey;
+        font-size: 11pt;
+        height: 70px;
+        .title {
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .text {
+            
+        }
+    }
+}

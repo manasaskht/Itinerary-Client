@@ -9,7 +9,8 @@ const routes: Routes = [
         component: DashboardComponent,
         children: [
             { path: '', loadChildren: './home/home.module#HomeModule' },
-            { path: 'user', loadChildren: './profile/profile.module#ProfileModule' }
+            { path: 'user', loadChildren: './profile/profile.module#ProfileModule' },
+            { path: 'create', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule' }
         ]
     }
 ];

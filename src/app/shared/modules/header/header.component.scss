@@ -2,6 +2,8 @@
     padding: 8px 16px;
     background: #2c3e50;
     color: white;
+    max-height: 16vh;
+    padding-top: 16px;
 
     .icon {
         cursor: pointer;
@@ -9,11 +11,11 @@
 
         img {
             height: 50px;
-            margin-top: 8px;
+            margin-top: -8px;
         }
 
         .app-name {
-            font-size: 24pt;
+            font-size: 20pt;
             font-weight: bold;
         }
 
@@ -21,6 +23,6 @@
     
 
     button {
-        font-size: 18pt;
+        font-size: 14pt;
     }
 }

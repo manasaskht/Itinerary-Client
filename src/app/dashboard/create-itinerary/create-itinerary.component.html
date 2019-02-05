@@ -1,0 +1,30 @@
+<div id="create-itinerary-container">
+    <div fxLayout="row" id="itinerary-tools">
+        <div fxFlex="1 1 0">
+
+            <mat-tab-group>
+                <mat-tab label="Map View">
+                    <div #gmaps class="map-container"></div>
+                </mat-tab>
+                <mat-tab label="Timeline View">
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div fxFlex="0.5 0.5 0">
+            <mat-tab-group>
+                <mat-tab label="Notes">
+                    <app-notes></app-notes>
+                </mat-tab>
+                <mat-tab label="Chats">
+                    <app-chats></app-chats>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+    <div id="video-chats" fxLayout="row" fxLayoutAlign="left center">
+        <div *ngFor="let videoChat of videoChats" class="video">
+            <img [src]="videoChat.video">
+            <div>{{ videoChat.name }}</div>
+        </div>
+    </div>
+</div>

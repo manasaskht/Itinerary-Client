@@ -1,0 +1,10 @@
+<div id="notes-container">
+    <div class="note" *ngFor="let note of notes">
+        <div fxLayout="row">
+            <div class="title"> {{ note.title }} </div>
+            <div fxFlex="1 1 0"></div>
+            <div class="time">{{ note.time | date:'shortTime' }}</div>
+        </div>
+        <div class="text"> {{ note.text }} </div>
+    </div>
+</div>

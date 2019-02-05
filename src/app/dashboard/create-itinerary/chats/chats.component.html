@@ -1,0 +1,16 @@
+<div id="chats-container">
+    <div class="chats">
+        <!-- <div fxLayout="row" fxLayoutGap="8px">
+            <input fxFlex="1 1 0" placeholder="Type a message" type="text">
+            <button mat-button>
+                <mat-icon>send</mat-icon>
+            </button>
+        </div> -->
+        <div *ngFor="let message of chatMessages">
+            <div [ngClass]="(message.from === 'You')?'self':'other'">
+                <div *ngIf="message.from !== 'You'" class="sender">{{message.from}}</div>
+                <div class="text">{{message.text}}</div>
+            </div>
+        </div>
+    </div>
+</div>
