@@ -9,6 +9,9 @@
     #info-container {
         padding: 16px;
         max-width: 30vw;
+        @media screen and (max-width: 599px) {
+            max-width: none;
+        }
         .name {
             font-size: 24pt;
         }
@@ -18,6 +21,8 @@
         }
 
         .interests {
+            overflow: auto;
+            max-width: 80vw;
             div {
                 background: lightgray;
                 border-radius: 8px;

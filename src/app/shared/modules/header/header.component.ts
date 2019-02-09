@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageHelper } from '../../utilities/storage.helper';
 
@@ -9,7 +9,11 @@ import { StorageHelper } from '../../utilities/storage.helper';
 })
 export class HeaderComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    @Output() menuClicked: EventEmitter<boolean>;
+
+    constructor(private router: Router) {
+        this.menuClicked = new EventEmitter<boolean>();
+    }
 
     ngOnInit() {
     }

@@ -1,6 +1,8 @@
 #chats-container {
     height: 100%;
     padding: 8px;
+    overflow: auto;
+    margin-bottom: 16px;
 
     .chats {
         height: inherit;

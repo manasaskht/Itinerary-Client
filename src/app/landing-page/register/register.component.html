@@ -1,6 +1,6 @@
 <div id="register-container">
     <form fxLayout="column" [formGroup]="registerForm">
-        <div fxLayout="row" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px">
             <mat-form-field floatLabel="never">
                 <input matInput formControlName="firstName" placeholder="First Name" />
                 <mat-error *ngIf="registerForm.controls.firstName.hasError('required')">
@@ -39,7 +39,8 @@
         <div>
             <mat-form-field floatLabel="never">
                 <input matInput type="password" formControlName="confirmPwd" placeholder="Confirm Password" />
-                <mat-error *ngIf="registerForm.controls.confirmPwd.hasError('required') || registerForm.controls.confirmPwd.hasError('notEqual')">
+                <mat-error
+                    *ngIf="registerForm.controls.confirmPwd.hasError('required') || registerForm.controls.confirmPwd.hasError('notEqual')">
                     Please fill the same as your password
                 </mat-error>
             </mat-form-field>

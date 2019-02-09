@@ -26,7 +26,7 @@ export class CreateItineraryComponent implements OnInit {
         this.videoChats = [
             {
                 video: 'assets/imgs/profile_img.png',
-                name: 'Rahul'
+                name: 'Self'
             },
             {
                 video: 'assets/imgs/profile_img.png',

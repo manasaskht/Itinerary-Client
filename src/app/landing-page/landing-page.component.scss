@@ -10,6 +10,9 @@
                 width: 70px;
             }
             font-size: 24pt;
+            @media screen and (max-width: 599px) {
+                font-size: 18pt;
+            }
             font-weight: bold;
         }
     
@@ -19,13 +22,21 @@
             font-size: 20pt;
             width: 60vw;
             img {
-                height: 300px;
+                height: 25vw;
                 margin:auto;
                 display: block;
             }
             button {
                 display: block;
                 margin: auto;
+            }
+
+            @media screen and (max-width: 599px) {
+                img {
+                    height: 70vw;
+                }
+                padding-left: 16px;
+                width: auto;
             }
         }
     

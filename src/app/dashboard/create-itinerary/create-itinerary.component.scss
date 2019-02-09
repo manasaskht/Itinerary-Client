@@ -1,7 +1,23 @@
 #create-itinerary-container {
+
+    #itinerary-controls {
+        padding: 0 16px;
+        // .buttons {
+        //     div {
+        //         cursor: pointer;
+        //     }
+        //     mat-icon {
+                
+        //         font-size: 32pt;
+        //     }
+        // }
+    }
     
     #itinerary-tools {
         height: 70vh;
+        @media screen and (max-width: 599px) {
+            height: 150vh;
+        }
         div {
             border: 1px solid black;
             margin: 2px;
@@ -31,16 +47,33 @@
 
     #video-chats {
         margin:2px;
-        height: 240px;
+        height: 200px;
+        overflow: auto;
         // border: 1px solid black;
         img{
-            height: 200px;
+            height: 160px;
         }
         .video {
             border: 1px solid black;
             padding: 8px;
             text-align: center;
             margin: 2px;
+        }
+        .new-video {
+            height:200px;
+            width:200px;
+            background: lightgray;
+            border-radius: 8px;
+            margin: 2px;
+            button {
+                margin: auto;
+            }
+        }
+    }
+
+    .own-video {
+        img{
+            height: 200px;
         }
     }
 }

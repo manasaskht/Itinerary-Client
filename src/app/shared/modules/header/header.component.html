@@ -1,18 +1,23 @@
 <div fxLayout="row" fxLayoutGap="8px" id="header-container">
+    <div fxHide.gt-sm>
+        <button mat-button (click)="menuClicked.next(true)">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
     <div [routerLink]="['/dashboard']" fxLayout="row" fxLayoutGap="8px" class="icon">
         <div>
             <img src="assets/imgs/logo-white.png">
         </div>
         <div class="app-name" fxFlexAlign="center">Itinerary Planner</div>
     </div>
-    <div fxFlex="1 1 0"></div>
+    <div fxFlex="1 1 0" fxHide.lt-sm></div>
 
-    <button mat-button fxFlexAlign="center" [routerLink]="['/']">
+    <button fxHide.lt-sm mat-button fxFlexAlign="center" [routerLink]="['/dashboard']">
         <mat-icon>home</mat-icon>
         Home
     </button>
 
-    <div fxFlexAlign="center">
+    <div fxFlexAlign="center" fxHide.lt-sm>
         <button mat-button [matMenuTriggerFor]="loginMenu">
             <mat-icon>account_circle</mat-icon> &nbsp;
             <span>Nikhil</span>

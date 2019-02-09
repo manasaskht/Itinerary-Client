@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
     selector: 'app-dashboard',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-    constructor() { }
+    // private drawer: MatSidenav;
+
+    @ViewChildren('matdrawer') drawers: QueryList<MatSidenav>;
+
+    constructor() {
+    }
 
     ngOnInit() {
+    }
+
+    get isScreenSmall() {
+        return window.screen.width < 599;
+    }
+
+    toggleMenu() {
+        this.drawers.first.toggle();
     }
 
 }

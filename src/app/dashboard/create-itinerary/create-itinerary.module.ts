@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CreateItineraryRoutingModule } from './create-itinerary-routing.module';
 import { CreateItineraryComponent } from './create-itinerary.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule, MatIconModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
 
@@ -15,7 +15,8 @@ import { ChatsComponent } from './chats/chats.component';
         CreateItineraryRoutingModule,
         FlexLayoutModule,
         MatTabsModule,
-        MatIconModule
+        MatIconModule,
+        MatButtonModule
     ]
 })
 export class CreateItineraryModule { }

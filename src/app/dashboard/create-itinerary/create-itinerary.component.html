@@ -1,5 +1,21 @@
 <div id="create-itinerary-container">
-    <div fxLayout="row" id="itinerary-tools">
+    <div id="itinerary-controls" fxLayout fxLayoutAlign="center center">
+        <div>
+            <h3>Itinerary Title</h3>
+        </div>
+        <div fxFlex="1 1 0"></div>
+        <div class="buttons" fxLayout>
+            <button mat-button>
+                <mat-icon>save</mat-icon>
+                <span>Save</span>
+            </button>
+            <button mat-button>
+                <mat-icon>print</mat-icon>
+                <span>Print</span>
+            </button>
+        </div>
+    </div>
+    <div fxLayout="row" id="itinerary-tools" fxLayout.lt-md="column">
         <div fxFlex="1 1 0">
 
             <mat-tab-group>
@@ -25,6 +41,13 @@
         <div *ngFor="let videoChat of videoChats" class="video">
             <img [src]="videoChat.video">
             <div>{{ videoChat.name }}</div>
+        </div>
+        <div class="new-video" fxLayout>
+            <button mat-button>
+                <mat-icon>add_circle</mat-icon>
+                Add Friend
+            </button>
+
         </div>
     </div>
 </div>

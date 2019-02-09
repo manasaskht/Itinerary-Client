@@ -1,0 +1,7 @@
+<div id="side-nav-container">
+    <mat-action-list>
+        <button mat-list-item (click)="actionDone.next(true)" [routerLink]="['/dashboard']"> Home </button>
+        <button mat-list-item (click)="actionDone.next(true)" [routerLink]="['/dashboard/user']"> Profile </button>
+        <button mat-list-item (click)="logOut()"> Log Out </button>
+    </mat-action-list>
+</div>

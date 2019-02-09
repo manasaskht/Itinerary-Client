@@ -17,6 +17,9 @@
         .app-name {
             font-size: 20pt;
             font-weight: bold;
+            @media screen and (max-width: 599px){
+                font-size: 18pt;
+            }
         }
 
     }
