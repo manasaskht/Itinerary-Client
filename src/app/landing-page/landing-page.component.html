@@ -30,23 +30,14 @@
     </div>
     <div id="features-container">
         <div class="heading">Make your travel stress free using features like</div>
-        <div fxLayout="row" fxLayoutGap="16px">
-            <div fxFlex="1 1 0">
-                <img src="assets/imgs/group-image.png">
-                <div class="feature-text">
-                    Video Call
+        <div class="all-features" fxLayout="row" fxLayoutGap="16px">
+            <div *ngFor="let feature of features" fxFlex="1 1 0">
+                <div class="feature" fxLayout fxLayoutAlign="center center">
+                    <img [src]="feature.image">
                 </div>
-            </div>
-            <div fxFlex="1 1 0">
-                <img src="assets/imgs/group-image.png">
+
                 <div class="feature-text">
-                    Real-time map
-                </div>
-            </div>
-            <div fxFlex="1 1 0">
-                <img src="assets/imgs/group-image.png">
-                <div class="feature-text">
-                    Interactive Timeline & Suggestions
+                    {{ feature.name }}
                 </div>
             </div>
         </div>

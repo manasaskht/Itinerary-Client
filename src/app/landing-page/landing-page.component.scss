@@ -56,8 +56,14 @@
     #features-container {
         // margin: 0 -8px;
         padding: 32px;
+        .all-features {
+            overflow-x: auto;
+            height: 100%;
+        }
+        
         img {
             width: 100%;
+            min-width: 300px;
         }
         .heading {
             font-size: 18pt;
@@ -65,6 +71,10 @@
         }
         .feature-text {
             text-align: center;
+        }
+
+        .feature {
+            height: 85%;
         }
     }
 }
