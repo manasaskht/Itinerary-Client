@@ -7,9 +7,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTabsModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
+import { SocialComponent } from './social/social.component';
 
 @NgModule({
-    declarations: [CreateItineraryComponent, NotesComponent, ChatsComponent],
+    declarations: [CreateItineraryComponent, NotesComponent, ChatsComponent, SocialComponent],
     imports: [
         CommonModule,
         CreateItineraryRoutingModule,
