@@ -17,7 +17,7 @@ export namespace Utilities {
 
     export const toastrConfig: Partial<GlobalConfig> = {
         timeOut: 2000,
-        positionClass: 'toast-top-right',
+        positionClass: 'toast-bottom-right',
         preventDuplicates: true,
         progressBar: true,
         progressAnimation: 'decreasing'

@@ -6,19 +6,20 @@
         </div>
         <div>
             <div class="scroll" fxLayout="row" fxLayoutGap="16px">
-                <div class="trip-card" *ngFor="let trip of upcomingTrips">
+                <div class="trip-card" *ngFor="let trip of upcomingTrips" (click)="selectedTrip(trip)">
                     <div>
-                        <img [src]="trip.imgUrl">
+                        <img
+                            [src]="trip.imgUrl || 'https://www.strollingoftheheifers.com/wp-content/uploads/2012/12/Know-Your-Forester.jpg'">
                     </div>
                     <div class="text">
-                        <div class="itineraryName">{{trimString(trip.itineraryName, 27)}}</div>
-                        <div class="places">Places Visited: {{getPlaces(trip.places)}}</div>
+                        <div class="itineraryName">{{trimString(trip.title, 27)}}</div>
+                        <div class="places">{{trip.description}}</div>
                     </div>
                 </div>
 
 
                 <div class="add-new" fxLayout>
-                    <button mat-raised-button color="primary" [routerLink]="['/dashboard/create']">
+                    <button mat-raised-button color="primary" (click)="newItinerary()">
                         <mat-icon>add_circle</mat-icon>&nbsp;
                         <span>New Itinerary</span>
                     </button>

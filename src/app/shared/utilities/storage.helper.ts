@@ -4,6 +4,8 @@ const storageKeys = {
 
 export class StorageHelper {
 
+    private temp: any = null;
+
     private static storageHelper: StorageHelper;
 
     private constructor() { }
@@ -13,6 +15,14 @@ export class StorageHelper {
             StorageHelper.storageHelper = new StorageHelper();
         }
         return StorageHelper.storageHelper;
+    }
+
+    set tempStore(info: any) {
+        this.temp = info;
+    }
+
+    get tempStore() {
+        return this.temp;
     }
 
     set userInfo(info: any) {

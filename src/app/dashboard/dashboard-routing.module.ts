@@ -10,9 +10,11 @@ const routes: Routes = [
         children: [
             { path: '', loadChildren: './home/home.module#HomeModule' },
             { path: 'user', loadChildren: './profile/profile.module#ProfileModule' },
-            { path: 'create', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule' }
+            { path: 'create/:id', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule' },
+            { path: '**', redirectTo: '' }
         ]
-    }
+    },
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
