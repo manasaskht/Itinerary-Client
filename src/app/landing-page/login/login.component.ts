@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { StorageHelper } from 'src/app/shared/utilities/storage.helper';
 import { Utilities } from 'src/app/shared/utilities/utils.helper';
 import { ToastrService } from 'ngx-toastr';
+import { LoginService } from '../providers/login.service';
 
 @Component({
     selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private toastrService: ToastrService
+        private loginService: LoginService
     ) {
         this.loginForm = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.pattern(Utilities.emailPattern)]),
@@ -33,12 +34,17 @@ export class LoginComponent implements OnInit {
             return;
 
         let loginValues = this.loginForm.value;
-        if (loginValues.email === 'admin@admin.com' && loginValues.password === 'admin') {
-            StorageHelper.getInstance().userInfo = { token: 'abcd' };
-            this.router.navigate(['/dashboard']);
-        } else {
-            this.toastrService.error('Invalid Username or Password. \nUse email as "admin@admin.com" and password as "admin"', 'Login Error');
-        }
+        this.loginService.userLogin(loginValues.email, loginValues.password)
+            .subscribe(res => {
+                StorageHelper.getInstance().userInfo = res;
+                this.router.navigate(['/dashboard']);
+            });
+        // if (loginValues.email === 'admin@admin.com' && loginValues.password === 'admin') {
+        //     StorageHelper.getInstance().userInfo = { token: 'abcd' };
+        //     this.router.navigate(['/dashboard']);
+        // } else {
+        //     this.toastrService.error('Invalid Username or Password. \nUse email as "admin@admin.com" and password as "admin"', 'Login Error');
+        // }
     }
 
 }

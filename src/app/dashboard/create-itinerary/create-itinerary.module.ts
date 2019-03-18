@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatInputModule} from '@angular/material/input';
 
 import { CreateItineraryRoutingModule } from './create-itinerary-routing.module';
 import { CreateItineraryComponent } from './create-itinerary.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule, MatIconModule, MatButtonModule,MatDialogModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule, MatInputModule } from '@angular/material';
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
-import {FormsModule} from '@angular/forms';
+import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NotesDialogueComponent } from './notes-dialogue/notes-dialogue.component';
 
 @NgModule({
-    declarations: [CreateItineraryComponent, NotesComponent, ChatsComponent, NotesDialogueComponent],
+    declarations: [CreateItineraryComponent, NotesComponent, ChatsComponent, ItemDialogComponent],
     imports: [
         CommonModule,
         CreateItineraryRoutingModule,
@@ -20,12 +20,10 @@ import { NotesDialogueComponent } from './notes-dialogue/notes-dialogue.componen
         MatTabsModule,
         MatIconModule,
         MatButtonModule,
-        FormsModule,
+        MatDialogModule,
         MatInputModule,
-        MatDialogModule
+        ReactiveFormsModule
     ],
-    entryComponents: [NotesComponent, NotesDialogueComponent],
-    bootstrap: [NotesComponent],
-    providers: []
+    entryComponents: [ItemDialogComponent, NotesDialogueComponent]
 })
 export class CreateItineraryModule { }

@@ -14,7 +14,7 @@ export class NotesComponent implements OnInit {
     note: string;
     noteTitle: string;
 
-    constructor(public dialog: MatDialog) {
+    constructor(public dialog: MatDialog, private notesServie: NotesComponent) {
         this.notes = [
             {
                 id:123,
@@ -82,7 +82,7 @@ export class NotesComponent implements OnInit {
     }
 
     editItem(item): void {
-        
+
     }
 
     ngOnInit() {

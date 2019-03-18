@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/shared/utilities/customvalidators.helper';
 import { Utilities } from 'src/app/shared/utilities/utils.helper';
+import { RegisterService } from '../providers/register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-register',
@@ -11,7 +13,10 @@ import { Utilities } from 'src/app/shared/utilities/utils.helper';
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
 
-    constructor() {
+    constructor(
+        private registerService: RegisterService,
+        private toastr: ToastrService
+    ) {
         this.registerForm = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.pattern(Utilities.emailPattern)]),
             password: new FormControl('', [Validators.required, Validators.pattern(Utilities.passwordPattern)]),
@@ -26,6 +31,23 @@ export class RegisterComponent implements OnInit {
         this.registerForm.get('password').valueChanges.subscribe(value => {
             this.registerForm.get('confirmPwd').reset();
         });
+    }
+
+    register() {
+        if (this.registerForm.invalid)
+            return;
+
+        let registerValues = this.registerForm.value;
+        this.registerService.registerUser(
+            registerValues.firstName,
+            registerValues.lastName,
+            registerValues.email,
+            registerValues.password,
+            registerValues.confirmPwd
+        ).subscribe((res: any) => {
+            this.toastr.success(res.message)
+            this.registerForm.reset();
+        })
     }
 
 

@@ -1,10 +1,14 @@
 <div id="create-itinerary-container">
     <div id="itinerary-controls" fxLayout fxLayoutAlign="center center">
         <div>
-            <h3>Itinerary Title</h3>
+            <h3>{{ itinerary.title }}</h3>
         </div>
         <div fxFlex="1 1 0"></div>
         <div class="buttons" fxLayout>
+            <button mat-button (click)="exit()">
+                <mat-icon>arrow_back</mat-icon>
+                <span>Back</span>
+            </button>
             <button mat-button>
                 <mat-icon>save</mat-icon>
                 <span>Save</span>
@@ -16,18 +20,52 @@
         </div>
     </div>
     <div fxLayout="row" id="itinerary-tools" fxLayout.lt-md="column">
-        <div fxFlex="1 1 0">
+        <div class="bordered" fxFlex="1 1 0" fxLayout="column">
+            <div>
+                <button mat-button (click)="addItems()">
+                    <mat-icon>add_circle</mat-icon>
+                    <span>Add Items</span>
+                </button>
+            </div>
+            <div fxFlex="1 1 0">
+                <mat-tab-group>
+                    <mat-tab label="Timeline View">
+                        <div class="timeline-container" fxLayout="column">
+                            <div fxFlex="1 1 0" class="timeline-top" fxLayout="row">
+                                <div *ngFor="let item of timeline.top" class="bubble">
+                                    <div class="heading">{{item.title}}</div>
+                                    <div>
+                                        {{item.description}}
+                                    </div>
+                                    <div class="on-hover">
+                                        <button>View</button>
+                                        <button>Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div></div>
+                            <div fxFlex="1 1 0" class="timeline-bottom" fxLayout="row">
+                                <div *ngFor="let item of timeline.bottom" class="bubble">
+                                    <div class="heading">{{item.title}}</div>
+                                    <div>
+                                        {{item.description}}
+                                    </div>
+                                    <div>
+                                        <button>View</button>
+                                        <button>Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Map View">
+                        <div #gmaps class="map-container"></div>
+                    </mat-tab>
 
-            <mat-tab-group>
-                <mat-tab label="Map View">
-                    <div #gmaps class="map-container"></div>
-                </mat-tab>
-                <mat-tab label="Timeline View">
-                    <img src="assets/imgs/timeline.png">
-                </mat-tab>
-            </mat-tab-group>
+                </mat-tab-group>
+            </div>
         </div>
-        <div fxFlex="0.5 0.5 0">
+        <div class="bordered" fxFlex="0.5 0.5 0">
             <mat-tab-group>
                 <mat-tab label="Notes">
                     <app-notes></app-notes>

@@ -10,6 +10,7 @@
             margin: auto;
             display: block;
             margin: 8px;
+            border-radius: 8px 8px 0px 0px;
         }
         .text {
             padding: 8px;
@@ -33,6 +34,7 @@
         background: lightgray;
         min-width: 240px;
         border-radius: 8px;
+        min-height: 240px;
         button {
             margin: auto;
         }

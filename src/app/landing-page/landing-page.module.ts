@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { FooterModule } from '../shared/modules/footer/footer.module';
+import { LoginService } from './providers/login.service';
 
 @NgModule({
     declarations: [LandingPageComponent, LoginComponent, RegisterComponent],
@@ -24,6 +25,9 @@ import { FooterModule } from '../shared/modules/footer/footer.module';
         MatInputModule,
         ReactiveFormsModule,
         FooterModule
+    ],
+    providers: [
+        LoginService
     ]
 })
 export class LandingPageModule { }
