@@ -8,6 +8,8 @@ import { FooterModule } from '../shared/modules/footer/footer.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatSidenavModule } from '@angular/material';
 import { SideNavModule } from '../shared/modules/side-nav/side-nav.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatButtonModule, MatTabsModule,MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
 @NgModule({
     declarations: [DashboardComponent],
@@ -18,7 +20,10 @@ import { SideNavModule } from '../shared/modules/side-nav/side-nav.module';
         FooterModule,
         FlexLayoutModule,
         MatSidenavModule,
-        SideNavModule
+        SideNavModule,
+        FormsModule,
+        MatFormFieldModule,
+        ReactiveFormsModule
     ]
 })
 export class DashboardModule { }
