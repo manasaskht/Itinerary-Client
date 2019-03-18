@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Note Title" [(ngModel)]="data.noteTitle">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Note Text" [(ngModel)]="data.note"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{dat: data.note, dat1: data.noteTitle}" cdkFocusInitial>Ok</button>
+</div>  

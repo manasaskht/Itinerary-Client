@@ -4,7 +4,23 @@
             <div class="title"> {{ note.title }} </div>
             <div fxFlex="1 1 0"></div>
             <div class="time">{{ note.time | date:'shortTime' }}</div>
+            <div class="alter-note">
+                <button mat-icon-button>
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+            
         </div>
         <div class="text"> {{ note.text }} </div>
+        
+    </div>
+    
+    <div class="add-Notes">
+        <button mat-icon-button (click)="openDialog()">
+            <mat-icon>add_comment</mat-icon>
+        </button>
     </div>
 </div>
