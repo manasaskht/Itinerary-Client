@@ -6,6 +6,8 @@ import { CurrencyconverterComponent } from './currencyconverter.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule, MatTabsModule,MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
 
+
+
 @NgModule({
   declarations: [CurrencyconverterComponent],
   imports: [
@@ -17,7 +19,13 @@ import { MatButtonModule, MatTabsModule,MatFormFieldModule, MatInputModule, MatS
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CurrencyModule { }

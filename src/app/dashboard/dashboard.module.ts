@@ -23,7 +23,12 @@ import { MatButtonModule, MatTabsModule,MatFormFieldModule, MatInputModule, MatS
         SideNavModule,
         FormsModule,
         MatFormFieldModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatTabsModule,
+        MatInputModule,
+        MatSelectModule
+
     ]
 })
 export class DashboardModule { }
