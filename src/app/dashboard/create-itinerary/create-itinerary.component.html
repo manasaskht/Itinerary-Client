@@ -1,54 +1,55 @@
-<div id="create-itinerary-container">
-    <div id="itinerary-controls" fxLayout fxLayoutAlign="center center">
-        <div>
-            <h3>Itinerary Title</h3>
+<mat-card style="margin:2em; padding:0px;">
+    <mat-card-title id="title">CURRENCY EXCHANGE RATE</mat-card-title>
+    <form [formGroup]="currencyForm">
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <div fxFlex="1 1 0" fxLayoutAlign="center center">
+            <mat-form-field>
+                <mat-select placeholder="What I have?" formControlName="baseCurrency" (selectionChange)="selectedSrc(selectedValue)" [(value)]="selectedValue">
+                    <mat-option *ngFor="let cur of currencyList" [value]="cur.code">
+                         <img width="10" height="10" src="assets/imgs/{{cur.code | lowercase}}.png" />{{" " +cur.name +
+                        " (" +cur.code+")"}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="currencyForm.controls.baseCurrency.hasError('required')">
+                    Base currency is required.
+                </mat-error>
+            </mat-form-field>
         </div>
-        <div fxFlex="1 1 0"></div>
-        <div class="buttons" fxLayout>
-            <button mat-button>
-                <mat-icon>save</mat-icon>
-                <span>Save</span>
-            </button>
-            <button mat-button>
-                <mat-icon>print</mat-icon>
-                <span>Print</span>
-            </button>
-        </div>
-    </div>
-    <div fxLayout="row" id="itinerary-tools" fxLayout.lt-md="column">
-        <div fxFlex="1 1 0">
-
-            <mat-tab-group>
-                <mat-tab label="Map View">
-                    <div #gmaps class="map-container"></div>
-                </mat-tab>
-                <mat-tab label="Timeline View">
-                    <img src="assets/imgs/timeline.png">
-                </mat-tab>
-            </mat-tab-group>
-        </div>
-        <div fxFlex="0.5 0.5 0">
-            <mat-tab-group>
-                <mat-tab label="Notes">
-                    <app-notes></app-notes>
-                </mat-tab>
-                <mat-tab label="Chats">
-                    <app-chats></app-chats>
-                </mat-tab>
-            </mat-tab-group>
+        <div fxFlex="1 1 0" fxLayoutAlign="center center">
+            <mat-form-field>
+                <mat-select placeholder="What I want?" formControlName="outputCurrency" (selectionChange)="selectedDest(outputValue)" [(value)]="outputValue">
+                    <mat-option *ngFor="let cur of currencyList" [value]="cur.code">
+                        <img width="10" height="10" src="assets/imgs/{{cur.code | lowercase}}.png" />{{" " +cur.name +
+                        " (" +cur.code+")"}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="currencyForm.controls.outputCurrency.hasError('required')">
+                    Destination currency is required.
+                </mat-error>
+            </mat-form-field>
         </div>
     </div>
-    <div id="video-chats" fxLayout="row" fxLayoutAlign="left center">
-        <div *ngFor="let videoChat of videoChats" class="video">
-            <img [src]="videoChat.video">
-            <div>{{ videoChat.name }}</div>
+    <div fxLayout="row" fxLayout.lt-sm="column">
+        <div fxFlex="1 1 0" fxLayoutAlign="center center">
+            <mat-form-field>
+                <input matInput placeholder="Amount" type="number" #amount formControlName="amount">
+                <mat-error *ngIf="currencyForm.controls.amount.hasError('required')">
+                        Amount is required.
+                    </mat-error>
+            </mat-form-field>
         </div>
-        <div class="new-video" fxLayout>
-            <button mat-button>
-                <mat-icon>add_circle</mat-icon>
-                Add Friend
-            </button>
-
+        <div fxFlex="1 1 0" fxLayoutAlign="center center">
+            <div *ngIf="outputCurrency" id="output">
+                <h2>{{outputCurrency+" "+dest}}</h2>
+            </div>
         </div>
     </div>
-</div>
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
+                <div fxLayoutAlign="center center">
+            <button (click)="getCurrency(amount.value)" mat-raised-button style="background: #ffa027;
+                color: black;">CONVERT</button>
+        </div>
+    </div>
+</form>
+    <br/>
+</mat-card>

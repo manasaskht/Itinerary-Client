@@ -8,6 +8,7 @@ import { LogoutGuard } from './shared/guards/logout.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { Utilities } from './shared/utilities/utils.helper';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 @NgModule({
     declarations: [
         AppComponent
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
         BrowserAnimationsModule,
         AppRoutingModule,
         ToastrModule.forRoot(Utilities.toastrConfig),
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     providers: [LoginGuard, LogoutGuard],
     bootstrap: [AppComponent]

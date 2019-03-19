@@ -1,7 +1,10 @@
 <div id="profile-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start">
     <div fxLayout="column" fxLayoutGap="8px" fxFlexAlign="center">
-        <img src="assets/imgs/profile_img.png">
-        <button mat-button>Change Image</button>
+        <img [src]="imageSrc || 'assets/imgs/profile_img.png'">
+        <button mat-button (click)="file.click()">Change Image</button>
+        <input type="file" id="my-file" accept="image/*" #file (change)="upload($event.target.files)">
+        <!-- <button mat-button>Change Image</button>
+        <input type="file" id="my-file" (change)="onFileChanged($event)"> -->
     </div>
     <div>
         <div id="info-container">

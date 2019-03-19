@@ -5,7 +5,7 @@ import { CurrencyRoutingModule } from './currency-routing.module';
 import { CurrencyconverterComponent } from './currencyconverter.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule, MatTabsModule,MatFormFieldModule, MatInputModule, MatSelectModule } from '@angular/material';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { MatButtonModule, MatTabsModule,MatFormFieldModule, MatInputModule, MatS
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports: [
     CommonModule,

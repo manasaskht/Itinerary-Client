@@ -34,34 +34,31 @@ export class CurrencyconverterComponent implements OnInit {
   ngOnInit() {
     //console.log("hey");
     this.currencyList = (<any>countryCurrency);
-    console.log(this.currencyList);
-  }
-
-  convert() {
-    if (this.currencyForm.invalid)
-        return;    
-        this.toastrService.show("Success");
+    //console.log(this.currencyList);
   }
 
 getCurrency(inputAmt:number) {
   this.currency = [];
-  this.rest.getCurrency(this.src, this.dest).subscribe((data: {}) => {
-    console.log(data[this.src+"_"+this.dest]);
+  if(this.dest && this.src && inputAmt)
+  {
+      this.rest.getCurrency(this.src, this.dest).subscribe((data: {}) => {
+      console.log(data[this.src+"_"+this.dest]);
       this.outputCurrency=data[this.src+"_"+this.dest]*inputAmt;
       var num = new Number(this.outputCurrency);
       this.outputCurrency=num.toFixed(2);
   });
 }
+}
 
 selectedSrc(value:any)
 {
   this.src=value;
-  console.log(this.src);
+  //console.log(this.src);
 }
 
 selectedDest(value:any)
 {
   this.dest=value;
-  console.log(this.dest);
+  //console.log(this.dest);
 }
 }

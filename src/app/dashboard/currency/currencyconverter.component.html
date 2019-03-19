@@ -1,9 +1,8 @@
 
-<mat-card style="margin:2em; padding:0px;">
+<mat-card style="margin:2em; padding:0px;background: whitesmoke !important; height: 50vh;">
   <mat-card-title id="title">CURRENCY EXCHANGE RATE</mat-card-title>
   <form [formGroup]="currencyForm">
   <div fxLayout="row" fxLayout.lt-sm="column">
-      <!-- </div>gdAreas="input1 button input2 | input3 button output1" gdGap="16px" gdRows="auto auto auto"> -->
       <div fxFlex="1 1 0" fxLayoutAlign="center center">
           <mat-form-field>
               <mat-select placeholder="What I have?" formControlName="baseCurrency" (selectionChange)="selectedSrc(selectedValue)" [(value)]="selectedValue">
@@ -48,8 +47,7 @@
   </div>
   <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
               <div fxLayoutAlign="center center">
-          <button (click)="getCurrency(amount.value)" mat-raised-button style="background: #ffa027;
-              color: black;">CONVERT</button>
+          <button (click)="getCurrency(amount.value)" mat-raised-button color="primary">CONVERT</button>
       </div>
   </div>
 </form>
