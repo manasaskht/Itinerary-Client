@@ -1,0 +1,33 @@
+<form fxLayout="column" [formGroup]="createNoteForm">
+  <div mat-dialog-content class="dialog-container">
+    <div class="note-heading">{{data.topNote}}</div>
+    <div class="title-input">
+      <mat-form-field class="full-input-element">
+        <input matInput placeholder="Note Title" formControlName="noteTitle" [(ngModel)]="data.noteTitle" type="text">
+        <mat-error *ngIf="createNoteForm.controls.noteTitle.hasError('required')">
+          Note title is required.
+        </mat-error>
+        <mat-error *ngIf="createNoteForm.controls.noteTitle.hasError('maxlength')">
+          Title should be less than 50 characters.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="text-input">
+      <mat-form-field class="full-input-element">
+        <textarea matInput placeholder="Note Text" formControlName="note" [(ngModel)]="data.note"></textarea>
+        <mat-error *ngIf="createNoteForm.controls.note.hasError('required')">
+          Note description is required.
+        </mat-error>
+        <mat-error *ngIf="createNoteForm.controls.note.hasError('maxlength')">
+          Note should be less than 100 characters.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="close-note">
+
+      <button mat-raised-button color="primary" (click)="addUpdateNote()" cdkFocusInitial>{{data.closeNote}}
+      </button>
+
+    </div>
+  </div>
+</form>

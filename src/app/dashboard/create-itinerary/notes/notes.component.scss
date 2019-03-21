@@ -12,7 +12,23 @@
             margin-bottom: 16px;
         }
         .text {
+            text-overflow: ellipsis;
             
         }
     }
+    .note:hover{
+        background-color:lightgray;
+        cursor: pointer;
+    }
+    .add-button{
+        background: #3f51b5;
+        color: #FFF;
+    }
+    .add-Notes{
+        bottom: 0;
+        position: absolute;
+        margin-left: 35%;
+        margin-bottom: 10px;
+    }
+   
 }

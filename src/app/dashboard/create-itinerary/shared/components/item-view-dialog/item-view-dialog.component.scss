@@ -1,0 +1,19 @@
+#item-view-container {
+    .heading {
+        padding: 8px;
+        background: lightgray;
+        font-weight: bold;
+    }
+    .location, .date-time {
+        font-size: 10pt;
+        padding: 8px 0;
+    }
+    .mat-button-focus-overlay {
+        background-color: transparent!important;
+    }
+
+    .description {
+        padding: 8px;
+        background: lightgray;
+    }
+}
