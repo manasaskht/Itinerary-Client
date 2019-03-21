@@ -12,6 +12,8 @@ class ServerUrls {
         return ServerUrls.serverUrlInstance;
     }
 
+    get googleApiKey() { return 'AIzaSyD70Y18ljkRb83lDVBbS-E3HfGU6SzDc7s'; }
+
     get login() { return this.serverUrl + 'account/login/'; }
     get register() { return this.serverUrl + 'account/register/'; }
     get logout() { return this.serverUrl + 'account/logout/'; }
@@ -28,6 +30,10 @@ class ServerUrls {
     get deleteNote() { return this.serverUrl + 'itinerary/notes/delete'; }
     get listNotes() { return this.serverUrl + 'itinerary/notes/list'; }
 
+    get deleteItineraryItem() { return this.serverUrl + 'itinerary/item/delete'; }
+    get editItineraryItem() { return this.serverUrl + 'itinerary/item/edit'; }
+
+    get googlePlaces() { return 'https://maps.googleapis.com/maps/api/place/autocomplete/json'; }
 }
 
 export const serverUrls = ServerUrls.getInstance();

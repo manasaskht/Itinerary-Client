@@ -21,38 +21,85 @@
     </div>
     <div fxLayout="row" id="itinerary-tools" fxLayout.lt-md="column">
         <div class="bordered" fxFlex="1 1 0" fxLayout="column">
-            <div>
+            <!-- <div>
                 <button mat-button (click)="addItems()">
                     <mat-icon>add_circle</mat-icon>
                     <span>Add Items</span>
                 </button>
-            </div>
+            </div> -->
             <div fxFlex="1 1 0">
                 <mat-tab-group>
                     <mat-tab label="Timeline View">
                         <div class="timeline-container" fxLayout="column">
-                            <div fxFlex="1 1 0" class="timeline-top" fxLayout="row">
-                                <div *ngFor="let item of timeline.top" class="bubble">
-                                    <div class="heading">{{item.title}}</div>
-                                    <div>
-                                        {{item.description}}
+                            <div fxFlex="1 1 0" class="timeline-top" fxLayout="row" fxLayoutGap="16px">
+                                <div *ngFor="let item of timeline.top" fxLayout="column" class="bubble-top">
+                                    <div fxLayout="column" fxFlex="1 1 0" (click)="viewItem($event, item)"
+                                        class="bubble">
+                                        <div class="heading" fxLayout="row" fxLayoutGap="8px"
+                                            fxLayoutAlign="center center">
+                                            <div>
+                                                <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
+                                            </div>
+                                            <div fxFlex="1 1 0">{{item.title}}</div>
+                                            <div>
+                                                <span class="btn material-icons"
+                                                    (click)="deleteTimeline($event, item)">delete</span>
+                                                <span class="btn material-icons"
+                                                    (click)="editTimeline($event, item)">edit</span>
+                                            </div>
+                                        </div>
+                                        <div class="location" [title]="item.location">
+                                            <mat-icon>location_on</mat-icon>
+                                            {{item.location | slice:0:25}}
+                                            {{item.location.length>25?'...':''}}
+                                        </div>
+                                        <div class="date">
+                                            {{item.dateTime | date :'dd-MMM-yyyy h:mm a'}}
+                                        </div>
+                                        <div class="description" fxFlex="1 1 0">
+                                            {{item.description | slice:0:50}}
+                                            {{item.description.length>50?'...':''}}
+                                        </div>
                                     </div>
-                                    <div class="on-hover">
-                                        <button>View</button>
-                                        <button>Edit</button>
+                                    <div class="arrow-down">
                                     </div>
                                 </div>
                             </div>
-                            <div></div>
-                            <div fxFlex="1 1 0" class="timeline-bottom" fxLayout="row">
-                                <div *ngFor="let item of timeline.bottom" class="bubble">
-                                    <div class="heading">{{item.title}}</div>
-                                    <div>
-                                        {{item.description}}
+                            <div (mouseover)="showTimelineItemAdd($event)" class="line">
+                                <button #addItem class="timeline-add" mat-button (click)="addItems()">
+                                    <mat-icon>add_circle</mat-icon>
+                                    <span>Add Items</span>
+                                </button>
+                            </div>
+                            <div fxFlex="1 1 0" class="timeline-bottom" fxLayout="row" fxLayoutGap="16px">
+                                <div *ngFor="let item of timeline.bottom" fxLayout="column" class="bubble-bottom">
+                                    <div class="arrow-up">
                                     </div>
-                                    <div>
-                                        <button>View</button>
-                                        <button>Edit</button>
+                                    <div fxLayout="column" class="bubble" (click)="viewItem($event, item)"
+                                        fxFlex="1 1 0">
+                                        <div class="heading" fxLayout="row" fxLayoutGap="8px"
+                                            fxLayoutAlign="center center">
+                                            <div>
+                                                <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
+                                            </div>
+                                            <div fxFlex="1 1 0">{{item.title}}</div>
+                                            <div>
+                                                <span class="btn material-icons"
+                                                    (click)="deleteTimeline($event, item)">delete</span>
+                                                <span class="btn material-icons"
+                                                    (click)="editTimeline($event, item)">edit</span>
+                                            </div>
+                                        </div>
+                                        <div class="location" [title]="item.location">
+                                            <mat-icon>location_on</mat-icon>
+                                            {{item.location | slice:0:25}}
+                                            {{item.location.length>25?'...':''}}
+                                        </div>
+                                        <div class="date">{{item.dateTime | date :'dd-MMM-yyyy h:mm a'}}</div>
+                                        <div class="description" fxFlex="1 1 0">
+                                            {{item.description | slice:0:50}}
+                                            {{item.description.length>50?'...':''}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -76,7 +123,7 @@
             </mat-tab-group>
         </div>
     </div>
-    <div id="video-chats" fxLayout="row" fxLayoutAlign="left center">
+    <!-- <div id="video-chats" fxLayout="row" fxLayoutAlign="left center">
         <div *ngFor="let videoChat of videoChats" class="video">
             <img [src]="videoChat.video">
             <div>{{ videoChat.name }}</div>
@@ -88,5 +135,5 @@
             </button>
 
         </div>
-    </div>
+    </div> -->
 </div>

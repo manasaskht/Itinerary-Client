@@ -30,4 +30,11 @@ export namespace Utilities {
             return text;
         }
     }
+
+    export const categories = [
+        { item: 'Transport', icon: 'commute' },
+        { item: 'Accomodation', icon: 'hotel' },
+        { item: 'Activity', icon: 'event' },
+        { item: 'Misc', icon: 'help' }
+    ]
 }

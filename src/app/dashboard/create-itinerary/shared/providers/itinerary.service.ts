@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { serverUrls } from 'src/app/shared/utilities/app.urls.helper';
+import { _ } from 'underscore';
 
 @Injectable({
     providedIn: 'root'
@@ -34,13 +35,43 @@ export class ItineraryService {
         return this.http.post(url, body);
     }
 
-    addItineraryItem(title: string, description: string, itineraryId: string) {
+    addItineraryItem(itineraryId: string, title: string, description: string, dateTime: Date, category: string, location?: string, locationLatLng?: string) {
         let url = serverUrls.newItineraryItem;
         let body = {
             title,
             description,
-            itineraryId
+            itineraryId,
+            dateTime: dateTime.getTime(),
+            category,
+            location,
+            locationLatLng
         };
+        body = _.pick(body, _.identity);
         return this.http.post(url, body);
     }
+
+    deleteItineraryItem(itineraryId: string, itemId: string) {
+        let url = serverUrls.deleteItineraryItem;
+        let params = {
+            itineraryId,
+            itemId
+        };
+        return this.http.delete(url, { params });
+    }
+
+    editItineraryItem(itemId: string, title?: string, description?: string, dateTime?: Date, category?: string, location?: string, locationLatLng?: string) {
+        let url = serverUrls.editItineraryItem;
+        let body = {
+            itemId,
+            title,
+            description,
+            dateTime: dateTime.getTime(),
+            category,
+            location,
+            locationLatLng
+        };
+        body = _.pick(body, _.identity);
+        return this.http.put(url, body);
+    }
+
 }
