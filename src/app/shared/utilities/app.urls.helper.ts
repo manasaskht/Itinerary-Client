@@ -22,6 +22,12 @@ class ServerUrls {
 
     get listItinerary() { return this.serverUrl + 'itinerary/ls' }
     get listItineraryItems() { return this.serverUrl + 'itinerary/item/ls' }
+
+    get createNote() { return this.serverUrl + 'itinerary/notes/new'; }
+    get updateNote() { return this.serverUrl + 'itinerary/notes/update'; }
+    get deleteNote() { return this.serverUrl + 'itinerary/notes/delete'; }
+    get listNotes() { return this.serverUrl + 'itinerary/notes/list'; }
+
 }
 
 export const serverUrls = ServerUrls.getInstance();

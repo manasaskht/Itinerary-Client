@@ -1,26 +1,32 @@
 <div id="notes-container">
     <div class="note" *ngFor="let note of notes">
-        <div fxLayout="row">
-            <div class="title"> {{ note.title }} </div>
-            <div fxFlex="1 1 0"></div>
-            <div class="time">{{ note.time | date:'shortTime' }}</div>
-            <div class="alter-note">
-                <button mat-icon-button>
-                    <mat-icon>delete</mat-icon>
-                </button>
-                <button mat-icon-button>
-                    <mat-icon>edit</mat-icon>
-                </button>
+        <div class="click-able" (click)="openViewNoteDialogue(note)">
+            <div fxLayout="row">
+                <div class="title">
+                    {{ note.noteTitle | slice:0:20 }}
+                    {{ note.noteTitle.length > 20 ? '...' : '' }}
+                </div>
+                <div fxFlex="1 1 0"></div>
+                <div class="alter-note">
+                    <button mat-icon-button>
+                        <mat-icon (click)="deleteNote(note.id, $event)">delete</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="openDialog('update',note,'Update note', 'Update It !', $event)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
             </div>
-            
+            <div class="text">
+                {{ note.noteText | slice:0:20 }}
+                {{ note.noteText.length > 20 ? '...' : '' }}
+            </div>
         </div>
-        <div class="text"> {{ note.text }} </div>
-        
     </div>
-    
     <div class="add-Notes">
-        <button mat-icon-button (click)="openDialog()">
-            <mat-icon>add_comment</mat-icon>
+        <button class="add-button" mat-button (click)="openDialog('add', note,'Create new note', 'Post It !')">
+            <span>
+                <div>ADD NOTE</div>
+            </span>
         </button>
     </div>
 </div>

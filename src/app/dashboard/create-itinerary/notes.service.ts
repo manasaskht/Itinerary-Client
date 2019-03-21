@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse, HttpHeaders, HttpClient  } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { serverUrls } from 'src/app/shared/utilities/app.urls.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -11,27 +12,41 @@ export class NotesService {
 
 
   // Gets the list of notes for the Group 
-  getNotes(): Observable<any[]>{
-    return this.http.get<any[]>('api/getNotes')
+ public getNotes(itineraryId: string) {
+    let url = serverUrls.listNotes;
+    let params = {
+        itineraryId
+    };
+  return this.http.get(url, { params: params });
   }
 
   // Add Note to the group
-  addNote(newNote): Observable<[]>{
-    let headers = new HttpHeaders();
-  	headers.append('Content-Type', 'application/json');
-  	return this.http.post<any>('api/addNote', newNote, {headers: headers})
+  public createNote(title: string, description: string, itineraryId: string) {
+    let url = serverUrls.createNote;
+        let body = {
+            title,
+            description,
+            itineraryId
+        };
+        return this.http.post(url, body);
   }
 
-  // to delete the item from the existing notes
-  deleteItem(id): Observable<any> {
-  	return this.http.delete<any>('api/deleteNote/'+id);
+  // to delete the note from the existing notes
+  deleteNote(id: string) {
+    let url = serverUrls.deleteNote;
+
+  	return this.http.delete(url, {params: {_id: id}});
   }
 
   // to update a prticular note in the list
-  updateItem(newNote): Observable<any>{
-  	let headers = new HttpHeaders();
-  	headers.append('Content-Type', 'application/json'); 
-  	return this.http.put<any>('api/updateItem/'+newNote._id, newNote, {headers: headers})
+  updateNote(title: string, description: string, noteId: string) {
+    let url = serverUrls.updateNote;
+  	let body = {
+      title,
+      description,
+      noteId
+  };
+  	return this.http.put(url, body);
   }
 
 }
