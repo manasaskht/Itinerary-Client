@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 div {
     font-family: sans-serif;
@@ -24,7 +25,23 @@ body {
 }
 
 .view-dialog-container .mat-dialog-container {
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.custom-input {
+    width: 100%;
+    margin-top: 8px;
+    padding: 8px;
+    padding-left: 0;
+    border: none;
+    border-bottom: 1px solid darkgrey;
+    margin-bottom: 8px;
+    outline: none;
+    font-size: 16px;
+    & :focus{
+        outline: none;
+        border-bottom: 1px solid darkblue;
+    }
 }
