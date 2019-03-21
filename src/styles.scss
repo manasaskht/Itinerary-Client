@@ -22,3 +22,9 @@ body {
 .full-input-element {
     width: 100%;
 }
+
+.view-dialog-container .mat-dialog-container {
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}

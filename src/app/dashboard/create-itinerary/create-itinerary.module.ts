@@ -8,10 +8,12 @@ import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule, MatInpu
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NotesDialogueComponent } from './notes-dialogue/notes-dialogue.component';
+import { ViewNotesDialogueComponent } from './view-notes-dialogue/view-notes-dialogue.component';
 
 @NgModule({
-    declarations: [CreateItineraryComponent, NotesComponent, ChatsComponent, ItemDialogComponent],
+    declarations: [CreateItineraryComponent, NotesComponent, ChatsComponent, ItemDialogComponent, NotesDialogueComponent, ViewNotesDialogueComponent],
     imports: [
         CommonModule,
         CreateItineraryRoutingModule,
@@ -21,8 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
         MatButtonModule,
         MatDialogModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
     ],
-    entryComponents: [ItemDialogComponent]
+    entryComponents: [ItemDialogComponent, NotesDialogueComponent, ViewNotesDialogueComponent]
 })
 export class CreateItineraryModule { }
