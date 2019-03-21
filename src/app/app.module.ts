@@ -8,7 +8,9 @@ import { LogoutGuard } from './shared/guards/logout.guard';
 import { ToastrModule } from 'ngx-toastr';
 import { Utilities } from './shared/utilities/utils.helper';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ErrorManagerService } from './shared/services/error-manager.service';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -20,7 +22,13 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         HttpClientModule
     ],
-    providers: [LoginGuard, LogoutGuard],
+    providers: [
+        LoginGuard,
+        LogoutGuard, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorManagerService,
+            multi: true
+        }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

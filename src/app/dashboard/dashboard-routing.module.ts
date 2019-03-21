@@ -10,10 +10,13 @@ const routes: Routes = [
         children: [
             { path: '', loadChildren: './home/home.module#HomeModule' },
             { path: 'user', loadChildren: './profile/profile.module#ProfileModule' },
-            { path: 'create', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule'},
-            { path: 'currency', loadChildren: './currency/currency.module#CurrencyModule' }
+           // { path: 'create', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule'},
+            { path: 'currency', loadChildren: './currency/currency.module#CurrencyModule' },
+            { path: 'create/:id', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule' },
+            { path: '**', redirectTo: '' }
         ]
-    }
+    },
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

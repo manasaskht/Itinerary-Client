@@ -1,0 +1,24 @@
+<div class="close-note">
+  <button mat-icon-button (click)="onNoClick()">
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
+<div class="note-view quote-container">
+  <i class="pin"></i>
+  <div class="note yellow">
+    <div class="note-title">
+      {{data.noteTitle}}
+    </div>
+    <div class="note-desc">
+      {{data.noteText}}
+    </div>
+    <div class="user-info">
+      <div class="created-date">
+        <span><b>Created/Updated at:</b> {{data.updatedAt}}</span>
+      </div>
+      <div class="creator-name">
+        <span><b>by:</b> {{data.username}}</span>
+      </div>
+    </div>
+  </div>
+</div>

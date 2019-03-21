@@ -1,55 +1,139 @@
-<mat-card style="margin:2em; padding:0px;">
-    <mat-card-title id="title">CURRENCY EXCHANGE RATE</mat-card-title>
-    <form [formGroup]="currencyForm">
-    <div fxLayout="row" fxLayout.lt-sm="column">
-        <div fxFlex="1 1 0" fxLayoutAlign="center center">
-            <mat-form-field>
-                <mat-select placeholder="What I have?" formControlName="baseCurrency" (selectionChange)="selectedSrc(selectedValue)" [(value)]="selectedValue">
-                    <mat-option *ngFor="let cur of currencyList" [value]="cur.code">
-                         <img width="10" height="10" src="assets/imgs/{{cur.code | lowercase}}.png" />{{" " +cur.name +
-                        " (" +cur.code+")"}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="currencyForm.controls.baseCurrency.hasError('required')">
-                    Base currency is required.
-                </mat-error>
-            </mat-form-field>
+<div id="create-itinerary-container">
+    <div id="itinerary-controls" fxLayout fxLayoutAlign="center center">
+        <div>
+            <h3>{{ itinerary.title }}</h3>
         </div>
-        <div fxFlex="1 1 0" fxLayoutAlign="center center">
-            <mat-form-field>
-                <mat-select placeholder="What I want?" formControlName="outputCurrency" (selectionChange)="selectedDest(outputValue)" [(value)]="outputValue">
-                    <mat-option *ngFor="let cur of currencyList" [value]="cur.code">
-                        <img width="10" height="10" src="assets/imgs/{{cur.code | lowercase}}.png" />{{" " +cur.name +
-                        " (" +cur.code+")"}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="currencyForm.controls.outputCurrency.hasError('required')">
-                    Destination currency is required.
-                </mat-error>
-            </mat-form-field>
+        <div fxFlex="1 1 0"></div>
+        <div class="buttons" fxLayout>
+            <button mat-button (click)="exit()">
+                <mat-icon>arrow_back</mat-icon>
+                <span>Back</span>
+            </button>
+            <button mat-button>
+                <mat-icon>save</mat-icon>
+                <span>Save</span>
+            </button>
+            <button mat-button>
+                <mat-icon>print</mat-icon>
+                <span>Print</span>
+            </button>
         </div>
     </div>
-    <div fxLayout="row" fxLayout.lt-sm="column">
-        <div fxFlex="1 1 0" fxLayoutAlign="center center">
-            <mat-form-field>
-                <input matInput placeholder="Amount" type="number" #amount formControlName="amount">
-                <mat-error *ngIf="currencyForm.controls.amount.hasError('required')">
-                        Amount is required.
-                    </mat-error>
-            </mat-form-field>
-        </div>
-        <div fxFlex="1 1 0" fxLayoutAlign="center center">
-            <div *ngIf="outputCurrency" id="output">
-                <h2>{{outputCurrency+" "+dest}}</h2>
+    <div fxLayout="row" id="itinerary-tools" fxLayout.lt-md="column">
+        <div class="bordered" fxFlex="1 1 0" fxLayout="column">
+            <!-- <div>
+                <button mat-button (click)="addItems()">
+                    <mat-icon>add_circle</mat-icon>
+                    <span>Add Items</span>
+                </button>
+            </div> -->
+            <div fxFlex="1 1 0">
+                <mat-tab-group>
+                    <mat-tab label="Timeline View">
+                        <div class="timeline-container" fxLayout="column">
+                            <div fxFlex="1 1 0" class="timeline-top" fxLayout="row" fxLayoutGap="16px">
+                                <div *ngFor="let item of timeline.top" fxLayout="column" class="bubble-top">
+                                    <div fxLayout="column" fxFlex="1 1 0" (click)="viewItem($event, item)"
+                                        class="bubble">
+                                        <div class="heading" fxLayout="row" fxLayoutGap="8px"
+                                            fxLayoutAlign="center center">
+                                            <div>
+                                                <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
+                                            </div>
+                                            <div fxFlex="1 1 0">{{item.title}}</div>
+                                            <div>
+                                                <span class="btn material-icons"
+                                                    (click)="deleteTimeline($event, item)">delete</span>
+                                                <span class="btn material-icons"
+                                                    (click)="editTimeline($event, item)">edit</span>
+                                            </div>
+                                        </div>
+                                        <div class="location" [title]="item.location">
+                                            <mat-icon>location_on</mat-icon>
+                                            {{item.location | slice:0:25}}
+                                            {{item.location.length>25?'...':''}}
+                                        </div>
+                                        <div class="date">
+                                            {{item.dateTime | date :'dd-MMM-yyyy h:mm a'}}
+                                        </div>
+                                        <div class="description" fxFlex="1 1 0">
+                                            {{item.description | slice:0:50}}
+                                            {{item.description.length>50?'...':''}}
+                                        </div>
+                                    </div>
+                                    <div class="arrow-down">
+                                    </div>
+                                </div>
+                            </div>
+                            <div (mouseover)="showTimelineItemAdd($event)" class="line">
+                                <button #addItem class="timeline-add" mat-button (click)="addItems()">
+                                    <mat-icon>add_circle</mat-icon>
+                                    <span>Add Items</span>
+                                </button>
+                            </div>
+                            <div fxFlex="1 1 0" class="timeline-bottom" fxLayout="row" fxLayoutGap="16px">
+                                <div *ngFor="let item of timeline.bottom" fxLayout="column" class="bubble-bottom">
+                                    <div class="arrow-up">
+                                    </div>
+                                    <div fxLayout="column" class="bubble" (click)="viewItem($event, item)"
+                                        fxFlex="1 1 0">
+                                        <div class="heading" fxLayout="row" fxLayoutGap="8px"
+                                            fxLayoutAlign="center center">
+                                            <div>
+                                                <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
+                                            </div>
+                                            <div fxFlex="1 1 0">{{item.title}}</div>
+                                            <div>
+                                                <span class="btn material-icons"
+                                                    (click)="deleteTimeline($event, item)">delete</span>
+                                                <span class="btn material-icons"
+                                                    (click)="editTimeline($event, item)">edit</span>
+                                            </div>
+                                        </div>
+                                        <div class="location" [title]="item.location">
+                                            <mat-icon>location_on</mat-icon>
+                                            {{item.location | slice:0:25}}
+                                            {{item.location.length>25?'...':''}}
+                                        </div>
+                                        <div class="date">{{item.dateTime | date :'dd-MMM-yyyy h:mm a'}}</div>
+                                        <div class="description" fxFlex="1 1 0">
+                                            {{item.description | slice:0:50}}
+                                            {{item.description.length>50?'...':''}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Map View">
+                        <div #gmaps class="map-container"></div>
+                    </mat-tab>
+
+                </mat-tab-group>
             </div>
         </div>
-    </div>
-    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center">
-                <div fxLayoutAlign="center center">
-            <button (click)="getCurrency(amount.value)" mat-raised-button style="background: #ffa027;
-                color: black;">CONVERT</button>
+        <div class="bordered" fxFlex="0.5 0.5 0">
+            <mat-tab-group>
+                <mat-tab label="Notes">
+                    <app-notes></app-notes>
+                </mat-tab>
+                <mat-tab label="Chats">
+                    <app-chats></app-chats>
+                </mat-tab>
+            </mat-tab-group>
         </div>
     </div>
-</form>
-    <br/>
-</mat-card>
+    <!-- <div id="video-chats" fxLayout="row" fxLayoutAlign="left center">
+        <div *ngFor="let videoChat of videoChats" class="video">
+            <img [src]="videoChat.video">
+            <div>{{ videoChat.name }}</div>
+        </div>
+        <div class="new-video" fxLayout>
+            <button mat-button>
+                <mat-icon>add_circle</mat-icon>
+                Add Friend
+            </button>
+
+        </div>
+    </div> -->
+</div>

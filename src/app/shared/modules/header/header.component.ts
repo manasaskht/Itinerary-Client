@@ -9,10 +9,13 @@ import { StorageHelper } from '../../utilities/storage.helper';
 })
 export class HeaderComponent implements OnInit {
 
+    firstName: string;
+
     @Output() menuClicked: EventEmitter<boolean>;
 
     constructor(private router: Router) {
         this.menuClicked = new EventEmitter<boolean>();
+        this.firstName = StorageHelper.getInstance().userInfo.firstName;
     }
 
     ngOnInit() {

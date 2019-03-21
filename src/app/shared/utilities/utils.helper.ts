@@ -17,7 +17,7 @@ export namespace Utilities {
 
     export const toastrConfig: Partial<GlobalConfig> = {
         timeOut: 2000,
-        positionClass: 'toast-top-right',
+        positionClass: 'toast-bottom-right',
         preventDuplicates: true,
         progressBar: true,
         progressAnimation: 'decreasing'
@@ -30,4 +30,11 @@ export namespace Utilities {
             return text;
         }
     }
+
+    export const categories = [
+        { item: 'Transport', icon: 'commute' },
+        { item: 'Accomodation', icon: 'hotel' },
+        { item: 'Activity', icon: 'event' },
+        { item: 'Misc', icon: 'help' }
+    ]
 }

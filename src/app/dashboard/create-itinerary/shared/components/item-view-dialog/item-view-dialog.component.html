@@ -1,0 +1,24 @@
+<div id="item-view-container" fxLayout="column">
+    <div class="heading" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center">
+        <div>
+            <mat-icon [title]="data.itineraryItem.category">{{data.itineraryItem.categoryIcon}}</mat-icon>
+        </div>
+        <div fxFlex="1 1 0">{{data.itineraryItem.title}}</div>
+        <button (click)="dialogRef.close({ edit: true })" mat-button>
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="dialogRef.close()" mat-button>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <div class="location" [title]="data.itineraryItem.location">
+        <mat-icon>location_on</mat-icon>
+        {{data.itineraryItem.location}}
+    </div>
+    <div class="date-time">
+        {{data.itineraryItem.dateTime | date :'dd-MMM-yyyy h:mm a'}}
+    </div>
+    <div class="description" fxFlex="1 1 0">
+        {{data.itineraryItem.description}}
+    </div>
+</div>
