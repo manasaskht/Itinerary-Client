@@ -1,3 +1,46 @@
-<p>
-  social works!
-</p>
+<div class="container-social">
+  <button mat-fab class="btn-social" (click)="toggleSocial()">Social</button>
+  <div *ngIf="social">
+    <div class="panel-social">
+      <div class="panel-friends">
+        <div class="head-friends">
+          Friends
+          <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
+          <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button> 
+        </div>
+        <div class="body-friends">
+          <div *ngIf="addFriend">
+              <form class="email" [formGroup]="emailForm">
+                  <mat-form-field floatLabel="never">
+                      <input matInput formControlName="email" placeholder="Email address" />
+                      <mat-error *ngIf="emailForm.controls.email.hasError('required')">
+                          Email is required.
+                      </mat-error>
+                      <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
+                          Email is invalid.
+                      </mat-error>
+                  </mat-form-field>
+                </form>
+          </div>
+          <!-- <ul class="friends">
+            <li *ngFor="let friend of friends">
+              {{friend.name}}
+            </li>
+          </ul> -->
+        </div>
+      </div>
+      <div class="panel-groups">
+        <div class="head-groups">
+          Groups
+        </div>
+        <div class="body-groups">
+          <!-- <ul class="groups">
+            <li *ngFor="let group of groups">
+              {{group.name}}
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
