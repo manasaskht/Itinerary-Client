@@ -34,6 +34,9 @@ class ServerUrls {
     get editItineraryItem() { return this.serverUrl + 'itinerary/item/edit'; }
 
     get googlePlaces() { return 'https://maps.googleapis.com/maps/api/place/autocomplete/json'; }
+
+    get addFriend() { return this.serverUrl + 'social/addfriend'; }
+    get getFriends() { return this.serverUrl + 'social/getfriends';}
 }
 
 export const serverUrls = ServerUrls.getInstance();
