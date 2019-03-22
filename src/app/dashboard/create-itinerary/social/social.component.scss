@@ -11,8 +11,9 @@
 {
     bottom: 100px;
     width: 25%;
-    min-width: 200px;
+    min-width: 300px;
     min-height: 400px;
+    height: 70%;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -23,15 +24,44 @@
     z-index: 10;
 }
 
-.panel-friends, .panel-groups
+.panel-friends
 {
-    height: 50%;
+    height: 70%;
+}
+
+.panel-groups
+{
+    height: 30%;
 }
 
 .head-friends, .head-groups
 {
     padding: 5px;
-    height: 20px;
     font-weight: bold;
     background-color: aquamarine;
+}
+
+.body-friends>.friends
+{
+    padding: 5px;
+    margin: 0;
+}
+
+.body-friends>.friends>li:hover
+{
+    cursor: pointer;
+    background: rgba(8, 204, 57, 0.3);
+}
+
+.body-friends>.friends>li>button:hover
+{  
+    background: rgba(255, 14, 14, 0.6);
+}
+
+.body-friends>.friends>li>button
+{
+    z-index: 12;
+    width: 40px;
+    height: 40px;
+    padding: 0;
 }

@@ -3,34 +3,41 @@
   <div *ngIf="social">
     <div class="panel-social">
       <div class="panel-friends">
-        <div class="head-friends">
-          Friends
+        <div class="head-friends" fxLayout="row" fxLayoutAlign="center center">
+          <div>Friends</div>
+          <div fxFlex="1 1 0">
+
+          </div>
           <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
           <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button> 
         </div>
         <div class="body-friends">
           <div *ngIf="addFriend">
-              <form class="email" [formGroup]="emailForm">
-                  <mat-form-field floatLabel="never">
-                      <input matInput formControlName="email" placeholder="Email address" />
-                      <mat-error *ngIf="emailForm.controls.email.hasError('required')">
-                          Email is required.
-                      </mat-error>
-                      <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
-                          Email is invalid.
-                      </mat-error>
-                  </mat-form-field>
-                </form>
+              <form class="email" [formGroup]="emailForm"  fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+                <mat-form-field floatLabel="never" fxFlex="1 1 0">
+                    <input matInput formControlName="email" placeholder="Email address" />
+                    <mat-error *ngIf="emailForm.controls.email.hasError('required')">
+                        Email is required.
+                    </mat-error>
+                    <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
+                        Email is invalid.
+                    </mat-error>
+                </mat-form-field>
+                <button type="submit" (click)="addAFriend()" mat-raised-button color="primary">Add</button>  
+              </form>
           </div>
-          <!-- <ul class="friends">
-            <li *ngFor="let friend of friends">
-              {{friend.name}}
+          <ul class="friends" fxLayout="column">
+            <li *ngFor="let friend of friends" fxLayout="row" fxLayoutAlign="center center">
+              <mat-icon>add</mat-icon>
+              {{friend.name}} ({{friend.email}})
+              <div fxFlex="1 1 0"></div>
+              <button mat-button><mat-icon>delete_forever</mat-icon></button>
             </li>
-          </ul> -->
+          </ul>
         </div>
       </div>
       <div class="panel-groups">
-        <div class="head-groups">
+        <div class="head-groups" fxLayout="row" fxLayoutAlign="start center">
           Groups
         </div>
         <div class="body-groups">
