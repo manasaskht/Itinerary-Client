@@ -26,7 +26,7 @@ export class CurrencyconverterComponent implements OnInit {
 
   constructor(public rest: CurrencyService, private router: Router, private toastrService: ToastrService) {
     this.currencyForm = new FormGroup({
-      amount: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
+      amount: new FormControl('', [Validators.pattern("^[0-9]*\.?[0-9]*$"), Validators.required]),
       baseCurrency: new FormControl('', [Validators.required]),
       outputCurrency: new FormControl('', [Validators.required])
     });
