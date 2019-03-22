@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { StorageHelper } from '../utilities/storage.helper';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { serverUrls } from '../utilities/app.urls.helper';
 
 @Injectable({
     providedIn: 'root'
@@ -33,7 +34,7 @@ export class ErrorManagerService implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (StorageHelper.getInstance().userInfo) {
+        if (StorageHelper.getInstance().userInfo && req.url.indexOf(serverUrls.getServerUrl()) === 0) {
             req = req.clone({
                 setHeaders: {
                     Authorization: `Bearer ${StorageHelper.getInstance().userInfo.token}`

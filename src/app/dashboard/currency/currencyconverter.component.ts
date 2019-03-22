@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { CurrencyService } from './currency.service';
 import { ToastrService } from 'ngx-toastr';
 import { countryCurrency } from './currencyconverterdata';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 export interface CountryCurrency {
   name: string;
@@ -18,18 +18,19 @@ export interface CountryCurrency {
 })
 export class CurrencyconverterComponent implements OnInit {
   currencyForm: FormGroup;
-  currency:any = [];
-  src:any;
-  dest:any;
-  outputCurrency:any;
+  currency: any = [];
+  src: any;
+  dest: any;
+  outputCurrency: any;
   currencyList: CountryCurrency[];
 
-  constructor(public rest:CurrencyService, private router: Router, private toastrService: ToastrService) {
+  constructor(public rest: CurrencyService, private router: Router, private toastrService: ToastrService) {
     this.currencyForm = new FormGroup({
-      amount: new FormControl('', [Validators.required]),
+      amount: new FormControl('', [Validators.pattern("^[0-9]*$"), Validators.required]),
       baseCurrency: new FormControl('', [Validators.required]),
       outputCurrency: new FormControl('', [Validators.required])
-  });}
+    });
+  }
 
   ngOnInit() {
     //console.log("hey");
@@ -37,28 +38,26 @@ export class CurrencyconverterComponent implements OnInit {
     //console.log(this.currencyList);
   }
 
-getCurrency(inputAmt:number) {
-  this.currency = [];
-  if(this.dest && this.src && inputAmt)
-  {
+  getCurrency(inputAmt: number) {
+    this.currency = [];
+    this.outputCurrency="";
+    if (this.dest && this.src && inputAmt && !isNaN(inputAmt)) {
       this.rest.getCurrency(this.src, this.dest).subscribe((data: {}) => {
-      console.log(data[this.src+"_"+this.dest]);
-      this.outputCurrency=data[this.src+"_"+this.dest]*inputAmt;
-      var num = new Number(this.outputCurrency);
-      this.outputCurrency=num.toFixed(2);
-  });
-}
-}
+        console.log(data[this.src + "_" + this.dest]);
+        this.outputCurrency = data[this.src + "_" + this.dest] * inputAmt;
+        var num = new Number(this.outputCurrency);
+        this.outputCurrency = num.toFixed(2);
+      });
+    }
+  }
 
-selectedSrc(value:any)
-{
-  this.src=value;
-  //console.log(this.src);
-}
+  selectedSrc(value: any) {
+    this.src = value;
+    //console.log(this.src);
+  }
 
-selectedDest(value:any)
-{
-  this.dest=value;
-  //console.log(this.dest);
-}
+  selectedDest(value: any) {
+    this.dest = value;
+    //console.log(this.dest);
+  }
 }

@@ -1,5 +1,5 @@
 
-<mat-card style="margin:2em; padding:0px;background: whitesmoke !important; height: 50vh;">
+<mat-card id="card">
   <mat-card-title id="title">CURRENCY EXCHANGE RATE</mat-card-title>
   <form [formGroup]="currencyForm">
   <div fxLayout="row" fxLayout.lt-sm="column">
@@ -33,10 +33,13 @@
   <div fxLayout="row" fxLayout.lt-sm="column">
       <div fxFlex="1 1 0" fxLayoutAlign="center center">
           <mat-form-field>
-              <input matInput placeholder="Amount" type="number" #amount formControlName="amount">
+              <input matInput placeholder="Amount" type="text" #amount formControlName="amount">
+              <mat-error *ngIf="currencyForm.controls.amount.hasError('pattern')">
+                Please enter a numeric value.
+            </mat-error>
               <mat-error *ngIf="currencyForm.controls.amount.hasError('required')">
-                      Amount is required.
-                  </mat-error>
+                      Please enter the amount.
+                  </mat-error>              
           </mat-form-field>
       </div>
       <div fxFlex="1 1 0" fxLayoutAlign="center center">
