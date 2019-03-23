@@ -1,4 +1,5 @@
-//Reference [2] starts
+//Reference [2]
+//Purpose: JSON file to popuate drop down
 export let  countryCurrency = [
     {
         "symbol": "$",

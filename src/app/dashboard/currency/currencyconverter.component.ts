@@ -25,6 +25,8 @@ export class CurrencyconverterComponent implements OnInit {
   currencyList: CountryCurrency[];
 
 //Reference [3] starts
+
+//Method Description: Validators for html form fields
   constructor(public rest: CurrencyService, private router: Router, private toastrService: ToastrService) {
     this.currencyForm = new FormGroup({
       amount: new FormControl('', [Validators.pattern("^[0-9]*\.?[0-9]*$"), Validators.required]),
@@ -33,12 +35,14 @@ export class CurrencyconverterComponent implements OnInit {
     });
   }
 //Reference [3] ends
+
+//Method Description: Fetches the JSON for populating dropdown when the page is being initialized
   ngOnInit() {
-    //console.log("hey");
     this.currencyList = (<any>countryCurrency);
-    //console.log(this.currencyList);
   }
 
+  //Method Description: Parses the JSON received from the service (which calls currency converter API) and assigns values to
+  // variables that need to be displayed on the frontend
   getCurrency(inputAmt: number) {
     this.currency = [];
     this.outputCurrency="";
@@ -54,11 +58,9 @@ export class CurrencyconverterComponent implements OnInit {
 
   selectedSrc(value: any) {
     this.src = value;
-    //console.log(this.src);
   }
 
   selectedDest(value: any) {
     this.dest = value;
-    //console.log(this.dest);
   }
 }

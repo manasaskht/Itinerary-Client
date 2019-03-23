@@ -1,3 +1,4 @@
+//Purpose: API call to free currency converter API
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -21,6 +22,7 @@ export class CurrencyService {
     return body || { };
   }
 
+  //Method Description: fetches JSON response from API and returns to the caller in currencyconverter.component.ts
   getCurrency(src: any,dest: any): Observable<any> {
     return this.http.get(this.endpoint+src+'_'+dest).pipe(map(this.extractData));
   }
