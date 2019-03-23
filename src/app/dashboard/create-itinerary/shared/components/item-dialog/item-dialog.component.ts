@@ -33,7 +33,7 @@ export class ItemDialogComponent implements OnInit {
         this.createItemForm = new FormGroup({
             title: new FormControl(this.isEdit ? currentItemData.title : '', Validators.required),
             description: new FormControl(this.isEdit ? currentItemData.description : '', Validators.required),
-            dateTime: new FormControl(this.isEdit ? new Date(currentItemData.dateTime) : '', Validators.required),
+            dateTime: new FormControl(this.isEdit ? new Date(currentItemData.dateTime) : '', [Validators.required]),
             category: new FormControl(this.isEdit ? currentItemData.category : '', Validators.required),
             location: new FormControl(this.isEdit ? currentItemData.location : '')
         });

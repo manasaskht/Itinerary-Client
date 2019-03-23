@@ -26,6 +26,7 @@ export class ErrorManagerService implements HttpInterceptor {
                 console.log('forbidden');
                 this.router.navigate(['/']);
                 StorageHelper.getInstance().clear();
+                this.toastrService.error('Session time out.');
             }
             if (err.error['message'])
                 this.toastrService.error(err.error.message);
