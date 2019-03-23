@@ -6,6 +6,7 @@ import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog
 import { ItineraryService } from './shared/providers/itinerary.service';
 import { flatMap } from 'rxjs/operators';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
+import { SocialComponent } from './social/social.component';
 declare let google: any;
 
 @Component({
@@ -151,6 +152,16 @@ export class CreateItineraryComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(res => {
             this.refreshTimeline();
+        });
+    }
+
+    openSocialDialog() {
+        const dialogRef = this.dialog.open(SocialComponent, {
+            width: '40vw',
+            height: '60vh',
+            panelClass: 'view-social-container'
+        });
+        dialogRef.afterClosed().subscribe(res => {
         });
     }
 

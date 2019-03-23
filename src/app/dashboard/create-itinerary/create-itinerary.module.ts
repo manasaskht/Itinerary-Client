@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CreateItineraryRoutingModule } from './create-itinerary-routing.module';
 import { CreateItineraryComponent } from './create-itinerary.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule,
+    MatInputModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog.component';
@@ -46,7 +47,8 @@ import { SocialComponent } from './social/social.component';
         ItemDialogComponent,
         NotesDialogueComponent,
         ViewNotesDialogueComponent,
-        ItemViewDialogComponent
+        ItemViewDialogComponent,
+        SocialComponent
     ]
 })
 export class CreateItineraryModule { }
