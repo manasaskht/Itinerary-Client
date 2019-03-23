@@ -5,9 +5,8 @@ import { map, catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-
+//Reference [1] starts
 export class CurrencyService {
-  //endpoint = 'https://api.exchangeratesapi.io/latest?base=CAD&symbols=INR';
   endpoint="https://free.currencyconverterapi.com/api/v6/convert?compact=ultra&apiKey=63274fee5b0a4a4ec4c4&q=";
   httpOptions = {
   headers: new HttpHeaders({'Content-Type':  'application/json'
@@ -27,7 +26,6 @@ export class CurrencyService {
   }
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
   
       // TODO: better job of transforming error for user consumption
@@ -37,4 +35,5 @@ export class CurrencyService {
       return of(result as T);
     };
   }
+  //Reference [1] ends
 }

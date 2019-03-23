@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
     imageSrc:any;
     fileNameDialogRef: MatDialogRef<EditProfileComponent>;
     userProfile:UserProfile;
+    name: any;
+    email: any;
     constructor(private dialog: MatDialog, private profileService: ProfileService) { }
     
     ngOnInit() {
@@ -32,8 +34,10 @@ export class ProfileComponent implements OnInit {
       {
         this.profileService.userProfileFetch().subscribe((items: any) => {
             this.userProfile = items;
+            this.name= this.userProfile['firstName']+" "+this.userProfile['lastName'];
+            this.email= this.userProfile['emailAddress'];
             console.log(this.userProfile);
-        })
+        }) 
          
       }
 }

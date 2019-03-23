@@ -1,3 +1,4 @@
+//Reference [2] starts
 export let  countryCurrency = [
     {
         "symbol": "$",
@@ -1008,3 +1009,4 @@ export let  countryCurrency = [
         "name_plural": "South African rand"
     }
 ]
+//Reference [2] ends

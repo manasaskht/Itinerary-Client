@@ -9,20 +9,20 @@
     <div>
         <div id="info-container">
             <div fxLayout="row" class="name">
-                <div fxFlex="1 1 0">Nikhil Tyagi</div>
+                <div fxFlex="1 1 0">{{name}}</div>
                 <button mat-icon-button (click)="edit()">
                     <mat-icon>edit</mat-icon>
                 </button>
             </div>
             <div>
-                nikhil.tyagi@dal.ca
-            </div>
+                {{email}}
+            </div>  
             <div fxLayout="row" fxLayoutGap="16px">
                 <div>
                     <b>Age:</b> 26
                 </div>
                 <div>
-                    <b>Sex:</b> Male
+                    <b>Sex:</b> Female
                 </div>
             </div>
             <div>

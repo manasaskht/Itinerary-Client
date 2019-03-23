@@ -24,6 +24,7 @@ export class CurrencyconverterComponent implements OnInit {
   outputCurrency: any;
   currencyList: CountryCurrency[];
 
+//Reference [3] starts
   constructor(public rest: CurrencyService, private router: Router, private toastrService: ToastrService) {
     this.currencyForm = new FormGroup({
       amount: new FormControl('', [Validators.pattern("^[0-9]*\.?[0-9]*$"), Validators.required]),
@@ -31,7 +32,7 @@ export class CurrencyconverterComponent implements OnInit {
       outputCurrency: new FormControl('', [Validators.required])
     });
   }
-
+//Reference [3] ends
   ngOnInit() {
     //console.log("hey");
     this.currencyList = (<any>countryCurrency);

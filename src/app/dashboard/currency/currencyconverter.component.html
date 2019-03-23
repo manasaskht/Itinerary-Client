@@ -7,8 +7,10 @@
           <mat-form-field>
               <mat-select placeholder="What I have?" formControlName="baseCurrency" (selectionChange)="selectedSrc(selectedValue)" [(value)]="selectedValue">
                   <mat-option *ngFor="let cur of currencyList" [value]="cur.code">
+                        <!-- Reference [5] starts -->
                       <img width="10" height="10" src="assets/imgs/{{cur.code | lowercase}}.png" />{{" " +cur.name +
                       " (" +cur.code+")"}}
+                      <!-- Reference [5] ends -->
                   </mat-option>
               </mat-select>
               <mat-error *ngIf="currencyForm.controls.baseCurrency.hasError('required')">
