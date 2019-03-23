@@ -23,4 +23,10 @@ export class FriendsService {
     let body = {};
     return this.http.get(url, body);
   }
+
+  deleteFriend(id: string) {
+    let url = serverUrls.deleteFriends;
+    let params = {id};
+    return this.http.delete(url, {params: params});
+  }
 }

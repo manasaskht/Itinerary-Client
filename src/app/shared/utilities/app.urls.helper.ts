@@ -37,6 +37,7 @@ class ServerUrls {
 
     get addFriend() { return this.serverUrl + 'social/addfriend'; }
     get getFriends() { return this.serverUrl + 'social/getfriends';}
+    get deleteFriends() { return this.serverUrl + 'social/deletefriend';}
 }
 
 export const serverUrls = ServerUrls.getInstance();

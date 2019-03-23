@@ -1,52 +1,52 @@
-<div class="container-social">
-  <button mat-fab class="btn-social" (click)="toggleSocial()">Social</button>
-  <div *ngIf="social">
-    <div class="panel-social">
-      <div class="panel-friends">
-        <div class="head-friends" fxLayout="row" fxLayoutAlign="center center">
-          <div>Friends</div>
-          <div fxFlex="1 1 0">
-
-          </div>
-          <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
-          <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button> 
+<div mat-dialog-content class="container-social">
+  <div class="panel-social">
+    <div class="panel-friends">
+      <div class="head-friends" fxLayout="row" fxLayoutAlign="center center">
+        <div>Friends</div>
+        <div fxFlex="1 1 0">
+          
         </div>
-        <div class="body-friends">
-          <div *ngIf="addFriend">
-              <form class="email" [formGroup]="emailForm"  fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
-                <mat-form-field floatLabel="never" fxFlex="1 1 0">
-                    <input matInput formControlName="email" placeholder="Email address" />
-                    <mat-error *ngIf="emailForm.controls.email.hasError('required')">
-                        Email is required.
-                    </mat-error>
-                    <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
-                        Email is invalid.
-                    </mat-error>
-                </mat-form-field>
-                <button type="submit" (click)="addAFriend()" mat-raised-button color="primary">Add</button>  
-              </form>
-          </div>
-          <ul class="friends" fxLayout="column">
-            <li *ngFor="let friend of friends" fxLayout="row" fxLayoutAlign="center center">
-              <mat-icon>add</mat-icon>
-              {{friend.name}} ({{friend.email}})
-              <div fxFlex="1 1 0"></div>
-              <button mat-button><mat-icon>delete_forever</mat-icon></button>
-            </li>
-          </ul>
-        </div>
+        <button mat-button (click)="closeDialog()" class="btn-close">Close</button> 
       </div>
-      <div class="panel-groups">
-        <div class="head-groups" fxLayout="row" fxLayoutAlign="start center">
-          Groups
+      <div class="body-friends">
+        <div class="panel-btn-add" fxLayout="row" fxLayoutAlign="center center">
+          <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
+          <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button>
         </div>
-        <div class="body-groups">
-          <!-- <ul class="groups">
-            <li *ngFor="let group of groups">
-              {{group.name}}
-            </li>
-          </ul> -->
+        <div *ngIf="addFriend">
+            <form class="email" [formGroup]="emailForm"  fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+              <mat-form-field floatLabel="never" fxFlex="1 1 0">
+                  <input matInput formControlName="email" placeholder="Email address" />
+                  <mat-error *ngIf="emailForm.controls.email.hasError('required')">
+                      Email is required.
+                  </mat-error>
+                  <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
+                      Email is invalid.
+                  </mat-error>
+              </mat-form-field>
+              <button type="submit" (click)="addAFriend()" mat-raised-button color="primary">Add</button>  
+            </form>
         </div>
+        <ul class="friends" fxLayout="column">
+          <li *ngFor="let friend of friends" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon (click)="addToItinerary(friend)" >add</mat-icon>
+            {{friend.name}} ({{friend.email}})
+            <div (click)="addToItinerary(friend)"  fxFlex="1 1 0"></div>
+            <button mat-button (click)="deleteFriend(friend)"><mat-icon>delete_forever</mat-icon></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel-groups">
+      <div class="head-groups" fxLayout="row" fxLayoutAlign="start center">
+        Groups
+      </div>
+      <div class="body-groups">
+        <!-- <ul class="groups">
+          <li *ngFor="let group of groups">
+            {{group.name}}
+          </li>
+        </ul> -->
       </div>
     </div>
   </div>
