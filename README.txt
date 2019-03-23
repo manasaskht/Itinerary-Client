@@ -1,60 +1,82 @@
-Created Pages
---------------------------------
-Landing Page (/landing)
-Home Page (/dashboard)
-Profile Page (/dashboard/user)
-Create Itinerary Page (/dashboard/create)
+Travel Buddy
 
-Technologies & Libraries Used:
---------------------------------
-Angular 7 (https://angular.io/)
-Typescript (https://www.typescriptlang.org/)
-Angular cli (https://angular.io/cli)
-Angular Material (https://material.angular.io/)
-Flex Layout (https://github.com/angular/flex-layout)
-ngx-toastr (https://scttcper.github.io/ngx-toastr/)
+*Project Description:
+    The goal of this project is to provide a single platform to the users to plan and organize their trips. 
+    The users can use the website for deciding their travel destination and exploring tourist attractions in those areas. 
+    They can build itineraries, and easily share it with their family and friends. 
+    They can even jot down additional important information about the entire travel, thus making it easier to access it at a later stage. 
+    Overall, the website allows users to easily plan, and enjoy a hassle-free vacation. '
 
-Libraries explaination
---------------------------------
-Angular 7 was used for this project as it provides high modularity of the web application. Using Angular from the start can speed things up and help in collaborating with the team later. It allows various features such as data binding, routing in a single page application which are helpful in making a useful corporate worthy project.
+*Installation Instructions:
+  Download client-side code (itinerary-client):
+    1) Download the zip file from Brightspace or Gitlab (branch feature/currency) from the link https://git.cs.dal.ca/ntyagi/itinerary-client/tree/feature/currency
+    2) Import code in VS Code and open the Terminal (Ctrl+Shift+`)
+    3) Run the command npm install
+    4) Run the command ng serve (Starts the frontend server at localhost:4200)
+  Download server-side code (itinerary-server):
+    5) Download the zip file from Brightspace or Gitlab from the link https://git.cs.dal.ca/ntyagi/itinerary-server/tree/feature/profile
+    6) Import code in VS Code and open the Terminal (Ctrl+Shift+`)
+    7) Run the command npm install
+    8) Run the command sails lift (Starts the backend server at localhost:1337)
+  Run the code:
+    9) Open the link in the browser http://localhost:4200/landing
+    10) Register as a new user. 
+    11) Click on the link received in the email from noreply@itineraryplanner.com
+    11) Login with the credentials
+    10) Open http://localhost:4200/dashboard/currency or click on the user name (top-right) and select the Currency Converter option
 
-Angular Material is used as it provides various good looking components such as modified buttons, menus, sidebar and many more. Even though these components can be created by using html and javascript, instead of reinventing the wheel, we can use these components to make user interface much more pleasing. Customizable theming is also a built-in feature of angular material, so we can create various themes based on our own design. In this project, I have used following components: tabs, buttons, icons, selectable lists, menus, inputs and sidenav. 
+*Browsers Supported [4]:
+    1) Android devices - Android browser and WebView, Chrome, Firefox, Microsoft Edge 
+    2) iOS devices - Chrome, Firefox, Safari, Microsoft Edge
+    3) Windows Desktop - Chrome, Firefox, Internet Explorer 10+, Microsoft Edge
+    4) Mac Desktop - Chrome, Firefox, Safari
 
-Flex Layout library provides various directives (fxLayout, fxFlex, fxHide, fxShow) which can render benefits of CSS3 flex box. These directives have been used in angular templates to provide responsiveness to the application. The alternative would be to create classes and write css for individual 'divs' or tags that needs the property 'display:flex'. Using directives for repetitive tasks is the angular way of development which I wanted to follow.
+*Feature Created - Currency Converter:  
+  Feature Description:
+    Changes in currency rate influence the spending at a destination. 
+    The currency conversion tool is beneficial for the users as they can budget their finances while planning an international trip. 
+    The current exchange rates can highly affect their travel decisions, destination selection, and expenditure. 
+    While making the itinerary, it would be inconvenient if the user is expected to switch to another application to check the rates. 
+    Hence, the feature has been provided as a part of this application.
 
-ngx-toastr library provides a simple method of notifying users if any error occurs. Currently used to notify error if any incorrect login and password details are entered.
+  Code walkthrough and folder structure:
+     Angular 7: Frontend code of currency conversion feature is present in itinerary-client at the below location:
+     	src -> app -> dashboard -> currency -> currency.service.ts (module for currency conversion)
+     	src -> assets -> imgs (images for flag icon)
+     The service to make API call to the Currency Converter API is written in currency.service.ts
+     The html code is present in currencyconverter.component.html
+     The css code is present in currencyconverter.component.scss
+     The parsing of the results obtained from the API call and creation of objects to be displayed in the frontend is present in currencyconverter.component.ts
+     The flag icons are present in the images folder
+     The JSON file which contains the drop down list for currency is present in currencyconverterdata.ts
 
-Walkthough
---------------------------------
-## Running the project
-- Install Node.js latest version.
-- Clone the project with `git clone https://git.cs.dal.ca/ntyagi/a2_nikhil_tyagi.git`
-- Go into the project directory.
-- To install the depencencies. Run `npm install`.
-- Run `npm start`.
-- Open web browser and go to `localhost:4200`.
+  Feature implementation and design decisions:
+    1) Currency API:
+    The Free Currency Converter API (https://free.currencyconverterapi.com/) is used to convert one currency to another.
+    The conversion rate is fetched by parsing the JSON received as a response from the API.
+    The conversion rate is then multiplied with the input amount entered by the user, before displaying it on the screen.
+    API error responses are handled to ensure that errors are not propagated to the frontend.
+    Additionally, it is ensured that if the validations are not satisfied, the API call does not take place. 
+    This was a little tricky to implement in Angular because Validator classes are used, unlike the traditional onclick events in JavaScript.
 
-## Details
-Notice that you are presented with landing page directly and can't route to '/dashboard' without login. The dummy login credentials are email: `admin@admin.com` password: `admin`. All the validations for login and register forms are front-end only. On login, you are presented with home page with dummy itineraries in sections like upcoming itineraries, past itineraries and suggested places to visit.
-
-Notice that after login you can't route back to '/landing'. User profile ('/dashboard/user') can be accessed using top right menu in the header with username on it. The create-itinerary button is present in upcoming itineraries with will route you to link '/dashboard/create'.
-
-References
---------------------------------
-https://www.npmjs.com/package/ngx-toastr
-https://material.angular.io/components/categories
-https://github.com/angular/flex-layout/wiki
-https://angular.io/docs
-https://travefy.com/
-
-Images References
-----------------------------------
-https://hmhps.ca/images/locations/citadel-hill/citadel-hill-1.jpg
-https://www.gannett-cdn.com/presto/2018/07/27/USAT/9c49add3-e5fa-4aaa-8af3-458fd0fa186f-italy-venice-gondolas-051018-az.jpg?crop=1799,1012,x0,y0&width=3200&height=1680&fit=bounds
-https://www.strollingoftheheifers.com/wp-content/uploads/2012/12/Know-Your-Forester.jpg
-https://d39gusjpdm7p1o.cloudfront.net/data/layout_grouping/static_page_step/20784/a330628091ede7eb1548d6cda58e0357.jpg?ver=1477297804
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ2VXfrz8eY0L31238Z5C3phG-e3EbQb_qm9ZsRwuUJZxFo4LwKA
-https://blockchaininvestio-c007.kxcdn.com/wp-content/uploads/2018/07/India-bitcoin.jpg
-http://www.traveller.com.au/content/dam/images/h/0/v/z/w/u/image.related.articleLeadwide.620x349.h166kx.png/1539216554259.jpg
-https://hmhps.ca/images/locations/citadel-hill/citadel-hill-1.jpg
-
+    2) Use of icons in dropdowns:
+    The list of currency is long, making it difficult for the user to navigate through the list. 
+    Thus, dropdowns include the country flag icons [5] which grabs the website visitors attention and helps them to browse through the list.
+    The use of icons also helps to satisfy Neilson's heuristic of matching the system and real world.
+    Along with the abbreviation, currency names are also specified in the dropdown which helps in easier identification of currency.
+    This implementation required a currency list. As there were no free API which returned country name, currency name, and currency abbreviation, a comprehensive JSON file had to be used. (It was time consuming to find such a file)
+    The JSON file content is loaded into an arraylist and diplayed on the frontend.
+    For each dropdown item, the corresponding country name is used to pick and display an image. (For this I had to find a repository of images which are named with country abbreviations [5])
+      
+    3) Validations:
+    The validations are clear and indicate the course of action to be taken by the user.
+    The fields are highlighted in red, when the validations are not satisfied.
+    Generic error messages are not used. Eg. Leaving the amount field blank and entering alphabets in the amount field give different error messages.
+    The user is also allowed to enter decimal values as the input amount. Eg. 0.78 and .78 are both acceptable.
+	
+*Reference
+[1] D. Jamaludin, "Angular 6 HttpClient: Consume RESTful API Example", Djamware.com, 2019. [Online]. Available: https://www.djamware.com/post/5b87894280aca74669894414/angular-6-httpclient-consume-restful-api-example. [Accessed: 22- Mar- 2019].
+[2] "Common Currency Codes in JSON", Gist, 2019. [Online]. Available: https://gist.github.com/Fluidbyte/2973986. [Accessed: 22- Mar- 2019].
+[3] "Angular", Angular.io, 2019. [Online]. Available: https://angular.io/api/forms/Validators. [Accessed: 22- Mar- 2019].
+[4] M. Otto and J. Thornton, “Browsers and devices,” · Bootstrap. [Online]. Available: https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/. [Accessed: 09-Feb-2019]. List of suppored browsers.
+[5] "transferwise/currency-flags", GitHub, 2019. [Online]. Available: https://github.com/transferwise/currency-flags/tree/master/src/flags. [Accessed: 23- Mar- 2019]. 
