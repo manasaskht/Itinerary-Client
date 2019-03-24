@@ -28,10 +28,10 @@
             </form>
         </div>
         <ul class="friends" fxLayout="column">
-          <li *ngFor="let friend of friends" fxLayout="row" fxLayoutAlign="center center">
-            <mat-icon (click)="addToItinerary(friend)" >add</mat-icon>
+          <li *ngFor="let friend of friends" (click)="addToItinerary()" fxLayout="row" fxLayoutAlign="center center">
+            <mat-icon>add</mat-icon>
             {{friend.name}} ({{friend.email}})
-            <div (click)="addToItinerary(friend)"  fxFlex="1 1 0"></div>
+            <div fxFlex="1 1 0"></div>
             <button mat-button (click)="deleteFriend(friend)"><mat-icon>delete_forever</mat-icon></button>
           </li>
         </ul>
@@ -42,11 +42,12 @@
         Groups
       </div>
       <div class="body-groups">
-        <!-- <ul class="groups">
-          <li *ngFor="let group of groups">
+        <ul class="groups" fxLayout="column">
+          <li *ngFor="let group of groups" (click)="addToItinerary()" fxLayout="row"  fxLayoutAlign="start center">
+            <mat-icon>add</mat-icon>
             {{group.name}}
           </li>
-        </ul> -->
+        </ul>
       </div>
     </div>
   </div>

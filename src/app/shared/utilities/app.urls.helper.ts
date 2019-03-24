@@ -38,6 +38,9 @@ class ServerUrls {
     get addFriend() { return this.serverUrl + 'social/addfriend'; }
     get getFriends() { return this.serverUrl + 'social/getfriends';}
     get deleteFriends() { return this.serverUrl + 'social/deletefriend';}
+
+    get createGroup() { return this.serverUrl + 'social/creategroup';}
+    get getGroups() { return this.serverUrl + 'social/getgroups';}
 }
 
 export const serverUrls = ServerUrls.getInstance();
