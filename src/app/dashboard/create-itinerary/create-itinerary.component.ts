@@ -159,7 +159,8 @@ export class CreateItineraryComponent implements OnInit {
         const dialogRef = this.dialog.open(SocialComponent, {
             width: '40vw',
             height: '60vh',
-            panelClass: 'view-social-container'
+            panelClass: 'view-social-container',
+            data: { title: this.itinerary.title, id: this.itinerary.id }
         });
         dialogRef.afterClosed().subscribe(res => {
         });
