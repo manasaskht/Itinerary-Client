@@ -1,3 +1,4 @@
+// A class for groups which contains members added by the user
 export class Group {
     name: string;
     members: string[];

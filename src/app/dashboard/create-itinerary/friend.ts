@@ -1,3 +1,4 @@
+// A class that for friend of the user
 export class Friend {
     id: string;
     email: string;

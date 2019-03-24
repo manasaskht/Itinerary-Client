@@ -155,6 +155,7 @@ export class CreateItineraryComponent implements OnInit {
         });
     }
 
+    // Open a dialog box that displays user's friends and groups and allows the user to modify them
     openSocialDialog() {
         const dialogRef = this.dialog.open(SocialComponent, {
             width: '40vw',
