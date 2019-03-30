@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { StorageHelper } from '../utilities/storage.helper';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -41,7 +41,12 @@ export class ErrorManagerService implements HttpInterceptor {
                 }
             });
         }
-        return next.handle(req).pipe(catchError(this.errorHandler.bind(this)));
+        return next.handle(req).pipe(map(res => {
+            if (res instanceof HttpResponse && res.body.message) {
+                this.toastrService.success(res.body.message);
+            }
+            return res;
+        }), catchError(this.errorHandler.bind(this)));
     }
 
 

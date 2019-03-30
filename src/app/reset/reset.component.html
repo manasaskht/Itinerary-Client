@@ -1,0 +1,55 @@
+<div id="reset-pwd-container">
+    <div id="user-start">
+        <div fxLayout="row" fxLayout="center center" fxLayoutGap="16px" id="logo">
+            <img src="assets/imgs/logo-white.png" />
+            <div fxFlexAlign="center">
+                Itinerary Planner
+            </div>
+        </div>
+        <div fxLayout="row" fxLayout.lt-sm="column">
+            <div id="side-info">
+                <div>Plan your next trip effectively</div>
+                <div>
+                    <img src="assets/imgs/thinking.png" />
+                </div>
+            </div>
+            <div id="reset-container">
+                <form [formGroup]="resetForm">
+                    <div class="heading">
+                        Reset Password
+                    </div>
+                    <div>
+                        <mat-form-field class="full-input-element">
+                            <input matInput formControlName="password" type="password" placeholder="New Password" />
+                            <mat-error *ngIf="resetForm.controls.password.hasError('required')">
+                                New password is required.
+                            </mat-error>
+                            <mat-error *ngIf="resetForm.controls.password.hasError('pattern')">
+                                Password should contain 1 uppercase letter, 1 lowercase letter<br> 1 number.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-input-element">
+                            <input matInput formControlName="confirmPwd" type="password"
+                                placeholder="Confirm Password" />
+                            <mat-error *ngIf="resetForm.controls.confirmPwd.hasError('required')">
+                                Please enter same password again.
+                            </mat-error>
+                            <mat-error
+                                *ngIf="!resetForm.controls.confirmPwd.hasError('required') && resetForm.controls.confirmPwd.hasError('notEqual')">
+                                Confirm password should be same as new password.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout="row" fxLayoutGap="8px">
+                        <button (click)="resetPassword()" mat-raised-button color="primary">Change Password</button>
+                        <button mat-raised-button>Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>&nbsp;</div>
+    <app-footer></app-footer>
+</div>
