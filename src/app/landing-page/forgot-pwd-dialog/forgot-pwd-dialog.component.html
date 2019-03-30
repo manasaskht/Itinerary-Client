@@ -1,0 +1,27 @@
+<div id="forgot-pwd-container">
+    <div class="heading">
+        Forgot Password?
+    </div>
+    <div>
+        Forgot your password, no problem.<br>
+        Please enter registered email id to send reset password link.
+    </div>
+    <div>
+        <form [formGroup]="forgotPwdForm">
+            <mat-form-field class="full-input-element">
+                <input matInput formControlName="email" type="email" placeholder="Email" />
+                <mat-error *ngIf="forgotPwdForm.controls.email.hasError('required')">
+                    Email is required.
+                </mat-error>
+                <mat-error *ngIf="forgotPwdForm.controls.email.hasError('email')">
+                    Incorrect email format.
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+    <div fxLayout="row-reverse" fxLayoutGap="8px">
+        <button (click)="forgotPwd()" mat-raised-button color="primary">Send Link</button>
+        <button (click)="dialogRef.close()" mat-raised-button>Close</button>
+    </div>
+
+</div>

@@ -7,6 +7,7 @@ const routes: Routes = [
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
     { path: 'landing', loadChildren: './landing-page/landing-page.module#LandingPageModule', canLoad: [LogoutGuard] },
     { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', canLoad: [LoginGuard] },
+    { path: 'reset/:token', loadChildren: './reset/reset.module#ResetModule' },
     { path: '**', redirectTo: 'landing' }
 ];
 

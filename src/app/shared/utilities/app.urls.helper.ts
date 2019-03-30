@@ -15,6 +15,8 @@ class ServerUrls {
     get googleApiKey() { return 'AIzaSyD70Y18ljkRb83lDVBbS-E3HfGU6SzDc7s'; }
 
     get login() { return this.serverUrl + 'account/login/'; }
+    get forgotPwd() { return this.serverUrl + 'account/forgotPwd/'; }
+    get resetPwd() { return this.serverUrl + 'account/reset/'; }
     get register() { return this.serverUrl + 'account/register/'; }
     get logout() { return this.serverUrl + 'account/logout/'; }
     get activate() { return this.serverUrl + 'account/activate/'; }
