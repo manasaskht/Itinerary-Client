@@ -1,54 +1,68 @@
 <div mat-dialog-content class="container-social">
-  <div class="panel-social">
-    <div class="panel-friends">
-      <div class="head-friends" fxLayout="row" fxLayoutAlign="center center">
-        <div>Friends</div>
-        <div fxFlex="1 1 0">
-          
+    <div class="panel-social">
+        <div class="panel-friends">
+            <div class="head-friends" fxLayout="row" fxLayoutAlign="center center">
+                <div>Friends</div>
+                <div fxFlex="1 1 0">
+
+                </div>
+                <button mat-button (click)="closeDialog()" class="btn-close">Close</button>
+            </div>
+            <div class="body-friends">
+                <div class="panel-btn-add" fxLayout="row" fxLayoutAlign="center center">
+                    <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
+                    <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button>
+                </div>
+                <div *ngIf="addFriend">
+                    <form class="email" [formGroup]="emailForm" fxLayout="row" fxLayoutAlign="center center"
+                        fxLayoutGap="8px">
+                        <mat-form-field floatLabel="never" fxFlex="1 1 0">
+                            <input matInput formControlName="email" placeholder="Email address" />
+                            <mat-error *ngIf="emailForm.controls.email.hasError('required')">
+                                Email is required.
+                            </mat-error>
+                            <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
+                                Email is invalid.
+                            </mat-error>
+                        </mat-form-field>
+                        <button type="submit" (click)="addAFriend()" mat-raised-button color="primary">Add</button>
+                    </form>
+                </div>
+                <ul class="friends" fxLayout="column">
+                    <li *ngFor="let friend of friends" fxLayout="row" fxLayoutAlign="center center">
+                        <mat-icon (click)="addToItinerary(friend)">add</mat-icon>
+                        <button mat-button (click)="addToItinerary(friend)">{{friend.name}} ({{friend.email}})</button>
+                        <div fxFlex="1 1 0"></div>
+                        <button mat-button (click)="deleteFriend(friend)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <button mat-button (click)="closeDialog()" class="btn-close">Close</button> 
-      </div>
-      <div class="body-friends">
-        <div class="panel-btn-add" fxLayout="row" fxLayoutAlign="center center">
-          <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
-          <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button>
+        <div class="panel-groups">
+            <div class="head-groups" fxLayout="row" fxLayoutAlign="start center">
+                Groups
+            </div>
+            <div class="body-groups">
+                <ul class="groups" fxLayout="column">
+                    <li *ngFor="let group of groups" fxLayout="row" fxLayoutAlign="start center">
+                        <mat-icon (click)="addGroupToItinerary(group)" *ngIf="group.name !== this.data.title">add
+                        </mat-icon>
+                        <button mat-button (click)="addGroupToItinerary(group)">{{group.name}}</button>
+                        <div fxFlex="1 1 0"></div>
+                        <button mat-button (click)="toggleGroup(group)" *ngIf="!selectedGroup">View</button>
+                        <button mat-button (click)="toggleGroup(group)" *ngIf="!!selectedGroup">Collapse</button>
+                        <div fxLayout="row">
+                            <ul class="members" *ngIf="!!selectedGroup">
+                                <li *ngFor="let member of expandGroup" fxLayout="row">
+                                    {{member.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div *ngIf="addFriend">
-            <form class="email" [formGroup]="emailForm"  fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
-              <mat-form-field floatLabel="never" fxFlex="1 1 0">
-                  <input matInput formControlName="email" placeholder="Email address" />
-                  <mat-error *ngIf="emailForm.controls.email.hasError('required')">
-                      Email is required.
-                  </mat-error>
-                  <mat-error *ngIf="emailForm.controls.email.hasError('pattern')">
-                      Email is invalid.
-                  </mat-error>
-              </mat-form-field>
-              <button type="submit" (click)="addAFriend()" mat-raised-button color="primary">Add</button>  
-            </form>
-        </div>
-        <ul class="friends" fxLayout="column">
-          <li *ngFor="let friend of friends" (click)="addToItinerary(friend)" fxLayout="row" fxLayoutAlign="center center">
-            <mat-icon>add</mat-icon>
-            {{friend.name}} ({{friend.email}})
-            <div fxFlex="1 1 0"></div>
-            <button mat-button (click)="deleteFriend(friend)"><mat-icon>delete_forever</mat-icon></button>
-          </li>
-        </ul>
-      </div>
     </div>
-    <div class="panel-groups">
-      <div class="head-groups" fxLayout="row" fxLayoutAlign="start center">
-        Groups
-      </div>
-      <div class="body-groups">
-        <ul class="groups" fxLayout="column">
-          <li *ngFor="let group of groups" (click)="addGroupToItinerary()" fxLayout="row"  fxLayoutAlign="start center">
-            <mat-icon>add</mat-icon>
-            {{group.name}}
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
