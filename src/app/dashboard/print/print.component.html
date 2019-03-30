@@ -1,0 +1,25 @@
+<div id="print-itinerary-container">
+    <div>
+        <div *ngFor="let item of itineraryItems" fxLayout="column">
+            <div class="heading" fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="center center">
+                <div>
+                    <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
+                </div>
+                <div fxFlex="1 1 0">{{item.title}}</div>
+            </div>
+            <div *ngIf="item.location" class="location" [title]="item.location">
+                <mat-icon>location_on</mat-icon>
+                {{item.location | slice:0:25}}
+                {{item.location.length>25?'...':''}}
+            </div>
+            <div class="date">
+                {{item.dateTime | date :'dd-MMM-yyyy h:mm a'}}
+            </div>
+            <div class="description" fxFlex="1 1 0">
+                {{item.description | slice:0:50}}
+                {{item.description.length>50?'...':''}}
+            </div>
+        </div>
+    </div>
+
+</div>
