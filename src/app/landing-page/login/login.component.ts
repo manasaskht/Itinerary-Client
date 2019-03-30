@@ -5,6 +5,8 @@ import { StorageHelper } from 'src/app/shared/utilities/storage.helper';
 import { Utilities } from 'src/app/shared/utilities/utils.helper';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../providers/login.service';
+import { MatDialog } from '@angular/material';
+import { ForgotPwdDialogComponent } from '../forgot-pwd-dialog/forgot-pwd-dialog.component';
 
 @Component({
     selector: 'app-login',
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private loginService: LoginService
+        private loginService: LoginService,
+        private dialog: MatDialog
     ) {
         this.loginForm = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.pattern(Utilities.emailPattern)]),
@@ -45,6 +48,15 @@ export class LoginComponent implements OnInit {
         // } else {
         //     this.toastrService.error('Invalid Username or Password. \nUse email as "admin@admin.com" and password as "admin"', 'Login Error');
         // }
+    }
+
+    forgotPwd() {
+        const dialogRef = this.dialog.open(ForgotPwdDialogComponent, {
+            width: '40vw',
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe(res => {
+        });
     }
 
 }
