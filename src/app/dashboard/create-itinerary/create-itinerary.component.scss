@@ -27,10 +27,18 @@
 
         .timeline-add {
             position: absolute;
-            // right: 0;
             top: 44%;
             background: white;
             display: none;
+        }
+        .add-permanent {
+            position: absolute;
+            right: 0;
+            top: 44%;
+            mat-icon {
+                background: white;
+            }
+            
         }
 
         .line {

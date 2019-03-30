@@ -7,6 +7,7 @@ import { ItineraryService } from './shared/providers/itinerary.service';
 import { flatMap } from 'rxjs/operators';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
 import { SocialComponent } from './social/social.component';
+import { _ } from 'underscore';
 declare let google: any;
 
 @Component({
@@ -51,7 +52,9 @@ export class CreateItineraryComponent implements OnInit {
 
     setupMap() {
         let halifax = new google.maps.LatLng(44.637515, -63.589746);
-        let center = this.timeline.whole[0] ? JSON.parse(this.timeline.whole[0].locationLatLng) : halifax;
+        let pointCoordinates = this.timeline.whole.map(d => d.locationLatLng ? JSON.parse(d.locationLatLng) : null);
+        pointCoordinates = pointCoordinates.filter(d => d !== null);
+        let center = pointCoordinates.length ? pointCoordinates[0] : halifax;
         const startMapConfig = {
             center: center,
             zoom: 5,
@@ -60,19 +63,20 @@ export class CreateItineraryComponent implements OnInit {
         this.map = new google.maps.Map(this.gmaps.nativeElement, startMapConfig);
         for (let idx = 0; idx < this.timeline.whole.length; idx++) {
             let item = this.timeline.whole[idx];
-            let marker = new google.maps.Marker({
-                position: JSON.parse(item.locationLatLng),
-                label: idx + 1 + '',
-                map: this.map
-            });
-            marker.addListener('click', function (component: CreateItineraryComponent) {
-                return function () {
-                    let idx = this.label - 1;
-                    component.viewItem(null, component.timeline.whole[idx]);
-                }
-            }(this));
+            if (item.locationLatLng) {
+                let marker = new google.maps.Marker({
+                    position: JSON.parse(item.locationLatLng),
+                    label: idx + 1 + '',
+                    map: this.map
+                });
+                marker.addListener('click', function (component: CreateItineraryComponent) {
+                    return function () {
+                        let idx = this.label - 1;
+                        component.viewItem(null, component.timeline.whole[idx]);
+                    }
+                }(this));
+            }
         }
-        let pointCoordinates = this.timeline.whole.map(d => JSON.parse(d.locationLatLng));
         let path = new google.maps.Polyline({
             path: pointCoordinates,
             geodesic: true,
@@ -84,7 +88,14 @@ export class CreateItineraryComponent implements OnInit {
     }
 
     showTimelineItemAdd(event) {
-        this.addItem._elementRef.nativeElement.style.left = (event.clientX - 50) + 'px';
+        let timelineAddBtn = this.addItem._elementRef.nativeElement;
+        let parentWidth = timelineAddBtn.parentNode.getBoundingClientRect().width;
+        if (event.clientX < parentWidth - 100) {
+            timelineAddBtn.style.left = (event.clientX - 50) + 'px';
+        } else {
+            timelineAddBtn.style.left = -100 + 'px';
+        }
+
     }
 
     viewItem(event: MouseEvent, item: any) {
@@ -94,7 +105,7 @@ export class CreateItineraryComponent implements OnInit {
             data: { itineraryItem: item }
         });
         dialogRef.afterClosed().subscribe(res => {
-            if (res.edit) {
+            if (res && res.edit) {
                 this.editTimeline(null, item);
             }
         });

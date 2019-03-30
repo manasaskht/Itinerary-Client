@@ -10,10 +10,6 @@
                 <span>Back</span>
             </button>
             <button mat-button>
-                <mat-icon>save</mat-icon>
-                <span>Save</span>
-            </button>
-            <button mat-button>
                 <mat-icon>print</mat-icon>
                 <span>Print</span>
             </button>
@@ -53,7 +49,7 @@
                                                     (click)="editTimeline($event, item)">edit</span>
                                             </div>
                                         </div>
-                                        <div class="location" [title]="item.location">
+                                        <div *ngIf="item.location" class="location" [title]="item.location">
                                             <mat-icon>location_on</mat-icon>
                                             {{item.location | slice:0:25}}
                                             {{item.location.length>25?'...':''}}
@@ -75,6 +71,9 @@
                                     <mat-icon>add_circle</mat-icon>
                                     <span>Add Items</span>
                                 </button>
+                                <button class="add-permanent" mat-button (click)="addItems()">
+                                    <mat-icon>add_circle</mat-icon>
+                                </button>
                             </div>
                             <div fxFlex="1 1 0" class="timeline-bottom" fxLayout="row" fxLayoutGap="16px">
                                 <div *ngFor="let item of timeline.bottom" fxLayout="column" class="bubble-bottom">
@@ -95,7 +94,7 @@
                                                     (click)="editTimeline($event, item)">edit</span>
                                             </div>
                                         </div>
-                                        <div class="location" [title]="item.location">
+                                        <div class="location" *ngIf="item.location" [title]="item.location">
                                             <mat-icon>location_on</mat-icon>
                                             {{item.location | slice:0:25}}
                                             {{item.location.length>25?'...':''}}
