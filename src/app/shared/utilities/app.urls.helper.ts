@@ -36,11 +36,14 @@ class ServerUrls {
     get googlePlaces() { return 'https://maps.googleapis.com/maps/api/place/autocomplete/json'; }
 
     get addFriend() { return this.serverUrl + 'social/addfriend'; }
-    get getFriends() { return this.serverUrl + 'social/getfriends';}
-    get deleteFriends() { return this.serverUrl + 'social/deletefriend';}
+    get getFriends() { return this.serverUrl + 'social/getfriends'; }
+    get deleteFriends() { return this.serverUrl + 'social/deletefriend'; }
 
-    get createGroup() { return this.serverUrl + 'social/creategroup';}
-    get getGroups() { return this.serverUrl + 'social/getgroups';}
+    get createGroup() { return this.serverUrl + 'social/creategroup'; }
+    get getGroups() { return this.serverUrl + 'social/getgroups'; }
+
+    get addToItinerary() { return this.serverUrl + 'chat/addfriend'; }
+    get addGroupToItinerary() { return this.serverUrl + 'chat/addgroup'; }
 }
 
 export const serverUrls = ServerUrls.getInstance();

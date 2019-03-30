@@ -28,7 +28,7 @@
             </form>
         </div>
         <ul class="friends" fxLayout="column">
-          <li *ngFor="let friend of friends" (click)="addToItinerary()" fxLayout="row" fxLayoutAlign="center center">
+          <li *ngFor="let friend of friends" (click)="addToItinerary(friend)" fxLayout="row" fxLayoutAlign="center center">
             <mat-icon>add</mat-icon>
             {{friend.name}} ({{friend.email}})
             <div fxFlex="1 1 0"></div>
@@ -43,7 +43,7 @@
       </div>
       <div class="body-groups">
         <ul class="groups" fxLayout="column">
-          <li *ngFor="let group of groups" (click)="addToItinerary()" fxLayout="row"  fxLayoutAlign="start center">
+          <li *ngFor="let group of groups" (click)="addGroupToItinerary()" fxLayout="row"  fxLayoutAlign="start center">
             <mat-icon>add</mat-icon>
             {{group.name}}
           </li>

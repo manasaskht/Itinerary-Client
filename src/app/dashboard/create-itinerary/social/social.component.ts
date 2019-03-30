@@ -7,6 +7,7 @@ import { FriendsService } from '../friends.service';
 import { GroupService } from '../group.service';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ChatService } from '../chat.service';
 
 // An interface for recieving data from the page that calls this dialog box
 export interface DialogData {
@@ -33,6 +34,7 @@ export class SocialComponent implements OnInit {
   // Services for friends and groups
   friendsService: FriendsService;
   groupService: GroupService;
+  chatService: ChatService;
 
   // Arrays of friends and groups
   friends: Friend[] = [];
@@ -43,7 +45,8 @@ export class SocialComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private http: HttpClient,
     friendsService: FriendsService,
-    groupService: GroupService
+    groupService: GroupService,
+    chatService: ChatService
   ) {
     // Add validations to the email form
     this.emailForm = new FormGroup({
@@ -53,6 +56,7 @@ export class SocialComponent implements OnInit {
     // Initialize services
     this.friendsService = friendsService;
     this.groupService = groupService;
+    this.chatService = chatService;
 
     // Create a group for this itinerary if it does not exist
     this.createGroup();
@@ -103,11 +107,17 @@ export class SocialComponent implements OnInit {
   }
 
   // This feature adds friends and groups to chat window. Chat is a separate feature and will be implemented in the future
-  addToItinerary(): void {
+  addToItinerary(friend): void {
     if (!this.deleteClicked) {
-      alert('This is part of a separate feature(Chat Feature) and will be implemented in the future');
+      this.chatService.addToItinerary(friend.id, this.data.id).subscribe( results => {
+        console.log(results);
+      });
     }
     this.deleteClicked = false;
+  }
+
+  addGroupToItinerary(group): void {
+    
   }
 
   // Create a group by calling the service and update the list
