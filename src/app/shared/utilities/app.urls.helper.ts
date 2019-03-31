@@ -106,6 +106,8 @@ class ServerUrls {
     get activateUser() {
         return this.serverUrl + "account/activate";
     }
+    get sendMessage() { return this.serverUrl + 'chat/message/send'; }
+    get getMessages() { return this.serverUrl + 'chat/message/get'; }
 }
 
 export const serverUrls = ServerUrls.getInstance();
