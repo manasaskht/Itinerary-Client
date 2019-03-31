@@ -1,0 +1,41 @@
+<div id="reg-conf-container">
+  <div id="user-start">
+    <div fxLayout="row" fxLayout="center center" fxLayoutGap="16px" id="logo">
+      <img src="assets/imgs/logo-white.png" />
+      <div fxFlexAlign="center">
+        Itinerary Planner
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.lt-sm="column">
+      <div id="side-info">
+        <div>Plan your next trip effectively</div>
+        <div>
+          <img src="assets/imgs/thinking.png" />
+        </div>
+      </div>
+      <div id="confirmation-info">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>{{ message }}</mat-card-title>
+            <mat-card-subtitle
+              >Please click below to go to landing page</mat-card-subtitle
+            >
+          </mat-card-header>
+          <div class="redirect-btn">
+            <button
+              class="add-button"
+              (click)="redirectToLandingPage()"
+              mat-raised-button
+            >
+              <span>
+                <div>Click</div>
+              </span>
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div>&nbsp;</div>
+  <app-footer></app-footer>
+</div>
