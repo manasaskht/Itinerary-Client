@@ -12,6 +12,7 @@ const routes: Routes = [
             { path: 'user', loadChildren: './profile/profile.module#ProfileModule' },
             { path: 'create/:id', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule' },
             { path: 'print/:id', loadChildren: './print/print.module#PrintModule' },
+            { path: 'user-feedback', loadChildren: './user-feedback/user-feedback.module#UserFeedbackModule' },
             { path: '**', redirectTo: '' }
         ]
     },

@@ -1,0 +1,52 @@
+.feedback-container {
+    min-height: 70vh;
+    padding: 16px;
+}
+.form-container{
+    background: transparent;
+}
+.urgency{
+    text-decoration: underline;
+    text-decoration-color: darkgrey; 
+    margin-top: 20px;
+}
+ .feedbackT{
+     width: 50%;
+     margin-top: 20px;
+ }
+.questForm {
+    min-width: 150px;
+    max-width: 500px;
+    width: 146%;
+   }
+  
+  .quest1 {
+    width: 146%;
+    margin-top: 20px;
+  }
+  .quest2 {
+    width: 146%;
+    margin-top: 20px;
+  }  
+  .quest3 {
+    width: 146%;
+    margin-top: 20px;
+  }
+  #title
+{
+    background: #2c3e50 !important;
+    text-align: center;
+    color:whitesmoke;
+    padding: 3vh;
+}
+#card
+{
+    margin:2em; 
+    padding:0px;
+    background: whitesmoke !important; 
+    min-height: 50vh;
+}
+.Submit-button{
+    text-align: center;
+    margin-top: 30px;
+}

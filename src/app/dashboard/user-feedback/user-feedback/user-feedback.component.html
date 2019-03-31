@@ -1,0 +1,61 @@
+
+<mat-card id="card">
+  <mat-card-title id="title">User Feedback</mat-card-title>
+
+<div>
+  <h4>
+    Use the form below to send us your comments. We read all feedback carefully, but please note that we are unable to respond to the comments you submit.
+  </h4> 
+  <form>
+      <div>
+          <mat-form-field class="feedbackT">
+            <mat-label>Feedback Type</mat-label>
+            <mat-select [formControl]="feedbackType" required>
+              <!-- <mat-option>--</mat-option> -->
+              <mat-option *ngFor="let feedType of feeds" [value]="feedType">
+                {{feedType.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="feedbackType.hasError('required')">Please select the feedback type. 1 being very low importance, 5 being Urgent.</mat-error>
+            <mat-hint>{{feedbackType.value?.sound}}</mat-hint>
+          </mat-form-field>
+      </div>
+
+        <div  class="urgency">
+          <mat-label>Urgency of this request?</mat-label>
+            <star-rating value="5" checkedcolor="red" uncheckedcolor="black" size="35px" readonly="false" (rate)="onRate($event)"></star-rating>
+        </div>
+     
+        <div class="questForm">
+            <mat-form-field class="quest1 full-input-element">
+              <input matInput placeholder="Which browser are you using?" [formControl]="quest1Control">
+              <mat-error *ngIf="quest1Control.hasError('required')">
+                Please let us know which browser are you using.
+              </mat-error>
+              <mat-error *ngIf="quest1Control.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+        
+
+        
+            <mat-form-field class="quest2">
+              <textarea matInput placeholder="Please give more description about this feedback."></textarea>
+            </mat-form-field>
+        
+             <mat-form-field class="quest1">
+              <textarea matInput placeholder="What would make you use TravelBuddy more often?"></textarea>
+            </mat-form-field>
+         
+          </div>
+  </form>    
+</div> 
+
+
+  <div class="Submit-button">
+    
+    <button mat-raised-button color="primary" type="submit" ng-click="submit_feedback()">Submit</button>
+
+  </div>
+
+</mat-card>
