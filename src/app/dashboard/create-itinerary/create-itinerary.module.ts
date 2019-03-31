@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { CreateItineraryRoutingModule } from './create-itinerary-routing.module';
 import { CreateItineraryComponent } from './create-itinerary.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule, MatInputModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
+import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule,
+    MatInputModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog.component';
@@ -13,6 +14,7 @@ import { NotesDialogueComponent } from './notes-dialogue/notes-dialogue.componen
 import { ViewNotesDialogueComponent } from './view-notes-dialogue/view-notes-dialogue.component';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
+import { SocialComponent } from './social/social.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +24,8 @@ import { ItemViewDialogComponent } from './shared/components/item-view-dialog/it
         ItemDialogComponent,
         NotesDialogueComponent,
         ViewNotesDialogueComponent,
-        ItemViewDialogComponent
+        ItemViewDialogComponent,
+        SocialComponent
     ],
     imports: [
         CommonModule,
@@ -44,7 +47,8 @@ import { ItemViewDialogComponent } from './shared/components/item-view-dialog/it
         ItemDialogComponent,
         NotesDialogueComponent,
         ViewNotesDialogueComponent,
-        ItemViewDialogComponent
+        ItemViewDialogComponent,
+        SocialComponent
     ]
 })
 export class CreateItineraryModule { }

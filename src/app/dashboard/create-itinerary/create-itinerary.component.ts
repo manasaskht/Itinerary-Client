@@ -6,6 +6,7 @@ import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog
 import { ItineraryService } from './shared/providers/itinerary.service';
 import { flatMap } from 'rxjs/operators';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
+import { SocialComponent } from './social/social.component';
 import { _ } from 'underscore';
 declare let google: any;
 
@@ -162,6 +163,18 @@ export class CreateItineraryComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(res => {
             this.refreshTimeline();
+        });
+    }
+
+    // Open a dialog box that displays user's friends and groups and allows the user to modify them
+    openSocialDialog() {
+        const dialogRef = this.dialog.open(SocialComponent, {
+            width: '40vw',
+            height: '60vh',
+            panelClass: 'view-social-container',
+            data: { title: this.itinerary.title, id: this.itinerary.id }
+        });
+        dialogRef.afterClosed().subscribe(res => {
         });
     }
 

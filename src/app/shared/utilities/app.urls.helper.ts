@@ -1,7 +1,7 @@
 class ServerUrls {
     private static serverUrlInstance: ServerUrls;
 
-    private serverUrl: string = 'http://localhost:1337/';
+    private serverUrl = 'http://localhost:1337/';
 
     private constructor() { }
 
@@ -24,18 +24,30 @@ class ServerUrls {
     get newItinerary() { return this.serverUrl + 'itinerary/new'; }
     get newItineraryItem() { return this.serverUrl + 'itinerary/item/new'; }
 
-    get listItinerary() { return this.serverUrl + 'itinerary/ls' }
-    get listItineraryItems() { return this.serverUrl + 'itinerary/item/ls' }
+    get listItinerary() { return this.serverUrl + 'itinerary/ls'; }
+    get listItineraryItems() { return this.serverUrl + 'itinerary/item/ls'; }
 
     get createNote() { return this.serverUrl + 'itinerary/notes/new'; }
     get updateNote() { return this.serverUrl + 'itinerary/notes/update'; }
     get deleteNote() { return this.serverUrl + 'itinerary/notes/delete'; }
-    get listNotes() { return this.serverUrl + 'itinerary/notes/list'; }
+    get listNotes() { return this.serverUrl + 'itinerary/notes'; }
 
     get deleteItineraryItem() { return this.serverUrl + 'itinerary/item/delete'; }
     get editItineraryItem() { return this.serverUrl + 'itinerary/item/edit'; }
 
     get googlePlaces() { return 'https://maps.googleapis.com/maps/api/place/autocomplete/json'; }
+
+    get addFriend() { return this.serverUrl + 'social/friend/add'; }
+    get getFriends() { return this.serverUrl + 'social/friend/get'; }
+    get deleteFriends() { return this.serverUrl + 'social/friend/delete'; }
+
+    get createGroup() { return this.serverUrl + 'social/group/create'; }
+    get getGroups() { return this.serverUrl + 'social/group/get'; }
+    get addMember() { return this.serverUrl + 'social/group/member/add'; }
+    get getMembers() { return this.serverUrl + 'social/group/member/get'; }
+
+    get addToItinerary() { return this.serverUrl + 'chat/friend/add'; }
+    get addGroupToItinerary() { return this.serverUrl + 'chat/group/add'; }
 }
 
 export const serverUrls = ServerUrls.getInstance();

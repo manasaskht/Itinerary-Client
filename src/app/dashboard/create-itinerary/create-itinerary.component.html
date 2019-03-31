@@ -3,6 +3,12 @@
         <div>
             <h3>{{ itinerary.title }}</h3>
         </div>
+        <div>
+            <button mat-button (click)="refreshTimeline()">
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+            </button>
+        </div>
         <div fxFlex="1 1 0"></div>
         <div class="buttons" fxLayout>
             <button mat-button (click)="exit()">
@@ -12,6 +18,11 @@
             <button mat-button>
                 <mat-icon>print</mat-icon>
                 <span>Print</span>
+            </button>
+            <!-- Add People button -->
+            <button (click)="openSocialDialog()" mat-button>
+                <mat-icon>person_add</mat-icon>
+                <span>Add People</span>
             </button>
         </div>
     </div>
@@ -135,4 +146,5 @@
 
         </div>
     </div> -->
+    <!-- <app-social></app-social> -->
 </div>
