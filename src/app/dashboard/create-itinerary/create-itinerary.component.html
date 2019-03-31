@@ -3,6 +3,12 @@
         <div>
             <h3>{{ itinerary.title }}</h3>
         </div>
+        <div>
+            <button mat-button (click)="refreshTimeline()">
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh</span>
+            </button>
+        </div>
         <div fxFlex="1 1 0"></div>
         <div class="buttons" fxLayout>
             <button mat-button (click)="exit()">

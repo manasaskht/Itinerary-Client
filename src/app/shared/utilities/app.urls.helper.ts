@@ -30,7 +30,7 @@ class ServerUrls {
     get createNote() { return this.serverUrl + 'itinerary/notes/new'; }
     get updateNote() { return this.serverUrl + 'itinerary/notes/update'; }
     get deleteNote() { return this.serverUrl + 'itinerary/notes/delete'; }
-    get listNotes() { return this.serverUrl + 'itinerary/notes/list'; }
+    get listNotes() { return this.serverUrl + 'itinerary/notes'; }
 
     get deleteItineraryItem() { return this.serverUrl + 'itinerary/item/delete'; }
     get editItineraryItem() { return this.serverUrl + 'itinerary/item/edit'; }
