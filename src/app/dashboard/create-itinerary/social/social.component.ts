@@ -148,14 +148,8 @@ export class SocialComponent implements OnInit {
     toggleGroup(group): void {
         if (!!this.selectedGroup) {
             this.selectedGroup = null;
-            this.expandGroup = [];
         } else {
             this.selectedGroup = group;
-            this.groupService.getMembers(group.name).subscribe((results: Array<any>) => {
-                results.forEach(element => {
-                    this.expandGroup.push(new Friend(element));
-                });
-            });
         }
     }
 }

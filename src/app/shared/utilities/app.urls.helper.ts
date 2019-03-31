@@ -44,10 +44,12 @@ class ServerUrls {
     get createGroup() { return this.serverUrl + 'social/group/create'; }
     get getGroups() { return this.serverUrl + 'social/group/get'; }
     get addMember() { return this.serverUrl + 'social/group/member/add'; }
-    get getMembers() { return this.serverUrl + 'social/group/member/get'; }
 
     get addToItinerary() { return this.serverUrl + 'chat/friend/add'; }
     get addGroupToItinerary() { return this.serverUrl + 'chat/group/add'; }
+
+    get sendMessage() { return this.serverUrl + 'chat/message/send'; }
+    get getMessages() { return this.serverUrl + 'chat/message/get'; }
 }
 
 export const serverUrls = ServerUrls.getInstance();

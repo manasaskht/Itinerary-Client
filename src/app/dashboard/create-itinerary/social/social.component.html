@@ -52,10 +52,11 @@
                         <button mat-button (click)="addGroupToItinerary(group)">{{group.name}}</button>
                         <div fxFlex="1 1 0"></div>
                         <button mat-button (click)="toggleGroup(group)" *ngIf="!selectedGroup">View</button>
-                        <button mat-button (click)="toggleGroup(group)" *ngIf="!!selectedGroup">Collapse</button>
+                        <button mat-button (click)="toggleGroup(group)"
+                            *ngIf="!!selectedGroup && selectedGroup === group">Collapse</button>
                         <div fxLayout="row">
-                            <ul class="members" *ngIf="!!selectedGroup">
-                                <li *ngFor="let member of expandGroup" fxLayout="row">
+                            <ul class="members" *ngIf="!!selectedGroup && selectedGroup === group">
+                                <li *ngFor="let member of group.members" fxLayout="row">
                                     {{member.name}}
                                 </li>
                             </ul>
