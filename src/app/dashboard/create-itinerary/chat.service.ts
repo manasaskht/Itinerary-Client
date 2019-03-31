@@ -26,4 +26,30 @@ export class ChatService {
         };
         return this.http.post(url, body);
     }
+
+    removeFromItinerary(itineraryId, friendId) {
+        const url = serverUrls.removeMembers;
+        const params = {
+            itineraryId,
+            friendId
+        };
+        return this.http.delete(url, { params: params });
+    }
+
+    sendMessage(message: string, itineraryId: string) {
+        const url = serverUrls.sendMessage;
+        const body = {
+            message,
+            itineraryId
+        };
+        return this.http.post(url, body);
+    }
+
+    getMessages(itineraryId: string) {
+        const url = serverUrls.getMessages;
+        const params = {
+            itineraryId
+        };
+        return this.http.get(url, { params: params });
+    }
 }

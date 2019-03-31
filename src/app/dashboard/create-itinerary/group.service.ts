@@ -36,13 +36,4 @@ export class GroupService {
         };
         return this.http.post(url, body);
     }
-
-    // Get members of a group
-    getMembers(groupName) {
-        const url = serverUrls.getMembers;
-        const params = {
-            groupName
-        };
-        return this.http.get(url, { params });
-    }
 }
