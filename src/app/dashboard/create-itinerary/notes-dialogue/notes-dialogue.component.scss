@@ -1,20 +1,24 @@
 .note-heading{
-    font-size: 25px;
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 10px;
+    background: #2c3e50;
+    padding: 16px;
+    color: white;
+    margin: -24px;
+    margin-bottom: 0px;
 }
-.title-input{
-    text-align: center;
-    margin-bottom: 20px;
-}
-.text-input{
-    text-align: center;
-    margin-bottom: 30px;
-}
-.close-note{
-    text-align: center;
-}
-.mat-dialog-container{
-    background: darkcyan;
+.dialog-container {
+    padding: 16px;
+    padding-bottom: 2px;
+
+    .title-input{
+        text-align: center;
+    }
+    .text-input{
+        text-align: center;
+    }
+    .close-note{
+        text-align: center;
+    }
+    .mat-dialog-container{
+        background: darkcyan;
+    }
 }

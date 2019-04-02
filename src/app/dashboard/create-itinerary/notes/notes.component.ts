@@ -60,8 +60,7 @@ export class NotesComponent implements OnInit {
             event.stopPropagation();
 
             const dialogRef = this.dialog.open(NotesDialogueComponent, {
-                height: '400px',
-                width: '400px',
+                width: '30vw',
                 data: { note: note.noteText, noteTitle: note.noteTitle, topNote: topNote, closeNote: close, noteData: note }
             });
 
@@ -87,8 +86,7 @@ export class NotesComponent implements OnInit {
         } else if (mode === 'add') {
 
             const dialogRef = this.dialog.open(NotesDialogueComponent, {
-                height: '400px',
-                width: '400px',
+                width: '30vw',
                 data: { note: undefined, noteTitle: undefined, topNote: topNote, closeNote: close, noteData: note, itineraryId: this.itineraryid }
             });
 
