@@ -178,4 +178,8 @@ export class CreateItineraryComponent implements OnInit {
         });
     }
 
+    print() {
+        this.router.navigate(['/dashboard/print/' + this.itinerary.id]);
+    }
+
 }

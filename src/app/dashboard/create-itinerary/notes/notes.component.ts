@@ -27,10 +27,14 @@ export class NotesComponent implements OnInit {
     itineraryid: string;
 
     data: any;
+    refreshInterval: number;
+    interval: any;
+
+
 
 
     constructor(public dialog: MatDialog, private notesServie: NotesService, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
-
+        this.refreshInterval = 5000;
     }
 
     // Opens view note dialogue
@@ -65,20 +69,7 @@ export class NotesComponent implements OnInit {
             });
 
             dialogRef.afterClosed().subscribe(result => {
-                // console.log('The dialog was closed');
-                // if (result !== undefined) {
-                //     this.note = result.noteText;
-                //     this.noteTitle = result.noteTitle;
-                //     if (this.noteTitle === undefined || this.note === undefined || this.noteTitle === '' || this.note === '') {
-                //         this.toastr.error("Cannot update empty note !")
-                //     } else if (this.noteTitle.length > 200 || this.note.length > 200) {
-                //         this.toastr.error("Note should be less than 200 characters.")
-                //     } else {
-                //         this.updateNote(this.noteTitle, this.note, note.id)
-                //     }
-                // } else {
-                //     console.log("Empty dialog closed")
-                // }
+
                 this.getItems(this.itineraryid);
 
             });
@@ -91,20 +82,6 @@ export class NotesComponent implements OnInit {
             });
 
             dialogRef.afterClosed().subscribe(result => {
-                // console.log('The dialog was closed');
-                // if (result !== undefined) {
-                //     this.note = result.noteText;
-                //     this.noteTitle = result.noteTitle;
-                //     if (this.noteTitle === undefined || this.note === undefined) {
-                //         this.toastr.error("Cannot post empty note !")
-                //     } else if (this.noteTitle.length > 200 || this.note.length > 200) {
-                //         this.toastr.error("Note should be less than 200 characters.")
-                //     } else {
-                //         this.postNote(this.noteTitle, this.note, this.itineraryid);
-                //     }
-                // } else {
-                //     console.log("Empty dialog closed")
-                // }
 
                 this.getItems(this.itineraryid);
             });
@@ -158,6 +135,17 @@ export class NotesComponent implements OnInit {
                 this.itineraryid = itineraryId[0];
             })
         this.getItems(this.itineraryid);
+        this.interval = setInterval(this.refreshNotes.bind(this), this.refreshInterval);
+    }
+
+    async refreshNotes() {
+        if (!!this.itineraryid) {
+            this.getItems(this.itineraryid);
+        }
+    }
+
+    ngOnDestroy(): void {
+        clearInterval(this.interval);
     }
 
 }

@@ -14,7 +14,7 @@
     </div>
     <div class="user-info">
       <div class="created-date">
-        <span><b>Created/Updated at:</b> {{data.updatedAt}}</span>
+        <span><b>Created/Updated at:</b> {{data.updatedAt | date :'dd-MMM-yyyy h:mm a'}}</span>
       </div>
       <div class="creator-name">
         <span><b>by:</b> {{data.username}}</span>
