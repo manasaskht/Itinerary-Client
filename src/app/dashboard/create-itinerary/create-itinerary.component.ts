@@ -48,6 +48,7 @@ export class CreateItineraryComponent implements OnInit {
                 this.itinerary = itinerary[0];
                 this.refreshTimeline();
             });
+
     }
 
     setupMap() {
@@ -178,4 +179,7 @@ export class CreateItineraryComponent implements OnInit {
         });
     }
 
+    print() {
+        this.router.navigate(['/dashboard/print/' + this.itinerary.id]);
+    }
 }

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PrintRoutingModule } from './print-routing.module';
 import { PrintComponent } from './print.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatCardModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
     declarations: [PrintComponent],
@@ -12,7 +12,9 @@ import { MatIconModule } from '@angular/material';
         CommonModule,
         PrintRoutingModule,
         FlexLayoutModule,
-        MatIconModule
+        MatIconModule,
+        MatCardModule,
+        MatButtonModule
     ]
 })
 export class PrintModule { }
