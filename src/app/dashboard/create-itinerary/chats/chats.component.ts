@@ -30,7 +30,7 @@ export class ChatsComponent implements OnInit {
         this.activatedRoute = activatedRoute;
         this.itineraryService = itineraryService;
         this.user = StorageHelper.getInstance().userInfo;
-        this.refreshInterval = 3000;
+        this.refreshInterval = 10000;
         this.chatMessages = [];
     }
 

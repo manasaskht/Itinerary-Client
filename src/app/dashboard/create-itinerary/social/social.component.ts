@@ -117,7 +117,7 @@ export class SocialComponent implements OnInit {
                 console.log(results);
             });
             this.groupService.addMember(friend.id, this.data.id).subscribe(results => {
-                console.log(results);
+                this.getGroups();
             });
         }
         this.deleteClicked = false;

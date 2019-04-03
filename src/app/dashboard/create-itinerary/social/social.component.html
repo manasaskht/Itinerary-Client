@@ -10,8 +10,10 @@
             </div>
             <div class="body-friends">
                 <div class="panel-btn-add" fxLayout="row" fxLayoutAlign="center center">
-                    <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add</button>
-                    <button *ngIf="addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Cancel</button>
+                    <button *ngIf="!addFriend" mat-button class="btn-add" (click)="toggleAddFriend()">Add a new
+                        friend</button>
+                    <button *ngIf="addFriend" mat-button class="btn-add" id="btn-cancel-add"
+                        (click)="toggleAddFriend()">Cancel</button>
                 </div>
                 <div *ngIf="addFriend">
                     <form class="email" [formGroup]="emailForm" fxLayout="row" fxLayoutAlign="center center"
@@ -30,10 +32,10 @@
                 </div>
                 <ul class="friends" fxLayout="column">
                     <li *ngFor="let friend of friends" fxLayout="row" fxLayoutAlign="center center">
-                        <mat-icon (click)="addToItinerary(friend)">add</mat-icon>
-                        <button class="btn-insert" fxFlex="1 1 0" mat-button
-                            (click)="addToItinerary(friend)">{{friend.name}}
-                            ({{friend.email}})</button>
+                        <button class="btn-insert" fxFlex="1 1 0" mat-button (click)="addToItinerary(friend)">
+                            <mat-icon>add</mat-icon>
+                            {{friend.name}}({{friend.email}})
+                        </button>
                         <button class='btn-delete' mat-button (click)="deleteFriend(friend)">
                             <mat-icon>delete_forever</mat-icon>
                         </button>
