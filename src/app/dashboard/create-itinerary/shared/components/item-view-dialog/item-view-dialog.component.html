@@ -3,7 +3,7 @@
         <div>
             <mat-icon [title]="data.itineraryItem.category">{{data.itineraryItem.categoryIcon}}</mat-icon>
         </div>
-        <div fxFlex="1 1 0">{{data.itineraryItem.title}}</div>
+        <div fxFlex="1 1 0">{{ data.itineraryItem.title }}</div>
         <button (click)="dialogRef.close({ edit: true })" mat-button>
             <mat-icon>edit</mat-icon>
         </button>
@@ -13,12 +13,28 @@
     </div>
     <div class="location" [title]="data.itineraryItem.location">
         <mat-icon>location_on</mat-icon>
-        {{data.itineraryItem.location}}
+        {{ data.itineraryItem.location }}
     </div>
     <div class="date-time">
-        {{data.itineraryItem.dateTime | date :'dd-MMM-yyyy h:mm a'}}
+        {{ data.itineraryItem.dateTime | date: "dd-MMM-yyyy h:mm a" }}
     </div>
     <div class="description" fxFlex="1 1 0">
-        {{data.itineraryItem.description}}
+        {{ data.itineraryItem.description }}
+    </div>
+    <div class="weather" fxFlex="1 1 0">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <img src="{{ icon }}" alt="Weather Icon" width="40" height="40" />
+                </div>
+                <div *ngIf="temperature; else elseBlock">
+                    <mat-card-title>{{ temperature }} <sup>&#8451;</sup></mat-card-title>
+                    <mat-card-subtitle>{{ WeatherDesc }}</mat-card-subtitle>
+                </div>
+                <ng-template #elseBlock>
+                    <mat-card-content>{{ WeatherDesc }}</mat-card-content>
+                </ng-template>
+            </mat-card-header>
+        </mat-card>
     </div>
 </div>

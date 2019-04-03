@@ -4,8 +4,10 @@ import { CommonModule } from '@angular/common';
 import { CreateItineraryRoutingModule } from './create-itinerary-routing.module';
 import { CreateItineraryComponent } from './create-itinerary.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule,
-    MatInputModule, MatSelectModule, MatAutocompleteModule } from '@angular/material';
+import {
+    MatTabsModule, MatIconModule, MatButtonModule, MatDialogModule,
+    MatInputModule, MatSelectModule, MatAutocompleteModule
+} from '@angular/material';
 import { NotesComponent } from './notes/notes.component';
 import { ChatsComponent } from './chats/chats.component';
 import { ItemDialogComponent } from './shared/components/item-dialog/item-dialog.component';
@@ -15,6 +17,7 @@ import { ViewNotesDialogueComponent } from './view-notes-dialogue/view-notes-dia
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
 import { SocialComponent } from './social/social.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -41,7 +44,8 @@ import { SocialComponent } from './social/social.component';
         MatSelectModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
-        MatAutocompleteModule
+        MatAutocompleteModule,
+        MatCardModule
     ],
     entryComponents: [
         ItemDialogComponent,
