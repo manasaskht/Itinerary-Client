@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItineraryService } from '../create-itinerary/shared/providers/itinerary.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
 import { NotesService } from '../create-itinerary/notes.service';
 
@@ -16,11 +16,23 @@ export class PrintComponent implements OnInit {
     constructor(
         private activatedRoute: ActivatedRoute,
         private itineraryService: ItineraryService,
-        private noteService: NotesService
+        private noteService: NotesService,
+        private router: Router
     ) {
     }
     print() {
         window.print();
+    }
+
+    back() {
+        this.activatedRoute.params.subscribe(params => {
+            console.log('route params', params);
+            this.router.navigate(["/dashboard/create/" + params.id]);
+        });
+
+        // .pipe(flatMap(params => {
+        //     return this.itineraryService.listItineraryItems(params.id);
+        // }))
     }
 
     ngOnInit() {
