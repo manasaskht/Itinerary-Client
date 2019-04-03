@@ -92,6 +92,7 @@ class ServerUrls {
     get getMembers() {
         return this.serverUrl + 'social/group/member/get';
     }
+    get removeMembers() { return this.serverUrl + 'chat/friend/remove'; }
 
     get sendMessage() { return this.serverUrl + 'chat/message/send'; }
     get getMessages() { return this.serverUrl + 'chat/message/get'; }

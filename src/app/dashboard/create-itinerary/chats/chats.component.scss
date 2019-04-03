@@ -5,6 +5,10 @@
     .chats {
         height: inherit;
         overflow: auto;
+
+        .text {
+            max-width: 80%;
+        }
     }
 
     .sender {

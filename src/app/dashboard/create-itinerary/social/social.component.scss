@@ -5,27 +5,31 @@
     min-width: 300px;
     padding: 0;
     margin: 0;
-}
+    background: #fff;
 
-.panel-social
-{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    right: 0px;
-    background-color: #f8f8f8;
-    z-index: 10;
-}
+    .panel-social
+    {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        right: 0px;
+        background-color: #f8f8f8;
+        z-index: 10;
 
-.panel-friends
-{
-    height: 65%;
-}
+        .panel-friends
+        {
+            height: 65%;
+            background: #fff;
+        }
 
-.panel-groups
-{
-    height: 25%;
+        .panel-groups
+        {
+            height: 25%;
+            background: #fff;
+        }
+    }
+
 }
 
 .panel-btn-add
@@ -58,9 +62,10 @@
 {
     padding: 5px;
     margin: 0;
+    background: #fff;
 }
 
-.body-friends>.friends>li:hover, .body-groups>.groups>li:hover
+.body-friends>.friends>.btn-insert:hover, .body-groups>.groups>.btn-insert:hover
 {
     cursor: pointer;
     background: rgba(0, 0, 0, 0.2);
@@ -81,12 +86,12 @@
     background: rgba(0,0,0,0.1);
 }
 
-.body-friends>.friends>li>button:hover
+.body-friends>.friends>li>.btn-delete:hover
 {  
     background: rgba(255, 14, 14, 0.6);
 }
 
-.body-friends>.friends>li>button
+.body-friends>.friends>li>.btn-delete
 {
     z-index: 12;
     width: 40px;
@@ -103,4 +108,26 @@
 {
     line-height: 100%;
     height: 30px;
+}
+
+.btn-insert
+{
+    text-align: left;
+}
+
+.padding-left
+{
+    width: 24px;
+}
+
+.member-container {
+    width: 100%;
+
+    .members {
+        padding: 4px 0;
+
+        .txt-remove {
+            color: rgb(255, 14, 14);
+        }
+    }
 }
