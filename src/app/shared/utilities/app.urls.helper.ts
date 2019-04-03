@@ -1,5 +1,9 @@
+import { environment } from 'src/environments/environment';
+
 class ServerUrls {
     private static serverUrlInstance: ServerUrls;
+
+    private prod = true;
 
     private serverUrl = "http://localhost:1337/";
 
@@ -8,6 +12,9 @@ class ServerUrls {
     public static getInstance() {
         if (!ServerUrls.serverUrlInstance) {
             ServerUrls.serverUrlInstance = new ServerUrls();
+        }
+        if (environment.production || ServerUrls.serverUrlInstance.prod) {
+            ServerUrls.serverUrlInstance.serverUrl = 'https://itinerary-server.herokuapp.com/';
         }
         return ServerUrls.serverUrlInstance;
     }

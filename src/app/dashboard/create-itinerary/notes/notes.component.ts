@@ -57,7 +57,7 @@ export class NotesComponent implements OnInit {
     }
 
     // Open the pop-up dialogue to add notes/ edit-notes
-    openDialog(mode: string, note: Note, topNote: string, close: string, event: MouseEvent): void {
+    openDialog(mode: string, note: any, topNote: string, close: string, event?: MouseEvent): void {
 
         if (mode === 'update') {
 
