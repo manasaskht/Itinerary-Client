@@ -1,11 +1,15 @@
 <div id="home-container">
 
     <div>
-        <div>
-            <h3>Trips</h3>
+        <div fxLayout="row" fxLayoutGap="16px">
+            <div class="heading">Trips</div>
+            <button mat-button (click)="listItineraries()">
+                <mat-icon>refresh</mat-icon>
+                Refresh
+            </button>
         </div>
         <div>
-            <div class="scroll" fxLayout="row" fxLayoutGap="16px">
+            <div fxLayout="row wrap" fxLayoutGap="8px">
                 <div class="trip-card" *ngFor="let trip of upcomingTrips" (click)="selectedTrip(trip)">
                     <div>
                         <img
@@ -43,7 +47,10 @@
     </div> -->
 
     <div>
-        <h3>Recommended Trips</h3>
+        <div class="heading">Recommended Trips</div>
+        <div>
+            Coming Soon...
+        </div>
         <div class="scroll" fxLayout="row" fxLayoutGap="16px">
             <div class="trip-card" *ngFor="let trips of recomendedTrips">
                 <div>
