@@ -1,5 +1,9 @@
+import { environment } from 'src/environments/environment';
+
 class ServerUrls {
     private static serverUrlInstance: ServerUrls;
+
+    private prod = true;
 
     private serverUrl = "http://localhost:1337/";
 
@@ -8,6 +12,9 @@ class ServerUrls {
     public static getInstance() {
         if (!ServerUrls.serverUrlInstance) {
             ServerUrls.serverUrlInstance = new ServerUrls();
+        }
+        if (environment.production || ServerUrls.serverUrlInstance.prod) {
+            ServerUrls.serverUrlInstance.serverUrl = 'https://itinerary-server.herokuapp.com/';
         }
         return ServerUrls.serverUrlInstance;
     }
@@ -90,23 +97,19 @@ class ServerUrls {
         return this.serverUrl + "social/group/get";
     }
 
-    get addMember() {
-        return this.serverUrl + "social/group/member/add";
-    }
     get getMembers() {
         return this.serverUrl + "social/group/member/get";
-    }
-    get removeMembers() { return this.serverUrl + 'chat/friend/remove'; }
-
-    get addToItinerary() {
-        return this.serverUrl + "chat/friend/add";
-    }
-    get addGroupToItinerary() {
-        return this.serverUrl + "chat/group/add";
     }
     get activateUser() {
         return this.serverUrl + "account/activate";
     }
+
+    get addMember() { return this.serverUrl + 'social/group/member/add'; }
+
+    get addToItinerary() { return this.serverUrl + 'chat/friend/add'; }
+    get addGroupToItinerary() { return this.serverUrl + 'chat/group/add'; }
+    get removeMembers() { return this.serverUrl + 'chat/friend/remove'; }
+
     get sendMessage() { return this.serverUrl + 'chat/message/send'; }
     get getMessages() { return this.serverUrl + 'chat/message/get'; }
 }

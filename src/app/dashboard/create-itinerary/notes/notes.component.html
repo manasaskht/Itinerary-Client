@@ -11,7 +11,7 @@
                     <button mat-icon-button>
                         <mat-icon (click)="deleteNote(note.id, $event)">delete</mat-icon>
                     </button>
-                    <button mat-icon-button (click)="openDialog('update',note,'Update note', 'Update It !', $event)">
+                    <button mat-icon-button (click)="openDialog('update',note,'Update note', 'Update', $event)">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </div>
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="add-Notes">
-        <button class="add-button" mat-button (click)="openDialog('add', note,'Create new note', 'Post It !')">
+        <button class="add-button" mat-button (click)="openDialog('add', note,'Create new note', 'Post')">
             <span>
                 <div>ADD NOTE</div>
             </span>
