@@ -34,7 +34,7 @@ export class NotesComponent implements OnInit {
 
 
     constructor(public dialog: MatDialog, private notesServie: NotesService, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
-        this.refreshInterval = 5000;
+        this.refreshInterval = 20000;
     }
 
     // Opens view note dialogue

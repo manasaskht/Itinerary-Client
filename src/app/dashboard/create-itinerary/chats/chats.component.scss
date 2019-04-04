@@ -1,11 +1,14 @@
 #chats-container {
     height: 100%;
-    padding: 8px;
     overflow: auto;
-    margin-bottom: 16px;
 
     .chats {
         height: inherit;
+        overflow: auto;
+
+        .chat-container {
+            max-width: 80%;
+        }
     }
 
     .sender {
@@ -17,8 +20,13 @@
         width: fit-content;
         border-radius: 8px;
         margin: 8px;
+        overflow-wrap: break-word;
     }
     .self {
         margin-left: auto;
+    }
+
+    .send-container {
+        padding: 8px;
     }
 }

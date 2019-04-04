@@ -41,6 +41,7 @@ export class SocialComponent implements OnInit {
     groups: Group[] = [];
     expandGroup: Friend[] = [];
     selectedGroup: Group;
+    groupExists: boolean;
 
     constructor(
         public dialogRef: MatDialogRef<SocialComponent>,
@@ -61,7 +62,8 @@ export class SocialComponent implements OnInit {
         this.chatService = chatService;
 
         // Create a group for this itinerary if it does not exist
-        this.createGroup();
+        this.groupExists = false;
+        this.getGroups();
     }
 
     ngOnInit() {
@@ -115,7 +117,7 @@ export class SocialComponent implements OnInit {
                 console.log(results);
             });
             this.groupService.addMember(friend.id, this.data.id).subscribe(results => {
-                console.log(results);
+                this.getGroups();
             });
         }
         this.deleteClicked = false;
@@ -124,7 +126,7 @@ export class SocialComponent implements OnInit {
     addGroupToItinerary(group): void {
         if (group.name !== this.data.title) {
             this.chatService.addGroupToItinerary(group.name, this.data.id).subscribe(results => {
-                console.log(results);
+                this.getGroups();
             });
         }
     }
@@ -138,24 +140,32 @@ export class SocialComponent implements OnInit {
 
     // Get a list of groups
     getGroups(): void {
+        this.groups = [];
         this.groupService.getGroups().subscribe((results: Array<any>) => {
             results.forEach(group => {
-                this.groups.push(new Group(group));
+                if (this.groups.findIndex(existing => existing.name === group.title) < 0) {
+                    this.groups.push(new Group(group));
+                }
             });
+            if (!this.groupExists && (this.groups.findIndex(group => group.name === this.data.title) < 0)) {
+                this.groupExists = true;
+                this.createGroup();
+            }
+            this.toggleGroup(this.selectedGroup);
         });
     }
 
     toggleGroup(group): void {
         if (!!this.selectedGroup) {
             this.selectedGroup = null;
-            this.expandGroup = [];
         } else {
             this.selectedGroup = group;
-            this.groupService.getMembers(group.name).subscribe((results: Array<any>) => {
-                results.forEach(element => {
-                    this.expandGroup.push(new Friend(element));
-                });
-            });
         }
+    }
+
+    removeFromItinerary(friend): void {
+        this.chatService.removeFromItinerary(this.data.id, friend.id).subscribe(results => {
+            this.getGroups();
+        });
     }
 }
