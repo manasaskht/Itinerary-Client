@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +10,7 @@ import { Utilities } from './shared/utilities/utils.helper';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorManagerService } from './shared/services/error-manager.service';
 
+import { FormsModule } from '@angular/forms';
 @NgModule({
     declarations: [
         AppComponent
@@ -19,6 +19,7 @@ import { ErrorManagerService } from './shared/services/error-manager.service';
         BrowserAnimationsModule,
         AppRoutingModule,
         ToastrModule.forRoot(Utilities.toastrConfig),
+        FormsModule,
         HttpClientModule
     ],
     providers: [

@@ -1,0 +1,38 @@
+//Purpose: CSS file for currency conversion
+#login-container {
+    padding: 8px;
+    mat-form-field {
+        width: 100%;
+    }
+    button {
+        display: block;
+        margin: 8px auto;
+    }
+}
+#output{
+color: black !important;
+}
+#title
+{
+    background: #2c3e50 !important;
+    text-align: center;
+    color:whitesmoke;
+    padding: 3vh;
+}
+#card
+{
+    margin:2em; 
+    padding:0px;
+    background: whitesmoke !important; 
+    min-height: 50vh;
+}
+.travelbuddyfont
+    {
+        font-size: 1.5em !important;
+        font-family:"Comic Sans MS", cursive, sans-serif !important;
+    }
+.travelbuddyfontfamily
+{
+    font-family:"Comic Sans MS", cursive, sans-serif !important;
+    color: rgb(12, 12, 12) !important;
+}

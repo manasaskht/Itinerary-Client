@@ -38,11 +38,6 @@ export class ItemDialogComponent implements OnInit {
             location: new FormControl(this.isEdit ? currentItemData.location : '', [Validators.required])
         });
         this.categories = Utilities.categories;
-        // this.filteredOptions = this.createItemForm.controls.location.valueChanges
-        //     .pipe(
-        //         startWith(''),
-        //         flatMap(value => this.placesService.getPlaces(value))
-        //     );
     }
 
     ngOnInit() {

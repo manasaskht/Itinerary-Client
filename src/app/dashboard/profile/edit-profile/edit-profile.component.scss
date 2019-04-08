@@ -1,0 +1,40 @@
+#edit-profile-container {
+    min-height: 70vh;
+    padding: 16px;
+
+    #my-file {
+         visibility: hidden; 
+        }
+
+    img{
+        height: 250px;
+    }
+    #edit-footer
+    {
+        align-content: right;
+    }
+    #info-container {
+        padding: 16px;
+        max-width: 30vw;
+        @media screen and (max-width: 599px) {
+            max-width: none;
+        }
+        .name {
+            font-size: 24pt;
+        }
+
+        &>div {
+            margin: 8px 0;
+        }
+
+        .interests {
+            overflow: auto;
+            max-width: 80vw;
+            div {
+                background: lightgray;
+                border-radius: 8px;
+                padding: 8px;
+            }
+        }
+    }
+}

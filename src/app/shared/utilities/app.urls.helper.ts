@@ -90,6 +90,10 @@ class ServerUrls {
     get deleteFriends() {
         return this.serverUrl + "social/friend/delete";
     }
+    get fetchProfile() { return this.serverUrl + 'profile'; }
+    get fetchImage() { return this.serverUrl + 'profileImage'; }
+    get updateProfile() { return this.serverUrl + 'updateProfile'; }
+    get saveProfile() { return this.serverUrl + 'uploadfile'; }
 
     get createGroup() {
         return this.serverUrl + "social/group/create";

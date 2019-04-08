@@ -1,6 +1,5 @@
 <div id="dashboard-container">
     <app-header (menuClicked)="toggleMenu()"></app-header>
-
     <mat-drawer-container *ngIf="isScreenSmall">
         <mat-drawer #matdrawer>
             <app-side-nav (actionDone)="toggleMenu()"></app-side-nav>
@@ -10,5 +9,6 @@
         </mat-drawer-content>
     </mat-drawer-container>
     <router-outlet *ngIf="!isScreenSmall"></router-outlet>
+
     <app-footer></app-footer>
 </div>
