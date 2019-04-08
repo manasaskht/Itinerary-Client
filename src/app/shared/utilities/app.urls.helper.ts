@@ -14,7 +14,8 @@ class ServerUrls {
             ServerUrls.serverUrlInstance = new ServerUrls();
         }
         if (environment.production || ServerUrls.serverUrlInstance.prod) {
-            ServerUrls.serverUrlInstance.serverUrl = 'https://itinerary-server.herokuapp.com/';
+            // ServerUrls.serverUrlInstance.serverUrl = 'https://itinerary-server.herokuapp.com/';
+            // ServerUrls.serverUrlInstance.serverUrl = 'http://ec2-3-19-77-106.us-east-2.compute.amazonaws.com:1337/';
         }
         return ServerUrls.serverUrlInstance;
     }
