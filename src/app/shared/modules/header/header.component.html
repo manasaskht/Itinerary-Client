@@ -32,6 +32,10 @@
                 <mat-icon>feedback</mat-icon>
                 <span>User Feedback</span>
             </button>
+            <button mat-menu-item [routerLink]="['/dashboard/currency']">
+                <mat-icon>monetization_on</mat-icon>
+                <span>Currency Converter</span>
+            </button>
             <button (click)="logOut()" mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>
                 <span>Log Out</span>

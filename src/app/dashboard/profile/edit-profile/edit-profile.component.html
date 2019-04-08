@@ -1,0 +1,95 @@
+<form [formGroup]="editProfile">
+    <div id="edit-profile-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start">
+
+        <!-- <div fxLayout="column" fxLayoutGap="8px" fxFlexAlign="center">
+            <img [src]="imageSrc || 'assets/imgs/profile_img.png'">
+            <button mat-button (click)="file.click()">Change Image</button>
+            <input type="file" id="my-file" name="userPhoto" accept="image/*" #file (change)="upload($event.target.files)">
+         
+        </div> -->
+        <div>
+            <div>
+                <div fxLayout="row" class="name">
+                    <div fxFlex="1 1 0">
+                        <b>First Name:</b>
+                        <mat-form-field class="full-input-element" floatLabel="never">
+                            <input matInput type="text" formControlName="firstName" />
+                            <mat-error *ngIf="editProfile.controls.firstName.hasError('pattern')">
+                                Please enter alphabets only.
+                            </mat-error>
+                            <mat-error *ngIf="editProfile.controls.firstName.hasError('required')">
+                                Please enter the first name.
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+                    <div fxFlex="1 1 0">
+                        <b>Last Name:</b>
+                        <mat-form-field class="full-input-element" floatLabel="never">
+                            <input matInput type="text" formControlName="lastName" />
+                            <mat-error *ngIf="editProfile.controls.lastName.hasError('pattern')">
+                                Please enter alphabets only.
+                            </mat-error>
+                            <mat-error *ngIf="editProfile.controls.lastName.hasError('required')">
+                                Please enter the last name.
+                            </mat-error>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+                <div fxLayout="row" class="name">
+                    <div fxFlex="1 1 0">
+                        <b>Age:</b>
+                        <mat-form-field class="full-input-element" floatLabel="never">
+                            <input matInput type="text" formControlName="age" />
+                            <mat-error *ngIf="editProfile.controls.age.hasError('pattern')">
+                                Please enter a valid age.
+                            </mat-error>
+                            <mat-error *ngIf="editProfile.controls.age.hasError('required')">
+                                Please enter the age.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxFlex="1 1 0">
+                        <b>Sex:</b> <br />
+                        <mat-form-field>
+                            <mat-select formControlName="sex">
+                                <mat-option *ngFor=" let sex of sexList" [value]="sex.item">
+                                    {{sex.item}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="editProfile.controls.sex.hasError('required')">
+                                Please select your sex.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <b>Bio:</b>
+                    <p>
+                        <mat-form-field class="full-input-element" floatLabel="never">
+                            <input matInput type="text" formControlName="bio" />
+                            <mat-error *ngIf="editProfile.controls.bio.hasError('required')">
+                                Please enter youur bio.
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                </div>
+                <!-- <div>
+              <h3>Interests:</h3>
+              <div class="interests" fxLayout="row" fxLayoutGap="16px">
+                  <div>Golfing</div>
+                  <div>Programming</div>
+                  <div>NHL</div>
+                  <div>Boxing</div>
+              </div>
+          </div> -->
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxLayoutGap="16px">
+        <button (click)="save(data)" mat-raised-button [mat-dialog-close]="data" cdkFocusInitial color="primary"
+            [disabled]="!editProfile.valid">SAVE</button>
+        <button (click)="cancel()" mat-raised-button cdkFocusInitial color="primary">CANCEL</button>
+    </div>
+</form>
