@@ -16,10 +16,10 @@ export class ChatsComponent implements OnInit {
     chatService: ChatService;
     activatedRoute: ActivatedRoute;
     itineraryService: ItineraryService;
-    itinerary: any;
     user: any;
     refreshInterval: number;
     interval: any;
+    itineraryId: string;
 
     constructor(
         chatService: ChatService,
@@ -30,21 +30,20 @@ export class ChatsComponent implements OnInit {
         this.activatedRoute = activatedRoute;
         this.itineraryService = itineraryService;
         this.user = StorageHelper.getInstance().userInfo;
-        this.refreshInterval = 10000;
+        this.refreshInterval = 2000;
         this.chatMessages = [];
     }
 
     ngOnInit() {
-        this.activatedRoute.params.pipe(flatMap(params => {
-            return this.itineraryService.listItineraries(params.id);
-        })).subscribe(itinerary => {
-            this.itinerary = itinerary[0];
+        this.activatedRoute.params.subscribe(params => {
+            this.itineraryId = params.id;
+            this.getMessages();
         });
-        this.interval = setInterval(this.refreshChat.bind(this), this.refreshInterval);
+        this.interval = setInterval(this.getMessages.bind(this), this.refreshInterval);
     }
 
     getMessages(): void {
-        this.chatService.getMessages(this.itinerary.id).subscribe((results: Array<any>) => {
+        this.chatService.getMessages(this.itineraryId).subscribe((results: Array<any>) => {
             results.forEach(message => {
                 if (this.chatMessages.findIndex(req => req.id === message.id) < 0) {
                     this.chatMessages.push(new ChatMessage(message));
@@ -57,16 +56,10 @@ export class ChatsComponent implements OnInit {
     }
 
     sendMessage(input): void {
-        this.chatService.sendMessage(input.value, this.itinerary.id).subscribe(res => {
+        this.chatService.sendMessage(input.value, this.itineraryId).subscribe(res => {
             this.getMessages();
         });
         input.value = '';
-    }
-
-    async refreshChat() {
-        if (!!this.itinerary) {
-            this.getMessages();
-        }
     }
 
     ngOnDestroy(): void {

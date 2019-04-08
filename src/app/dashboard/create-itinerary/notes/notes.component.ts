@@ -128,20 +128,13 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.activatedRoute.params.pipe(flatMap(params => {
-            return params.id;
-        }))
-            .subscribe(itineraryId => {
-                this.itineraryid = itineraryId[0];
+        this.activatedRoute.params
+            .subscribe(params => {
+                this.itineraryid = params.id;
+                this.getItems(this.itineraryid);
             })
-        this.getItems(this.itineraryid);
-        this.interval = setInterval(this.refreshNotes.bind(this), this.refreshInterval);
-    }
 
-    async refreshNotes() {
-        if (!!this.itineraryid) {
-            this.getItems(this.itineraryid);
-        }
+        this.interval = setInterval(this.getItems.bind(this, this.itineraryid), this.refreshInterval);
     }
 
     ngOnDestroy(): void {
