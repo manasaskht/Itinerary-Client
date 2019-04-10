@@ -1,7 +1,7 @@
 # ItineraryClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
-Angular 7.1.4 is used for frontend development. The application is divided into various modules and routes. The modules created by me are landing- module, create-itinerary module.
+Angular 7.1.4 is used for frontend development. The application is divided into various modules and routes.
 
 Open command line shell (bash or cmd).
 
