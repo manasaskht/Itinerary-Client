@@ -11,9 +11,9 @@ export class LandingPageComponent implements OnInit {
 
     constructor() {
         this.features = [
-            { image: 'assets/imgs/videochat.png', name: 'Video Call' },
+            { image: 'assets/imgs/videochat.png', name: 'Real-time collaboration with friends' },
             { image: 'assets/imgs/map.PNG', name: 'Real-time map' },
-            { image: 'assets/imgs/timeline.png', name: 'Interactive Timeline & Suggestions' },
+            { image: 'assets/imgs/timeline.png', name: 'Interactive Timeline with multi user editing' },
         ];
     }
 

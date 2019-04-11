@@ -11,6 +11,9 @@ const routes: Routes = [
             { path: '', loadChildren: './home/home.module#HomeModule' },
             { path: 'user', loadChildren: './profile/profile.module#ProfileModule' },
             { path: 'create/:id', loadChildren: './create-itinerary/create-itinerary.module#CreateItineraryModule' },
+            { path: 'print/:id', loadChildren: './print/print.module#PrintModule' },
+            { path: 'user-feedback', loadChildren: './user-feedback/user-feedback.module#UserFeedbackModule' },
+            { path: 'currency', loadChildren: './currency/currency.module#CurrencyModule' },
             { path: '**', redirectTo: '' }
         ]
     },

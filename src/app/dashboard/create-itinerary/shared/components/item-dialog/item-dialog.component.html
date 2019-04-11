@@ -1,14 +1,14 @@
 <div id="item-dialog">
-    <div>
-        {{ isEdit? 'Edit item in ':'Add new item to' }}
-        <b>{{ data.title }}</b>
+    <div class="heading">
+        {{ isEdit? 'Edit plan in ':'Add new plan to ' }}
+        <b>{{ data.title }}</b> itinerary.
     </div>
 
     <div>
         <form fxLayout="column" [formGroup]="createItemForm">
             <div>
                 <mat-form-field class="full-input-element" floatLabel="never">
-                    <input matInput formControlName="title" type="text" placeholder="Item Title" />
+                    <input matInput formControlName="title" type="text" placeholder="Title" />
                     <mat-error *ngIf="createItemForm.controls.title.hasError('required')">
                         Title is required.
                     </mat-error>
@@ -35,14 +35,16 @@
                 <input type="text" [min]="today" [owlDateTime]="dt1" formControlName="dateTime" class="custom-input"
                     [owlDateTimeTrigger]="dt1" placeholder="Event Date Time">
                 <owl-date-time #dt1></owl-date-time>
-                <mat-error *ngIf="createItemForm.controls.dateTime.hasError('required')">
+                <mat-error
+                    *ngIf="createItemForm.controls.dateTime.touched && createItemForm.controls.dateTime.hasError('required')">
                     Date and Time are required.
                 </mat-error>
             </div>
             <div>
                 <input #location type="text" formControlName="location" class="google-place-input custom-input"
                     placeholder="Location">
-                <mat-error *ngIf="createItemForm.controls.location.hasError('required')">
+                <mat-error
+                    *ngIf="createItemForm.controls.location.touched && createItemForm.controls.location.hasError('required')">
                     Location is required.
                 </mat-error>
             </div>
@@ -57,7 +59,7 @@
             <div fxLayout="row" fxLayoutGap="16px">
                 <button (click)="dialogRef.close()" mat-raised-button>Close</button>
                 <button (click)="isEdit?editItem():addItem()" mat-raised-button color="primary">
-                    {{ isEdit?'Edit':'Add' }} Item
+                    {{ isEdit?'Update':'Save' }}
                 </button>
             </div>
         </form>

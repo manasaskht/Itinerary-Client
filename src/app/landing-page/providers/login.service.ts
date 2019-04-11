@@ -18,4 +18,12 @@ export class LoginService {
         return this.http.post(url, body);
     }
 
+    public forgotPassword(email: string) {
+        let url = serverUrls.forgotPwd;
+        let body = {
+            email
+        };
+        return this.http.post(url, body);
+    }
+
 }

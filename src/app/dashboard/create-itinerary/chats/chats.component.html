@@ -1,15 +1,16 @@
 <div id="chats-container">
-    <div class="chats">
-        <!-- <div fxLayout="row" fxLayoutGap="8px">
-            <input fxFlex="1 1 0" placeholder="Type a message" type="text">
-            <button mat-button>
+    <div class="chats" fxLayout="column-reverse">
+        <div fxLayout="row" fxLayoutGap="8px" class="send-container">
+            <input #message fxFlex="1 1 0" placeholder="Type a message" type="text"
+                (keyup.enter)="sendMessage(message)">
+            <button mat-button (click)="sendMessage(message)">
                 <mat-icon>send</mat-icon>
             </button>
-        </div> -->
+        </div>
         <div *ngFor="let message of chatMessages">
-            <div [ngClass]="(message.from === 'You')?'self':'other'">
-                <div *ngIf="message.from !== 'You'" class="sender">{{message.from}}</div>
-                <div class="text">{{message.text}}</div>
+            <div [ngClass]="(message.sender === user.id)?'self':'other'" class="chat-container">
+                <div *ngIf="message.sender !== user.id" class="sender">{{message.senderName}}</div>
+                <div class="text">{{message.message}}</div>
             </div>
         </div>
     </div>

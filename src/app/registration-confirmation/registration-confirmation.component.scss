@@ -1,0 +1,72 @@
+#reg-conf-container {
+  #confirmation-info {
+    margin-top: 10%;
+  }
+  #user-start {
+    // margin: -8px -8px 0px -8px;
+    color: white;
+    background: #2c3e50;
+    padding: 16px;
+    #logo {
+      img {
+        height: 70px;
+        width: 70px;
+      }
+      font-size: 24pt;
+      @media screen and (max-width: 599px) {
+        font-size: 18pt;
+      }
+      font-weight: bold;
+    }
+
+    #side-info {
+      padding: 16px;
+      padding-left: 32px;
+      font-size: 20pt;
+      width: 70vw;
+      img {
+        height: 25vw;
+        margin: auto;
+        display: block;
+      }
+      button {
+        display: block;
+        margin: auto;
+      }
+
+      @media screen and (max-width: 599px) {
+        img {
+          height: 70vw;
+        }
+        padding-left: 16px;
+        width: auto;
+      }
+    }
+
+    #reset-container {
+      background: white;
+      border-radius: 2px;
+      width: 30vw;
+      padding: 8px 32px;
+      margin: 8px;
+
+      .heading {
+        color: black;
+        font-weight: bold;
+        padding: 8px 0px;
+        font-size: 1.5em;
+      }
+
+      mat-tab-body.mat-tab-body-content {
+        overflow: hidden !important;
+      }
+    }
+    .redirect-btn {
+      text-align: center;
+    }
+    button {
+      background: #3f51b5;
+      color: #ffffff;
+    }
+  }
+}

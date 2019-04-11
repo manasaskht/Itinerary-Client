@@ -2,6 +2,12 @@
     padding: 16px;
     min-height: 70vh;
 
+    .heading {
+        font-weight: bold;
+        margin: 16px 0px;
+        font-size: 1.2em;
+    }
+
     .trip-card {
         cursor: pointer;
         max-width: min-content;
@@ -30,6 +36,7 @@
     }
 
     .add-new {
+        margin: 8px;
         padding: 8px;
         background: lightgray;
         min-width: 240px;

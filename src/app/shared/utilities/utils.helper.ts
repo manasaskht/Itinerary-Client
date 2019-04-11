@@ -37,4 +37,9 @@ export namespace Utilities {
         { item: 'Activity', icon: 'event' },
         { item: 'Misc', icon: 'help' }
     ]
+    export const sex = [
+        { item: 'Male' },
+        { item: 'Female' },
+        { item: 'Other' }
+    ]
 }

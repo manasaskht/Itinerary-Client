@@ -1,8 +1,11 @@
 #item-view-container {
     .heading {
         padding: 8px;
-        background: lightgray;
+        background: #2c3e50;
         font-weight: bold;
+        margin: -24px;
+        margin-bottom: 0px;
+        color: white;
     }
     .location, .date-time {
         font-size: 10pt;

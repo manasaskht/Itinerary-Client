@@ -1,34 +1,36 @@
 <div id="profile-container" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="center start">
     <div fxLayout="column" fxLayoutGap="8px" fxFlexAlign="center">
-        <img src="assets/imgs/profile_img.png">
-        <button mat-button>Change Image</button>
+        <img [src]="imageSrc">
+        <button mat-button (click)="file.click()">Change Image</button>
+        <input type="file" id="my-file" name="userPhoto" accept="image/*" #file (change)="upload($event.target.files)">
+
     </div>
     <div>
         <div id="info-container">
             <div fxLayout="row" class="name">
-                <div fxFlex="1 1 0">Nikhil Tyagi</div>
-                <button mat-icon-button>
+                <div fxFlex="1 1 0">{{firstName+" "+lastName}}</div>
+                <button mat-icon-button (click)="edit()">
                     <mat-icon>edit</mat-icon>
                 </button>
             </div>
             <div>
-                nikhil.tyagi@dal.ca
+                {{email}}
             </div>
             <div fxLayout="row" fxLayoutGap="16px">
                 <div>
-                    <b>Age:</b> 26
+                    <b>Age:</b> {{age}}
                 </div>
                 <div>
-                    <b>Sex:</b> Male
+                    <b>Sex:</b> {{sex}}
                 </div>
             </div>
             <div>
                 <h3>Bio:</h3>
                 <p>
-                    An avid software developer with a zeal of learning awesome tools and creating something amazing.
+                    {{bio}}
                 </p>
             </div>
-            <div>
+            <!-- <div>
                 <h3>Interests:</h3>
                 <div class="interests" fxLayout="row" fxLayoutGap="16px">
                     <div>Golfing</div>
@@ -36,6 +38,6 @@
                     <div>NHL</div>
                     <div>Boxing</div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>

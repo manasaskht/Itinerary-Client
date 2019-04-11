@@ -27,10 +27,14 @@ export class NotesComponent implements OnInit {
     itineraryid: string;
 
     data: any;
+    refreshInterval: number;
+    interval: any;
+
+
 
 
     constructor(public dialog: MatDialog, private notesServie: NotesService, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
-
+        this.refreshInterval = 20000;
     }
 
     // Opens view note dialogue
@@ -53,33 +57,19 @@ export class NotesComponent implements OnInit {
     }
 
     // Open the pop-up dialogue to add notes/ edit-notes
-    openDialog(mode: string, note: Note, topNote: string, close: string, event: MouseEvent): void {
+    openDialog(mode: string, note: any, topNote: string, close: string, event?: MouseEvent): void {
 
         if (mode === 'update') {
 
             event.stopPropagation();
 
             const dialogRef = this.dialog.open(NotesDialogueComponent, {
-                height: '400px',
-                width: '400px',
+                width: '30vw',
                 data: { note: note.noteText, noteTitle: note.noteTitle, topNote: topNote, closeNote: close, noteData: note }
             });
 
             dialogRef.afterClosed().subscribe(result => {
-                // console.log('The dialog was closed');
-                // if (result !== undefined) {
-                //     this.note = result.noteText;
-                //     this.noteTitle = result.noteTitle;
-                //     if (this.noteTitle === undefined || this.note === undefined || this.noteTitle === '' || this.note === '') {
-                //         this.toastr.error("Cannot update empty note !")
-                //     } else if (this.noteTitle.length > 200 || this.note.length > 200) {
-                //         this.toastr.error("Note should be less than 200 characters.")
-                //     } else {
-                //         this.updateNote(this.noteTitle, this.note, note.id)
-                //     }
-                // } else {
-                //     console.log("Empty dialog closed")
-                // }
+
                 this.getItems(this.itineraryid);
 
             });
@@ -87,26 +77,11 @@ export class NotesComponent implements OnInit {
         } else if (mode === 'add') {
 
             const dialogRef = this.dialog.open(NotesDialogueComponent, {
-                height: '400px',
-                width: '400px',
+                width: '30vw',
                 data: { note: undefined, noteTitle: undefined, topNote: topNote, closeNote: close, noteData: note, itineraryId: this.itineraryid }
             });
 
             dialogRef.afterClosed().subscribe(result => {
-                // console.log('The dialog was closed');
-                // if (result !== undefined) {
-                //     this.note = result.noteText;
-                //     this.noteTitle = result.noteTitle;
-                //     if (this.noteTitle === undefined || this.note === undefined) {
-                //         this.toastr.error("Cannot post empty note !")
-                //     } else if (this.noteTitle.length > 200 || this.note.length > 200) {
-                //         this.toastr.error("Note should be less than 200 characters.")
-                //     } else {
-                //         this.postNote(this.noteTitle, this.note, this.itineraryid);
-                //     }
-                // } else {
-                //     console.log("Empty dialog closed")
-                // }
 
                 this.getItems(this.itineraryid);
             });
@@ -153,13 +128,17 @@ export class NotesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.activatedRoute.params.pipe(flatMap(params => {
-            return params.id;
-        }))
-            .subscribe(itineraryId => {
-                this.itineraryid = itineraryId[0];
+        this.activatedRoute.params
+            .subscribe(params => {
+                this.itineraryid = params.id;
+                this.getItems(this.itineraryid);
             })
-        this.getItems(this.itineraryid);
+
+        this.interval = setInterval(this.getItems.bind(this, this.itineraryid), this.refreshInterval);
+    }
+
+    ngOnDestroy(): void {
+        clearInterval(this.interval);
     }
 
 }

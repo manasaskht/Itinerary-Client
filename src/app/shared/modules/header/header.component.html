@@ -8,7 +8,7 @@
         <div>
             <img src="assets/imgs/logo-white.png">
         </div>
-        <div class="app-name" fxFlexAlign="center">Itinerary Planner</div>
+        <div class="app-name" fxFlexAlign="center">Travel Buddy</div>
     </div>
     <div fxFlex="1 1 0" fxHide.lt-sm></div>
 
@@ -27,6 +27,14 @@
             <button mat-menu-item [routerLink]="['/dashboard/user']">
                 <mat-icon>account_circle</mat-icon>
                 <span>Profile</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/dashboard/user-feedback']">
+                <mat-icon>feedback</mat-icon>
+                <span>User Feedback</span>
+            </button>
+            <button mat-menu-item [routerLink]="['/dashboard/currency']">
+                <mat-icon>monetization_on</mat-icon>
+                <span>Currency Converter</span>
             </button>
             <button (click)="logOut()" mat-menu-item>
                 <mat-icon>exit_to_app</mat-icon>

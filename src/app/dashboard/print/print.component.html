@@ -1,0 +1,75 @@
+<div id="print-itinerary-container">
+    <div fxLayout fxLayoutGap="8px" fxLayoutAlign="left center">
+        <button mat-raised-button (click)="back()">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+        </button>
+
+        <div class="mat-disp" fxFlex fxAlign="center">Your trip's Timeline</div>
+        <button class="print-button" color="primary" mat-raised-button (click)="print()">
+            <mat-icon>print</mat-icon>
+            <span>Print</span>
+        </button>
+    </div>
+
+    <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%">
+        <div *ngFor="let item of itineraryItems; let i = index" class="item-cont" fxFlex="25%">
+            <mat-card mat-card fxLayout="column">
+                <div class="date">
+                    {{item.dateTime | date :'dd-MMM-yyyy h:mm a'}}
+                </div>
+                <!-- <mat-card-header> -->
+                <div class="heading">
+                    <div>
+                        <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
+                    </div>
+                    <div>{{item.title}}</div>
+                </div>
+                <div *ngIf="item.location" class="location" [title]="item.location">
+                    <mat-icon>location_on</mat-icon>
+                    {{item.location | slice:0:25}}
+                    {{item.location.length>25?'...':''}}
+                </div>
+
+                <div class="description">
+                    {{item.description | slice:0:50}}
+                    {{item.description.length>50?'...':''}}
+                </div>
+                <!-- </mat-card-header> -->
+            </mat-card>
+        </div>
+    </div>
+
+    <h1 class="mat-disp">Your itinerary notes</h1>
+    <div class="container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="2%">
+        <div *ngFor="let note of notes; let i = index" class="note-view quote-container" fxFlex="25%">
+            <i class="pin"></i>
+            <div class="note yellow">
+                <div class="note-title">
+                    {{note.noteTitle}}
+                </div>
+                <div class="note-desc">
+                    {{note.noteText}}
+                </div>
+                <div class="user-info">
+                    <div class="created-date">
+                        <span><b>Create/Updated :</b>
+                            {{note.updatedAt | date :'dd-MMM-yyyy h:mm a'}}</span>
+                    </div>
+                    <div class="creator-name">
+                        <span><b>by:</b> {{note.username}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <div class="print-itinerary">
+        <button class="print-button" mat-button (click)="print()">
+            <mat-icon>print</mat-icon>
+            <span>Print</span>
+        </button>
+    </div>
+
+
+</div>

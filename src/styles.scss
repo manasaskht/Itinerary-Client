@@ -45,3 +45,9 @@ body {
         border-bottom: 1px solid darkblue;
     }
 }
+
+.view-social-container, .view-social-container .mat-dialog-container
+{
+    min-width: 300px;
+    padding: 0;
+}

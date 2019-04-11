@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpEvent, HttpHandler, HttpRequest, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { StorageHelper } from '../utilities/storage.helper';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { serverUrls } from '../utilities/app.urls.helper';
 
 @Injectable({
     providedIn: 'root'
@@ -34,15 +35,22 @@ export class ErrorManagerService implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        if (StorageHelper.getInstance().userInfo) {
+        let serverUrl = serverUrls.getServerUrl();
+        if (StorageHelper.getInstance().userInfo && req.url.indexOf(serverUrl) === 0) {
             req = req.clone({
                 setHeaders: {
                     Authorization: `Bearer ${StorageHelper.getInstance().userInfo.token}`
                 }
             });
         }
-        return next.handle(req).pipe(catchError(this.errorHandler.bind(this)));
+        return next.handle(req).pipe(map(res => {
+            if (res instanceof HttpResponse && res.body.message && new URL(res.url).origin === serverUrl) {
+                this.toastrService.success(res.body.message);
+            }
+            return res;
+        }), catchError(this.errorHandler.bind(this)));
     }
+
 
 
 }
