@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
 import { ViewNotesDialogueComponent } from '../view-notes-dialogue/view-notes-dialogue.component';
 import { ToastrService } from 'ngx-toastr';
+import { SocketsService } from '../shared/providers/sockets.service';
 
 
 @Component({
@@ -18,23 +19,38 @@ import { ToastrService } from 'ngx-toastr';
 export class NotesComponent implements OnInit {
 
     itinerary: any;
-
     notes: Note[] = [];
-
     note: string;
     noteTitle: string;
-
     itineraryid: string;
-
     data: any;
-    refreshInterval: number;
-    interval: any;
 
+    constructor(
+        public dialog: MatDialog,
+        private notesServie: NotesService,
+        private activatedRoute: ActivatedRoute,
+        private toastr: ToastrService,
+        private sockets: SocketsService
+    ) { }
 
+    ngOnInit() {
+        this.activatedRoute.params
+            .subscribe(params => {
+                this.itineraryid = params.id;
+                this.getItems(this.itineraryid);
+            });
 
-
-    constructor(public dialog: MatDialog, private notesServie: NotesService, private activatedRoute: ActivatedRoute, private toastr: ToastrService) {
-        this.refreshInterval = 20000;
+        this.sockets.getNotes().subscribe(response => {
+            if (response.action === 'update') {
+                let updatedNoteIdx = this.notes.findIndex(a => a.id === response.id);
+                delete response.action;
+                this.notes[updatedNoteIdx] = response;
+            } else if (response.action === 'delete') {
+                this.notes = this.notes.filter(a => a.id !== response.id)
+            } else {
+                this.notes.push(response);
+            }
+        });
     }
 
     // Opens view note dialogue
@@ -51,7 +67,6 @@ export class NotesComponent implements OnInit {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('The View dialogue was closed');
-
         });
 
     }
@@ -89,8 +104,6 @@ export class NotesComponent implements OnInit {
         }
     }
 
-
-
     // To get the list of the notes from the database
     getItems(id: string) {
         this.notesServie.getNotes(id).subscribe((items: any) => {
@@ -126,19 +139,4 @@ export class NotesComponent implements OnInit {
             this.getItems(this.itineraryid);
         })
     }
-
-    ngOnInit() {
-        this.activatedRoute.params
-            .subscribe(params => {
-                this.itineraryid = params.id;
-                this.getItems(this.itineraryid);
-            })
-
-        this.interval = setInterval(this.getItems.bind(this, this.itineraryid), this.refreshInterval);
-    }
-
-    ngOnDestroy(): void {
-        clearInterval(this.interval);
-    }
-
 }

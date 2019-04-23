@@ -18,6 +18,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
 import { SocialComponent } from './social/social.component';
 import { MatCardModule } from '@angular/material/card';
+import { SocketsService } from './shared/providers/sockets.service';
 
 @NgModule({
     declarations: [
@@ -53,6 +54,9 @@ import { MatCardModule } from '@angular/material/card';
         ViewNotesDialogueComponent,
         ItemViewDialogComponent,
         SocialComponent
+    ],
+    providers: [
+        SocketsService
     ]
 })
 export class CreateItineraryModule { }

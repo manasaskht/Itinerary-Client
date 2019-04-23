@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { flatMap } from 'rxjs/operators';
 import { ItineraryService } from '../shared/providers/itinerary.service';
 import { StorageHelper } from 'src/app/shared/utilities/storage.helper';
+import { SocketsService } from '../shared/providers/sockets.service';
 
 @Component({
     selector: 'app-chats',
@@ -13,33 +14,27 @@ import { StorageHelper } from 'src/app/shared/utilities/storage.helper';
 })
 export class ChatsComponent implements OnInit {
     chatMessages: ChatMessage[];
-    chatService: ChatService;
-    activatedRoute: ActivatedRoute;
-    itineraryService: ItineraryService;
     user: any;
-    refreshInterval: number;
-    interval: any;
     itineraryId: string;
 
     constructor(
-        chatService: ChatService,
-        activatedRoute: ActivatedRoute,
-        itineraryService: ItineraryService
+        private chatService: ChatService,
+        private activatedRoute: ActivatedRoute,
+        private socketService: SocketsService
     ) {
-        this.chatService = chatService;
-        this.activatedRoute = activatedRoute;
-        this.itineraryService = itineraryService;
         this.user = StorageHelper.getInstance().userInfo;
-        this.refreshInterval = 2000;
         this.chatMessages = [];
     }
 
     ngOnInit() {
+        this.socketService.getChats().subscribe(res => {
+            if (res.sender !== StorageHelper.getInstance().userInfo.id)
+                this.chatMessages.unshift(new ChatMessage(res));
+        });
         this.activatedRoute.params.subscribe(params => {
             this.itineraryId = params.id;
             this.getMessages();
         });
-        this.interval = setInterval(this.getMessages.bind(this), this.refreshInterval);
     }
 
     getMessages(): void {
@@ -60,10 +55,6 @@ export class ChatsComponent implements OnInit {
             this.getMessages();
         });
         input.value = '';
-    }
-
-    ngOnDestroy(): void {
-        clearInterval(this.interval);
     }
 
 }

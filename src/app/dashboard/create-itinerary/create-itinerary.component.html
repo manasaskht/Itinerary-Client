@@ -4,10 +4,10 @@
             <h3>{{ itinerary.title }}</h3>
         </div>
         <div>
-            <button mat-button (click)="refreshTimeline()">
+            <!-- <button mat-button (click)="refreshTimeline()">
                 <mat-icon>refresh</mat-icon>
                 <span>Refresh</span>
-            </button>
+            </button> -->
         </div>
         <div fxFlex="1 1 0"></div>
         <div class="buttons" fxLayout>
@@ -47,7 +47,10 @@
                                             <div>
                                                 <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
                                             </div>
-                                            <div fxFlex="1 1 0">{{item.title}}</div>
+                                            <div fxFlex="1 1 0" [title]="item.title">
+                                                {{item.title | slice:0:12}}
+                                                {{item.title.length>12?'...':''}}
+                                            </div>
                                             <div>
                                                 <span class="btn material-icons"
                                                     (click)="deleteTimeline($event, item)">delete</span>
@@ -93,7 +96,10 @@
                                             <div>
                                                 <mat-icon [title]="item.category">{{item.categoryIcon}}</mat-icon>
                                             </div>
-                                            <div fxFlex="1 1 0">{{item.title}}</div>
+                                            <div fxFlex="1 1 0" [title]="item.title">
+                                                {{item.title | slice:0:12}}
+                                                {{item.title.length>12?'...':''}}
+                                            </div>
                                             <div>
                                                 <span class="btn material-icons"
                                                     (click)="deleteTimeline($event, item)">delete</span>

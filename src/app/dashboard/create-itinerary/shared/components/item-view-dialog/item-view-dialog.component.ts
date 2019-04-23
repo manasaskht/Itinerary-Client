@@ -54,7 +54,9 @@ export class ItemViewDialogComponent implements OnInit {
 
     ngOnInit() {
         //Call get weather function to fetch weather for the selected location for the itinerary.
-        this.getWeather(this.data.itineraryItem.location);
+        let placeWordsArr = this.data.itineraryItem.location.split(' ');
+        let city = placeWordsArr[placeWordsArr.length - 1];
+        this.getWeather(city);
     }
 
 }

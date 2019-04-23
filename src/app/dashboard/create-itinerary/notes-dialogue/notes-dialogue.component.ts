@@ -9,64 +9,56 @@ import { ToastrService } from 'ngx-toastr';
 
 
 export interface DialogData {
-  note: string;
-  noteTitle: string;
-  topNote: string;
-  closeNote: string;
-  noteData: Note;
-  itineraryId: string;
+    note: string;
+    noteTitle: string;
+    topNote: string;
+    closeNote: string;
+    noteData: Note;
+    itineraryId: string;
 }
 
 @Component({
-  selector: 'app-notes-dialogue',
-  templateUrl: './notes-dialogue.component.html',
-  styleUrls: ['./notes-dialogue.component.scss']
+    selector: 'app-notes-dialogue',
+    templateUrl: './notes-dialogue.component.html',
+    styleUrls: ['./notes-dialogue.component.scss']
 })
 export class NotesDialogueComponent implements OnInit {
 
-  createNoteForm: FormGroup;
+    createNoteForm: FormGroup;
 
+    constructor(public dialogRef: MatDialogRef<NotesComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: DialogData, public noteService: NotesService, private toastr: ToastrService) {
 
-
-  constructor(public dialogRef: MatDialogRef<NotesComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, public noteService: NotesService, private toastr: ToastrService) {
-
-    this.createNoteForm = new FormGroup({
-      noteTitle: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      note: new FormControl('', [Validators.required, Validators.maxLength(100)])
-    });
-
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  addUpdateNote() {
-    if (this.createNoteForm.invalid) {
-      return;
+        this.createNoteForm = new FormGroup({
+            noteTitle: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+            note: new FormControl('', [Validators.required, Validators.maxLength(100)])
+        });
     }
 
-    let itemValues = this.createNoteForm.value;
-
-    if (this.data.topNote === 'Create new note') {
-      this.noteService.createNote(itemValues.noteTitle, itemValues.note, this.data.itineraryId).subscribe((items: any) => {
-        this.toastr.success(items.message);
-      });
-      this.dialogRef.close();
-    } else if (this.data.topNote === 'Update note') {
-      this.noteService.updateNote(itemValues.noteTitle, itemValues.note, this.data.noteData.id).subscribe((items: any) => {
-        this.toastr.success(items.message);
-      });
-      this.dialogRef.close();
+    ngOnInit() {
     }
-  }
 
-  ngOnInit() {
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
-  }
+    addUpdateNote() {
+        if (this.createNoteForm.invalid) {
+            return;
+        }
 
+        let itemValues = this.createNoteForm.value;
 
-
-
+        if (this.data.topNote === 'Create new note') {
+            this.noteService.createNote(itemValues.noteTitle, itemValues.note, this.data.itineraryId).subscribe((items: any) => {
+                this.toastr.success(items.message);
+            });
+            this.dialogRef.close();
+        } else if (this.data.topNote === 'Update note') {
+            this.noteService.updateNote(itemValues.noteTitle, itemValues.note, this.data.noteData.id).subscribe((items: any) => {
+                this.toastr.success(items.message);
+            });
+            this.dialogRef.close();
+        }
+    }
 }

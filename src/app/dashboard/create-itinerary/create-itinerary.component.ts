@@ -8,6 +8,9 @@ import { flatMap } from 'rxjs/operators';
 import { ItemViewDialogComponent } from './shared/components/item-view-dialog/item-view-dialog.component';
 import { SocialComponent } from './social/social.component';
 import { _ } from 'underscore';
+import { SocketsService } from './shared/providers/sockets.service';
+
+
 declare let google: any;
 
 @Component({
@@ -29,7 +32,8 @@ export class CreateItineraryComponent implements OnInit {
         private router: Router,
         private dialog: MatDialog,
         private activatedRoute: ActivatedRoute,
-        private itineraryService: ItineraryService
+        private itineraryService: ItineraryService,
+        private sockets: SocketsService
     ) {
         this.itinerary = { title: '', description: '' };
         this.timeline = {
@@ -37,6 +41,7 @@ export class CreateItineraryComponent implements OnInit {
             top: [],
             bottom: []
         };
+        this.sockets.connect();
     }
 
     ngOnInit() {
@@ -49,6 +54,23 @@ export class CreateItineraryComponent implements OnInit {
                 this.refreshTimeline();
             });
 
+        this.sockets.getTimeline().subscribe(res => {
+            res.categoryIcon = Utilities.categories.find(d => d.item === res.category).icon;
+            if (res.action === 'update') {
+                let updatedItemIdx = this.timeline.whole.findIndex(a => a.id === res.id);
+                delete res.action;
+                this.timeline.whole[updatedItemIdx] = res;
+            } else if (res.action === 'delete') {
+                delete res.action;
+                this.timeline.whole = this.timeline.whole.filter(a => a.id !== res.id);
+            } else {
+                this.timeline.whole.push(res);
+            }
+            this.timeline.whole.sort((a, b) => a.dateTime - b.dateTime);
+            this.timeline.top = this.timeline.whole.filter((x, i) => i % 2 === 0);
+            this.timeline.bottom = this.timeline.whole.filter((x, i) => i % 2 !== 0);
+            this.setupMap();
+        });
     }
 
     setupMap() {
